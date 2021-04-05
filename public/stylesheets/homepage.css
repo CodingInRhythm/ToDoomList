@@ -1,0 +1,23 @@
+/* div.main-nav-box
+    div.home-page-image To Doom List
+    ul.links */
+
+header {
+    position: sticky
+}
+
+.main-nav-box {
+    width: 100%;
+    height: 1rem;
+    display: flex;
+    justify-content: space-between
+}
+
+.links {
+    /* margin:  */
+}
+
+.links li {
+    display: inline-block;
+    margin: 0 1em;
+}

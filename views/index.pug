@@ -1,5 +1,6 @@
 extends layout
 
+
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/index.css")
@@ -7,5 +8,4 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1= title
-  p Welcome to your To Doom List
+  include home-navbar.pug
