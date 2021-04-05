@@ -1,16 +1,36 @@
 /* div.main-nav-box
     div.home-page-image To Doom List
     ul.links */
-
-header {
-    position: sticky
+body {
+    background-color: green;
 }
 
+
+header {
+    position: sticky;
+    color: white;
+}
+
+.home-page-image {
+    background-image: url(https://www.rememberthemilk.com/img/logo3@2x.png?1587967172);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 100px;
+    width: 180px;
+}
+
+a {
+    text-decoration: none;
+}
 .main-nav-box {
     width: 100%;
-    height: 1rem;
+    height: 3.5rem;
     display: flex;
-    justify-content: space-between
+    justify-content: space-around;
+    align-items: center;
+    margin: 2em;
+    border-bottom: darkgreen solid 1px;
+    padding: 0px 10px;
 }
 
 .links {
@@ -20,4 +40,10 @@ header {
 .links li {
     display: inline-block;
     margin: 0 1em;
+}
+
+#sign-up {
+    border: 2px solid white;
+    padding: .5em;
+    border-radius: 5px;
 }
