@@ -1,49 +1,59 @@
-/* div.main-nav-box
-    div.home-page-image To Doom List
-    ul.links */
-body {
-    background-color: green;
+@keyframes blue-lightblue {
+    from {
+        background-color: #0060bf;
+    }
+
+    to {
+        background-color: #3292f2;
+    }
 }
 
+@keyframes lightblue-violet {
+    from {
+        background-color: lightblue;
+    }
 
-header {
-    position: sticky;
-    color: white;
+    to {
+        background-color: violet;
+    }
 }
 
-.home-page-image {
-    background-image: url(https://www.rememberthemilk.com/img/logo3@2x.png?1587967172);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    height: 100px;
-    width: 180px;
+@keyframes violet-green {
+    from {
+        background-color: violet;
+    }
+
+    to {
+        background-color: green;
+    }
 }
 
-a {
-    text-decoration: none;
-}
-.main-nav-box {
-    width: 100%;
-    height: 3.5rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 2em;
-    border-bottom: darkgreen solid 1px;
-    padding: 0px 10px;
+@keyframes green-blue {
+    from {
+        background-color: green;
+    }
+
+    to {
+        background-color: blue;
+    }
 }
 
-.links {
-    /* margin:  */
+@keyframes out-of-frame {
+    from {
+        left: 0%;
+    }
+
+    to {
+        left: -200%;
+    }
 }
 
-.links li {
-    display: inline-block;
-    margin: 0 1em;
-}
+@keyframes in-to-frame {
+    from {
+        left: 200%;
+    }
 
-#sign-up {
-    border: 2px solid white;
-    padding: .5em;
-    border-radius: 5px;
+    to {
+        left: 0%;
+    }
 }

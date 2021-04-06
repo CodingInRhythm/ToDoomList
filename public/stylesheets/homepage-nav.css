@@ -1,0 +1,47 @@
+header {
+    position: sticky;
+    color: white;
+    border-bottom: darkgreen solid 1px;
+    display: flex;
+    justify-content: center;
+}
+
+.home-page-image {
+    background-image: url(https://www.rememberthemilk.com/img/logo3@2x.png?1587967172);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 85px;
+    width: 180px;
+}
+
+a {
+    text-decoration: none;
+}
+.main-nav-box {
+    width: 72rem;
+    height: 7rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* margin: 2em; */
+    /* padding: 0px 10px; */
+}
+
+.links {
+    /* margin:  */
+}
+
+.links li {
+    display: inline-block;
+    margin: 0 1.1em;
+}
+
+a {
+    font-size: 14px;
+}
+
+#sign-up {
+    border: 2px solid white;
+    padding: .4em .8em;
+    border-radius: 5px;
+}
