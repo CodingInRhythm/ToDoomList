@@ -10,31 +10,31 @@
 
 @keyframes lightblue-violet {
     from {
-        background-color: lightblue;
+        background-color: #3292f2;
     }
 
     to {
-        background-color: violet;
+        background-color: #6a4ca6;
     }
 }
 
 @keyframes violet-green {
     from {
-        background-color: violet;
+        background-color: #6a4ca6;
     }
 
     to {
-        background-color: green;
+        background-color: #5bb84d;
     }
 }
 
 @keyframes green-blue {
     from {
-        background-color: green;
+        background-color: #5bb84d;
     }
 
     to {
-        background-color: blue;
+        background-color: #0060bf;
     }
 }
 

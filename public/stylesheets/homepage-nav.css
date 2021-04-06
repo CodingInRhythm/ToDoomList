@@ -1,13 +1,21 @@
 header {
-    position: sticky;
+    z-index: 10;
+    opacity: 1;
     color: white;
-    border-bottom: darkgreen solid 1px;
+    border-bottom: rgb(65, 65, 65) solid 1px;
     display: flex;
     justify-content: center;
+    /* background-color: white; */
+    /* makes navbar sticky */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    animation: .5s linear;
+    
 }
 
 .home-page-image {
-    background-image: url(https://www.rememberthemilk.com/img/logo3@2x.png?1587967172);
+    background-image: url(../img/evil-cow-image.png);
     background-size: 100%;
     background-repeat: no-repeat;
     height: 85px;

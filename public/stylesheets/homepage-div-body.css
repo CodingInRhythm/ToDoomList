@@ -1,9 +1,14 @@
 div.main-body {
+    padding-top: 8em;
     display: flex;
     justify-content: center;
 }
 
 div.main-container {
+    /* height: 100vh;
+    width: 100vw; */
+    max-width: 100vh;
+    max-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -141,22 +146,34 @@ div.frame-2 {
 
 div.left-bubble-2 {
     background-color: white;
-    width: 22em;
+    width: 25em;
     height: 3em;
     position: absolute;
-    left: -8%;
+    left: -15%;
     top: 8%;
     border-radius: 8px;
 }
 
 div.right-bubble-2 {
     position: absolute;
-    width: 22em;
+    width: 19em;
     height: 3em;
     background-color: white;
     top: 10%;
     left: 65%;
     border-radius: 8px;
+}
+
+#black-cow-left {
+    position: absolute;
+    top: 9%;
+    left: -12.5%
+}
+
+#black-cow-right {
+    position: absolute;
+    top: 11%;
+    left: 67%
 }
 
 div.l-bubble-text {
@@ -168,6 +185,11 @@ div.l-bubble-text {
     position: absolute;
     left: -8%;
     top: 7%;
+}
+
+.black-cow {
+    height: 35px;
+    width: 35px;
 }
 
 div.r-bubble-text {
@@ -210,3 +232,211 @@ div.r-bubble-text {
     top: 65%;
 
 }
+
+
+/* ####### */
+/* Frame 3 */
+/* ####### */
+
+div.frame-3 {
+    position: absolute;
+    margin-top: 1em;
+    /* display: flex; */
+    /* flex-direction: column; */
+    width: 50em;
+    height: 50em;
+    animation: .5s linear;
+    left: 200%;
+    top: 100%;
+}
+
+
+div.left-bubble-3 {
+    background-color: white;
+    width: 24em;
+    height: 4.5em;
+    position: absolute;
+    left: -18%;
+    top: 8%;
+    border-radius: 8px;
+}
+
+div.right-bubble-3 {
+    position: absolute;
+    width: 25em;
+    height: 4.5em;
+    background-color: white;
+    top: 10%;
+    left: 65%;
+    border-radius: 8px;
+}
+
+div.l-bubble-text-3 {
+    width: 16em;
+    /* text-align: center; */
+    font-size: 22px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    position: absolute;
+    left: -8%;
+    top: 7%;
+}
+
+div.r-bubble-text-3 {
+    width: 16em;
+    /* text-align: center; */
+    font-size: 22px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    position: absolute;
+    top: 9%;
+    left: 74%;
+}
+
+/* .text-emoji {
+    height: 100px;
+    width: 100px;
+} */
+
+#jesse-left {
+    height: 60px;
+    width: 60px;
+
+    left: -17%;
+    top: 9%;
+    position: absolute;
+}
+
+#james-right {
+    height: 50px;
+    width: 50px;
+
+    top: 11.5%;
+    left: 66%;    
+    position: absolute;
+}
+
+#person-img-3 {
+    position: absolute;
+    height: 350px;
+    width: 250px;
+    left: 31%;
+    top: 15%;
+}
+
+.end-1-3 {
+    font-size: 28px;
+    font-style: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+    position: absolute;
+    left: 26%;
+    top: 58%;
+}
+
+.end-2-3 {
+    position: absolute;
+    font-size: 20px;
+    color: white;
+    font-style: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: 18em;
+    text-align: center;
+    font-weight: lighter;
+    left: 26%;
+    top: 65%;
+
+}
+
+/* ####### */
+/* Frame 3 */
+/* ####### */
+
+div.frame-4 {
+    position: absolute;
+    margin-top: 1em;
+    /* display: flex; */
+    /* flex-direction: column; */
+    width: 50em;
+    height: 50em;
+    animation: .5s linear;
+    left: 200%;
+    top: 100%;
+}
+
+
+div.left-bubble-4 {
+    background-color: white;
+    width: 24em;
+    height: 4.5em;
+    position: absolute;
+    left: -18%;
+    top: 8%;
+    border-radius: 8px;
+}
+
+div.right-bubble-4 {
+    position: absolute;
+    width: 25em;
+    height: 4.5em;
+    background-color: white;
+    top: 10%;
+    left: 65%;
+    border-radius: 8px;
+}
+
+div.l-bubble-text-4 {
+    width: 16em;
+    /* text-align: center; */
+    font-size: 22px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    position: absolute;
+    left: -8%;
+    top: 7%;
+}
+
+div.r-bubble-text-4 {
+    width: 16em;
+    /* text-align: center; */
+    font-size: 22px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    position: absolute;
+    top: 9%;
+    left: 74%;
+}
+
+#person-img-4 {
+    position: absolute;
+    height: 350px;
+    width: 250px;
+    left: 31%;
+    top: 15%;
+}
+
+.end-1-4 {
+    font-size: 28px;
+    font-style: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+    position: absolute;
+    left: 32%;
+    top: 58%;
+}
+
+.end-2-4 {
+    position: absolute;
+    font-size: 20px;
+    color: white;
+    font-style: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: 18em;
+    text-align: center;
+    font-weight: lighter;
+    left: 25%;
+    top: 65%;
+
+}
+
+/* div.dots {
+    height: 10px;
+    width: 50px;
+    background-color: red;
+} */
