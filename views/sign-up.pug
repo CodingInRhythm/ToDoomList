@@ -1,12 +1,12 @@
 extends villain-forms.pug
 
 mixin field(label, fieldType, fieldName, fieldValue, require)
-    div.villian__input-field
-        label(for=fieldName)= label
-        input(type=fieldType name=fieldName value=fieldValue required=require)
+    div.villain__input-div
+        input.villain__input-field(type=fieldType name=fieldName value=fieldValue required=require placeholder=label)
 
 block right
     a.villain__button-link(href="/users/login") Log In
+    h2 Sign up for free.
     form.villain__signup-form(action="/users/sign-up" method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
         +field("Title", "text", "title", title, false)
