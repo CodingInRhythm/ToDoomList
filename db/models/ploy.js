@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Ploy.associate = function(models) {
     // associations can be defined here
-    Ploy.belongsTo(models.Scheme({foreignKey: 'schemeId'}))
+    Ploy.belongsTo(models.Scheme, {foreignKey: 'schemeId'})
   };
   return Ploy;
 };

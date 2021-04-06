@@ -9,7 +9,11 @@ const hashedPassword = bcrypt.hashSync("Evil00!", 10);
 const villains = [
 
 {firstName: "Thanos", userName: "Thanoz", email: "thanos@evilinc.com", hashedPassword: hashedPassword},
-{title: "Doctor", firstName: "Octopus", userName: "DoctaOcta", email:"thedoctor@spiderman.com", hashedPassword}
+{title: "Doctor", firstName: "Octopus", userName: "DoctaOcta", email:"thedoctor@spiderman.com", hashedPassword},
+{firstName: "Lex", lastName: "Luthor", userName: "LexWillDominate", email:"lex@supermanstinks.com", hashedPassword},
+{firstName: "The Joker", userName: "theJoker", email:"thejoker@lotsoflaughs.com", hashedPassword},
+{firstName: "Loki", userName: "LokiGod", email:"loki@IhateThor.com", hashedPassword},
+
 ]
 
 const schemes = [

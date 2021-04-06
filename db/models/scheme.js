@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Scheme.associate = function(models) {
     // associations can be defined here
-    Scheme.belongsTo(models.Villain( {foreignKey: 'villainId'}))
-    Scheme.hasMany(models.Ploy({ foreignKey: 'schemeId'}))
+    Scheme.belongsTo(models.Villain, {foreignKey: 'villainId'})
+    Scheme.hasMany(models.Ploy, { foreignKey: 'schemeId'})
   };
   return Scheme;
 };
