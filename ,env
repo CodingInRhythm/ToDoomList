@@ -1,0 +1,4 @@
+DB_USERNAME=to_doom_list_app
+DB_PASSWORD=evilinc
+DB_DATABASE=to_doom_list
+DB_HOST=localhost
