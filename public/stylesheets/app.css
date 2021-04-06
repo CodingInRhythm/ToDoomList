@@ -1,0 +1,61 @@
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background-color: pink;
+    
+}
+
+.navbar {
+    background-color: blue;
+    height: 8%;
+    width: 100%;
+    
+}
+
+.body {
+    background-color: pink;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    margin-top: 5px;
+}
+
+
+
+.lists {
+    background-color: pink;
+    height: 100%;
+    width: 20%;
+}
+
+.tasks-main {
+    background-color: red;
+    height: 100%;
+    width: 80%;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    display: flex;
+    margin-right: 5px;
+    
+}
+
+.notepad {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    align-self: flex-end;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.task-summary {
+    background-color: #e4eef8;
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+

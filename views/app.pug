@@ -1,0 +1,21 @@
+extends layout.pug
+
+
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/app.css")
+  //- add page specific js 
+//-   script(src="/javascripts/index.js" type="module" defer)
+
+
+block content 
+    div.main-container
+        .navbar
+            block navbar 
+        .body 
+            .lists
+            .tasks-main 
+                .notepad  
+                .task-summary
+                 
+
