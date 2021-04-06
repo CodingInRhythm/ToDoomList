@@ -8,6 +8,7 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  include home-navbar.pug
-  include home-body.pug
+  div.un-scrolled
+    include home-navbar.pug
+    include home-body.pug
   include footer.pug 
