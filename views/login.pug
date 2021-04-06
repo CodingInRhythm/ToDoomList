@@ -1,5 +1,15 @@
-extends layout.pug
+extends villain-forms.pug
 
-block content
-    
-    form(action="/login" method="post")
+mixin field(label, fieldType, fieldName, fieldValue, require)
+    div.villain__input-div
+        input.villain__input-field(type=fieldType name=fieldName value=fieldValue required=require placeholder=label)
+
+block right
+    a.villain__button-link(href="/users/sign-up") Sign Up
+
+    h2 Been here before? Welcome back!
+    form.villain__login-form(action="/users/login" method="post")
+        input(type="hidden" name="_csrf" value=csrfToken)
+        +field("Username", "text", "username", username, true)
+        +field("Password", "password", "password", password, true)
+        button(type="submit") Login
