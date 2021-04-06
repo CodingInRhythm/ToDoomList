@@ -1,0 +1,13 @@
+extends layout.pug
+
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/villain-forms.css")
+  //- add page specific js (is this needed?)
+//-   script(src="/javascripts/index.js" type="module" defer)
+
+block content
+    div.villain__left-block
+        h1= pageTitle
+    div.villain__right-block
+        block right

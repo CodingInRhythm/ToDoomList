@@ -1,7 +1,6 @@
-extends layout.pug
+extends villain-forms.pug
 
-block content
-    h1 Sign Up Page for Nate
+block right
     form(action="/users/sign-up" method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
         label(for="title") Title

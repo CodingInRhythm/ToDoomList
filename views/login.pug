@@ -1,10 +1,11 @@
-extends layout.pug
+extends villain-forms.pug
 
-block content
-    form(action="/users/login" method="post")
-        input(type="hidden" name="_csrf" value=csrfToken)
-        label(for="username") Username
-        input(type="text" name="username" value=username required)
-        label(for="password") Password
-        input(type="password" name="password" value=password required)
-        button(type="submit") Login
+block right
+    div.villain__right-block
+        form(action="/users/login" method="post")
+            input(type="hidden" name="_csrf" value=csrfToken)
+            label(for="username") Username
+            input(type="text" name="username" value=username required)
+            label(for="password") Password
+            input(type="password" name="password" value=password required)
+            button(type="submit") Login
