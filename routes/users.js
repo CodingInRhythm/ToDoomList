@@ -12,33 +12,39 @@ const db = require('../db/models')
 const { Villain } = db;
 
 const userValidators = [
-  check('title')
-  .exists({ checkFalsy: true })
-  .withMessage('Please provide a value for Title')
-  .isLength({ max: 50 })
-  .withMessage('Title must not be more than 50 characters long'),
   check('firstName')
   .exists({ checkFalsy: true })
   .withMessage('Please provide a value for First Name')
   .isLength({ max: 50 })
   .withMessage('First Name must not be more than 50 characters long'),
-check('lastName')
+check('userName')
   .exists({ checkFalsy: true })
-  .withMessage('Please provide a value for Last Name')
+  .withMessage('Please provide a value for userName')
   .isLength({ max: 50 })
-  .withMessage('Last Name must not be more than 50 characters long'),
-check('username')
-  .exists({ checkFalsy: true })
-  .withMessage('Please provide a value for Username')
-  .isLength({ max: 50 })
-  .withMessage('Username must not be more than 50 characters long'),
-check('emailAddress')
+  .withMessage('userName must not be more than 50 characters long')
+  .custom((value) => {
+    return Villain.findOne({ where: { userName: value } })
+      .then((user) => {
+        if (user) {
+          return Promise.reject('The provided userName is already in use by another Villain');
+        }
+      });
+  }),
+check('email')
   .exists({ checkFalsy: true })
   .withMessage('Please provide a value for Email Address')
   .isLength({ max: 255 })
   .withMessage('Email Address must not be more than 255 characters long')
   .isEmail()
-  .withMessage('Email Address is not a valid email'),
+  .withMessage('Email Address is not a valid email')
+  .custom((value) => {
+    return Villain.findOne({ where: { email: value } })
+      .then((user) => {
+        if (user) {
+          return Promise.reject('The provided Email Address is already in use by another Villain');
+        }
+      });
+  }),
 check('password')
   .exists({ checkFalsy: true })
   .withMessage('Please provide a value for Password')
@@ -50,8 +56,13 @@ check('confirmPassword')
   .exists({ checkFalsy: true })
   .withMessage('Please provide a value for Confirm Password')
   .isLength({ max: 50 })
-  .withMessage('Confirm Password must not be more than 50 characters long'),
-
+  .withMessage('Confirm Password must not be more than 50 characters long')
+  .custom((value, { req }) => {
+    if (value !== req.body.password) {
+      throw new Error('Confirm Password does not match Password');
+    }
+    return true;
+  })
 ];
 
 
@@ -62,7 +73,7 @@ router.get("/login", csrfProtection, asyncHandler(async (req, res) => {
 }))
 
 router.post("/login", csrfProtection, asyncHandler(async (req, res) => {
-  const { username, password } = req.body;
+  const { userName, password } = req.body;
   res.redirect("/")
 }))
 
@@ -73,10 +84,10 @@ router.get("/sign-up", csrfProtection, asyncHandler(async (req, res) => {
 }))
 
 router.post("/sign-up", csrfProtection, userValidators, asyncHandler(async (req, res) => {
-  const { title, firstName, lastName, username, email, password, confirmPassword } = req.body;
+  const { title, firstName, lastName, userName, email, password, confirmPassword } = req.body;
 
   const user = Villain.build({
-    title, firstName, lastName, username, email,
+    title, firstName, lastName, userName, email
   });
 
   const validatorErrors = validationResult(req);
@@ -85,9 +96,9 @@ router.post("/sign-up", csrfProtection, userValidators, asyncHandler(async (req,
     const hashedPassword = await bcrypt.hash(password, 10);
     user.hashedPassword = hashedPassword;
     await user.save();
-    res.redirect("/app");
+    res.redirect("/");
   } else {
-    const errors = validatorError.array().map((error) => error.msg)
+    const errors = validatorErrors.array().map((error) => error.msg)
     res.render('sign-up', {
       pageTitle: "Sign Up",
       user,
