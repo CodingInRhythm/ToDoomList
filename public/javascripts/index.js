@@ -8,6 +8,7 @@ window.addEventListener("load", (event)=>{
 
 
 let body = document.querySelector('body')
+let header = document.querySelector('header')
 
 let frame1 = document.querySelector('.frame-1');
 let frame2 = document.querySelector('.frame-2');
@@ -25,20 +26,20 @@ const animationNames = [
         animationName: 'lightblue-violet', 
         frameOut: frame2,
         frameIn: frame3,
-        color: 'violet'
+        color: '#6a4ca6'
     },
     {
         animationName: 'violet-green', 
         frameOut: frame3, 
         frameIn: frame4,
-        color: 'green'
+        color: '#5bb84d'
 
     }, 
     {
         animationName: 'green-blue',
         frameOut: frame4, 
         frameIn: frame1,
-        color: 'blue'
+        color: '#0060bf'
     }
 ]
 
@@ -59,6 +60,8 @@ const transition = async () => {
     // frame1.style.left = '125%'
     let currTransition = animationNames.shift()
     body.style.animationName = currTransition.animationName
+    header.style.animationName = currTransition.animationName
+
     currTransition.frameOut.style.animationName = 'out-of-frame';
     currTransition.frameIn.style.animationName = 'in-to-frame';
 
@@ -67,6 +70,9 @@ const transition = async () => {
     // then transiton to next state, taking 500seconds
     // await timer(500) // this pause code during transiion
     body.style.backgroundColor = currTransition.color
+    header.style.backgroundColor = currTransition.color
+
+
     currTransition.frameOut.style.left = '-200%'
     currTransition.frameIn.style.left = '0%'
     animationNames.push(currTransition)
