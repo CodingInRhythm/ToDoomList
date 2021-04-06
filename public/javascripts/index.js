@@ -7,7 +7,8 @@ window.addEventListener("load", (event)=>{
 })
 
 
-let body = document.querySelector('body')
+// let body = document.querySelector('body')
+let unScrolled = document.querySelector('.un-scrolled')
 let header = document.querySelector('header')
 
 let frame1 = document.querySelector('.frame-1');
@@ -59,7 +60,7 @@ const transition = async () => {
     console.log('hello')
     // frame1.style.left = '125%'
     let currTransition = animationNames.shift()
-    body.style.animationName = currTransition.animationName
+    unScrolled.style.animationName = currTransition.animationName
     header.style.animationName = currTransition.animationName
 
     currTransition.frameOut.style.animationName = 'out-of-frame';
@@ -69,7 +70,7 @@ const transition = async () => {
 
     // then transiton to next state, taking 500seconds
     // await timer(500) // this pause code during transiion
-    body.style.backgroundColor = currTransition.color
+    unScrolled.style.backgroundColor = currTransition.color
     header.style.backgroundColor = currTransition.color
 
 
