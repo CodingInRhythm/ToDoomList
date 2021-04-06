@@ -1,9 +1,10 @@
 extends layout.pug
 
 block content
-    form(action="/login" method="post")
+    form(action="/users/login" method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
-        label(for="username")
+        label(for="username") Username
         input(type="text" name="username" value=username required)
-        label(for="password")
+        label(for="password") Password
         input(type="password" name="password" value=password required)
+        button(type="submit") Login

@@ -2,7 +2,7 @@ extends layout.pug
 
 block content
     h1 Sign Up Page for Nate
-    form(action="/sign-up" method="post")
+    form(action="/users/sign-up" method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
         label(for="title") Title
         input(type="text" name="title" value=title)
