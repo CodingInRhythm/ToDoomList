@@ -1,0 +1,25 @@
+/* First take the footer container*/
+.footer-container {
+    background-color: whitesmoke;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 27rem;
+    width: auto;
+    height: 200px;
+    padding: 75px 20px;
+}
+
+.container {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    width: 80rem;
+    height: 10rem;
+}
+
+.lists ul {
+    display: block;
+    width: auto;
+}
