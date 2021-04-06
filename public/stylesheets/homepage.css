@@ -57,10 +57,3 @@
         left: 0%;
     }
 }
-
-body {
-    padding: 0px;
-    background-color: blue;
-    /* animation-name: blue-lightblue; */
-    animation: .5s linear;
-}
