@@ -12,10 +12,18 @@ const villains = [
 {title: "Doctor", firstName: "Octopus", userName: "DoctaOcta", email:"thedoctor@spiderman.com", hashedPassword}
 ]
 
-const schemes = []
+const schemes = [
+    {name:"Operation Destroy Spiderman", villainId: 2},
+    {name:"Destroy the Avengers", villainId: 1}
+]
 
-const ploys = []
+const ploys = [
+    {name: "Find spiderman's location", dueAt: '2022-01-01', schemeId: 1, },
+    {name: "Gather energy on Titan", schemeId: 2}
+]
 
 module.exports = {
-    villains
+    villains,
+    schemes,
+    ploys
 }
