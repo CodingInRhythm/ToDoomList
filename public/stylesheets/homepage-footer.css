@@ -1,25 +1,24 @@
 /* First take the footer container*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .footer-container {
-    background-color: whitesmoke;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 27rem;
-    width: auto;
+    background-color: gray;
     height: 200px;
     padding: 75px 20px;
 }
 
-.container {
-    border: 1px solid black;
+.footer {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     width: 80rem;
     height: 10rem;
+    flex-wrap: wrap;
+    margin: 0 auto;
 }
 
-.lists ul {
-    display: block;
-    width: auto;
-}
+
