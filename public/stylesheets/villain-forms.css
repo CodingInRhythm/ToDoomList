@@ -14,3 +14,16 @@ html, body{
     height: 100%;
     display:inline-block;
 }
+
+.villain__button-link{
+    color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 96, 191, 0.1);
+    size: 3em 3em;
+    margin-bottom: 50px;
+    padding: 5px 11px;
+    text-decoration: none;
+}
+
+.villain__login-form, .villain__signup-form{
+    padding: 10px;
+}

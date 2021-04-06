@@ -1,11 +1,14 @@
 extends villain-forms.pug
 
+mixin field(label, fieldType, fieldName, fieldValue, require)
+    div.villian__input-field
+        label(for=fieldName)= label
+        input(type=fieldType name=fieldName value=fieldValue required=require)
+
 block right
-    div.villain__right-block
-        form(action="/users/login" method="post")
-            input(type="hidden" name="_csrf" value=csrfToken)
-            label(for="username") Username
-            input(type="text" name="username" value=username required)
-            label(for="password") Password
-            input(type="password" name="password" value=password required)
-            button(type="submit") Login
+    a.villain__button-link(href="/users/sign-up") Sign Up
+    form.villain__login-form(action="/users/login" method="post")
+        input(type="hidden" name="_csrf" value=csrfToken)
+        +field("Username", "text", "username", username, true)
+        +field("Password", "password", "password", password, true)
+        button(type="submit") Login
