@@ -2,6 +2,11 @@ html, body{
     height: 100%;
 }
 
+.villain__blocks{
+    display: flex;
+    height:100%;
+}
+
 .villain__left-block{
     width: 50%;
     height: 100%;
@@ -13,6 +18,8 @@ html, body{
     width: 50%;
     height: 100%;
     display:inline-block;
+    box-sizing: border-box;
+    padding: 10px;
 }
 
 .villain__button-link{
