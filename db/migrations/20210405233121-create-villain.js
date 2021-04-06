@@ -8,23 +8,25 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      title: {
+        type: Sequelize.STRING(25),
+      },
       firstName: {
         allowNull: false,
         type: Sequelize.STRING(50),
       },
       lastName: {
-        allowNull: false,
         type: Sequelize.STRING(50),
       },
       userName: {
         allowNull: false,
         type: Sequelize.STRING(25),
-        unique: true
+        unique: true,
       },
       email: {
         allowNull: false,
         type: Sequelize.STRING(50),
-        unique: true
+        unique: true,
       },
       hashedPassword: {
         allowNull: false,
@@ -33,10 +35,12 @@ module.exports = {
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("now"),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("now"),
       },
     });
   },
