@@ -1,4 +1,7 @@
-@import "homepage.css"
+@import "homepage.css";
+@import "homepage-nav.css";
+@import "homepage-div-body.css"
+
 
 /* 
 h1 {

@@ -1,55 +1,66 @@
-/* div.main-nav-box
-    div.home-page-image To Doom List
-    ul.links */
+@keyframes blue-lightblue {
+    from {
+        background-color: #0060bf;
+    }
+
+    to {
+        background-color: #3292f2;
+    }
+}
+
+@keyframes lightblue-violet {
+    from {
+        background-color: lightblue;
+    }
+
+    to {
+        background-color: violet;
+    }
+}
+
+@keyframes violet-green {
+    from {
+        background-color: violet;
+    }
+
+    to {
+        background-color: green;
+    }
+}
+
+@keyframes green-blue {
+    from {
+        background-color: green;
+    }
+
+    to {
+        background-color: blue;
+    }
+}
+
+@keyframes out-of-frame {
+    from {
+        left: 0%;
+    }
+
+    to {
+        left: -200%;
+    }
+}
+
+@keyframes in-to-frame {
+    from {
+        left: 200%;
+    }
+
+    to {
+        left: 0%;
+    }
+}
+
 body {
-    background-color: green;
-}
-
-
-header {
-    position: sticky;
-    color: white;
-    border-bottom: darkgreen solid 1px;
-    display: flex;
-    justify-content: center;
-}
-
-.home-page-image {
-    background-image: url(https://www.rememberthemilk.com/img/logo3@2x.png?1587967172);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    height: 85px;
-    width: 180px;
-}
-
-a {
-    text-decoration: none;
-}
-.main-nav-box {
-    width: 72rem;
-    height: 7rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    /* margin: 2em; */
-    /* padding: 0px 10px; */
-}
-
-.links {
-    /* margin:  */
-}
-
-.links li {
-    display: inline-block;
-    margin: 0 1.1em;
-}
-
-a {
-    font-size: 14px;
-}
-
-#sign-up {
-    border: 2px solid white;
-    padding: .4em .8em;
-    border-radius: 5px;
+    padding: 0px;
+    background-color: blue;
+    /* animation-name: blue-lightblue; */
+    animation: .5s linear;
 }
