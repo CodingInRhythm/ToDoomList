@@ -1,0 +1,212 @@
+div.main-body {
+    display: flex;
+    justify-content: center;
+}
+
+div.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+div.top-container {    
+    /* width: 40em; */
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+div.top-container > a {
+    /* padding-left: 50px; */
+    /* width: 9em; */
+    align-self: center;
+    padding: 15px 35px;
+    background-color: #d24b03;
+    font-size: 23px;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+}
+
+p.mission-statement {
+    font-size: 44px;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+    align-self: center;
+    margin-bottom: 30px;
+    /* padding-bottom: 0px; */
+}
+
+
+/* ####### */
+/* Frame 1 */
+/* ####### */
+
+div.frame-1 {
+    position: absolute;
+    margin-top: 1em;
+    /* display: flex; */
+    /* flex-direction: column; */
+    width: 50em;
+    height: 50em;
+    animation: .5s linear;
+    top: 100%
+}
+
+
+div.left-bubble-1 > img {
+    position: absolute;
+    left: 10.5em
+}
+
+div.right-bubble-1 > img {
+    position: absolute;
+    left: 30em
+}
+
+div.left-bubble-1 > div {
+    width: 5em;
+    text-align: center;
+    font-size: 22px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    position: absolute;
+    left: 8.4em;
+    top: .5em;
+}
+
+div.right-bubble-1 > div {
+    width: 5em;
+    text-align: center;
+    font-size: 22px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    position: absolute;
+    left: 22.5em;
+    top: .5em
+}
+
+#person-img-1 {
+    position: absolute;
+    height: 350px;
+    width: 200px;
+    left: 36%;
+    top: 15%;
+}
+
+.end-1 {
+    font-size: 28px;
+    font-style: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+    position: absolute;
+    left: 26%;
+    top: 58%;
+}
+
+.end-2 {
+    position: absolute;
+    font-size: 20px;
+    color: white;
+    font-style: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: 17em;
+    text-align: center;
+    font-weight: lighter;
+    left: 29%;
+    top: 65%;
+
+}
+
+
+
+/* ####### */
+/* Frame 2 */
+/* ####### */
+
+div.frame-2 {
+    position: absolute;
+    margin-top: 1em;
+    /* display: flex; */
+    /* flex-direction: column; */
+    width: 50em;
+    height: 50em;
+    animation: .5s linear;
+    left: 200%;
+    top: 100%;
+}
+
+
+div.left-bubble-2 {
+    background-color: white;
+    width: 22em;
+    height: 3em;
+    position: absolute;
+    left: -8%;
+    top: 8%;
+    border-radius: 8px;
+}
+
+div.right-bubble-2 {
+    position: absolute;
+    width: 22em;
+    height: 3em;
+    background-color: white;
+    top: 10%;
+    left: 65%;
+    border-radius: 8px;
+}
+
+div.l-bubble-text {
+    width: 16em;
+    text-align: center;
+    font-size: 22px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    position: absolute;
+    left: -8%;
+    top: 7%;
+}
+
+div.r-bubble-text {
+    width: 16em;
+    text-align: center;
+    font-size: 22px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    position: absolute;
+    top: 9%;
+    left: 65%;
+}
+
+#person-img-2 {
+    position: absolute;
+    height: 350px;
+    width: 250px;
+    left: 31%;
+    top: 15%;
+}
+
+.end-1-2 {
+    font-size: 28px;
+    font-style: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+    position: absolute;
+    left: 26%;
+    top: 58%;
+}
+
+.end-2-2 {
+    position: absolute;
+    font-size: 20px;
+    color: white;
+    font-style: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: 14em;
+    text-align: center;
+    font-weight: lighter;
+    left: 29%;
+    top: 65%;
+
+}
