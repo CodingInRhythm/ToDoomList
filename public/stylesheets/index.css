@@ -8,5 +8,7 @@ div.un-scrolled {
     width: 100vw;
     animation: .5s linear;
     background-color: #0060bf;
+    overflow: hidden;
+    margin-bottom: -12px;
 }
 
