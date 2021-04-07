@@ -4,7 +4,8 @@
     flex-direction: column;
     height: 100vh;
     width: 100vw;
-    background-color: pink;
+    background-color:#e3efff;
+    /* background-color: #e4eff8; */
     
 }
 
@@ -15,8 +16,30 @@
     
 }
 
+.search {
+    display: flex;
+    box-sizing: border-box;
+    width: 40px;
+    margin-left: 10%;
+    margin-top: .5%;
+
+    
+}
+
+#search-bar {
+    background-color: rgb(127, 157, 255)
+}
+
+#search-bar:hover {
+    background-color: rgba(127, 157, 255, .8);
+}
+
+#search-bar:focus {
+    background-color: white;
+}
+
 .body {
-    background-color: pink;
+    
     height: 100%;
     width: 100%;
     display: flex;
@@ -25,16 +48,22 @@
 
 
 
-.lists {
-    background-color: pink;
+.sidebar-left {
+    /* background-color: #e4eff8c2; */
     height: 100%;
-    width: 20%;
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ploy-menu, .scheme-menu {
+    border-bottom: 1px solid grey;
 }
 
 .tasks-main {
-    background-color: red;
+    /* background-color: #e4eff8; */
     height: 100%;
-    width: 80%;
+    width: 90%;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
     display: flex;
@@ -49,10 +78,35 @@
     align-self: flex-end;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+ /* Purpose ?? */
+.add-ploy {
+    display: flex;
+    flex-direction: column;
+    
 }
 
+#add-ploy-field {
+    border: 1px grey solid;
+    border-radius: 5px;
+    width: 100%;
+    height: 40px;
+    
+}
+
+.add-ploy > button {
+    align-self: flex-end;
+}
+
+.task {
+    border-bottom: 1px dotted grey;
+    height: 25px;
+}
 .task-summary {
-    background-color: #e4eef8;
+    background-color: #e4eef2;
     height: 100%;
     width: 100%;
     border-top-left-radius: 7px;

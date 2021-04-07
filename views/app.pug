@@ -4,18 +4,40 @@ extends layout.pug
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/app.css")
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
   //- add page specific js 
 //-   script(src="/javascripts/index.js" type="module" defer)
 
 
 block content 
     div.main-container
+        block navbar
         .navbar
-            block navbar 
+            form(class='search' action='/')
+                    input(type="text" name="search" id="search-bar")
+                    button(type="submit") 
+                        i(class="fa fa-search") 
+                
         .body 
-            .lists
+            .sidebar-left
+                .logo LOGO
+                .ploy-menu PLOYS
+                .scheme-menu SCHEME
             .tasks-main 
-                .notepad  
+                .notepad
+                    form(class="add-ploy" action='/ploys' method='post')
+                            input(type='text' id='add-ploy-field' name='ploy' required)
+                            button(type='submit') Add Ploy
+                    div(class='task')
+                    div(class='task')
+                    div(class='task')
+                    div(class='task')
+                    div(class='task')
+                    div(class='task')
+                    div(class='task')
+                    div(class='task')    
+                    
+                        
                 .task-summary
                  
 
