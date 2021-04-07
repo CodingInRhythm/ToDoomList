@@ -9,11 +9,11 @@ block right
     h2 Sign up for free.
     form.villain__signup-form(action="/users/sign-up" method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
-        +field("Title", "text", "title", title, false)
-        +field("First Name", "text", "firstName", firstName, true)
-        +field("Last Name", "text", "lastName", lastName, false)
-        +field("Username", "text", "username", username, true)
-        +field("Email", "email", "email", email, true)
-        +field("Password", "password", "password", password, true)
+        +field("Title", "text", "title", user.title, false)
+        +field("First Name", "text", "firstName", user.firstName, true)
+        +field("Last Name", "text", "lastName", user.lastName, false)
+        +field("Username", "text", "userName", user.userName, true)
+        +field("Email", "email", "email", user.email, true)
+        +field("Password", "password", "password", user.password, true)
         +field("Confirm Password", "password", "confirmPassword", "", true)
         button(type="submit") Register

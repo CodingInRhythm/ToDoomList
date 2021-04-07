@@ -10,5 +10,10 @@ block content
     div.villain__blocks
         div.villain__left-block
             h1= pageTitle
+                div
+                    if errors
+                        ul
+                             each error in errors
+                                li= error
         div.villain__right-block
             block right
