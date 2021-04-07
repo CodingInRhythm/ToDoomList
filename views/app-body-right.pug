@@ -1,0 +1,11 @@
+mixin summaryBox (number, summaryId)
+    .scheme-summary-box
+        .scheme-summary-number(id=summaryId)= number
+        .scheme-summary-text= summaryId
+
+.task-summary
+    h3.list-name Put List Name Here
+    .scheme-summary
+        +summaryBox(3, "tasks")
+        +summaryBox(0, "overdue")
+        +summaryBox(0, "completed")

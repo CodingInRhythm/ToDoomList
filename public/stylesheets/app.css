@@ -1,0 +1,60 @@
+@import "app-body-left.css";
+@import "app-body-right.css";
+@import "app-sidebar-left.css";
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background-color:#e3efff;
+    /* background-color: #e4eff8; */
+
+}
+
+.navbar {
+    background-color: #0060bf;
+    height: 8%;
+    width: 100%;
+
+}
+
+.search {
+    display: flex;
+    box-sizing: border-box;
+    width: 40px;
+    margin-left: 10%;
+    margin-top: .5%;
+
+
+}
+
+#search-bar {
+    background-color: rgb(127, 157, 255)
+}
+
+#search-bar:hover {
+    background-color: rgba(127, 157, 255, .8);
+}
+
+#search-bar:focus {
+    background-color: white;
+}
+
+.body {
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    margin-top: 5px;
+}
+
+.tasks-main {
+    /* background-color: #e4eff8; */
+    height: 100%;
+    width: 90%;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    display: flex;
+    margin-right: 5px;
+}
