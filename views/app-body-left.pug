@@ -10,7 +10,8 @@ mixin ployRow(desc, due)
         span.complete-tab.tab-active Incomplete
         span.complete-tab Completed
     .ploy-action-bar
-
+        div.action-menu-button Menu 1
+        div.action-menu-button Menu 2
     form(class="add-ploy" action='/ploys' method='post')
         input(type='text' id='add-ploy-field' name='ploy' placeholder='Add a ploy...' required)
         button(type='submit') Add Ploy

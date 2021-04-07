@@ -7,7 +7,8 @@
     border-top-right-radius: 7px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding-top: 20px;
+    /* justify-content: center; */
 }
 
 /* Incomplete/Complete Tabs at Top */
@@ -29,6 +30,23 @@
     border: 1px solid #e6e6e6;
     font-weight: 600;
     color: black;
+}
+
+/* Action bar */
+.ploy-action-bar {
+    padding: 0px 10px;
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0px;
+}
+
+.action-menu-button {
+    border: 1px rgb(199, 199, 199) solid;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    font-size: 10px;
+    color: rgba(0,0,0,0.7);
 }
 
  /* Add Ploy Form */
