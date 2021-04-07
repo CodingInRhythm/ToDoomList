@@ -14,7 +14,15 @@ const addPloyToContainer = (ploy) => {
     //Add evebt listener?
     newPloyDiv.append(ployCheckBox);
 
-    const ployDesc;
+    const ployDesc = document.createElement("span");
+    ployDesc.classList.add("ploy__ploy-desc");
+    ployDesc.innerHTML = ploy.desc;
+    newPloyDiv.append(ployDesc);
+
+    const ployDueDate = document.createElement("span");
+    ployDueDate.classList.add("ploy__due-date");
+    ployDueDate.innerHTML = ploy.due;
+    newPloyDiv.append(ployDesc);
 
     ployContainer.append(newPloyDiv);
 }
@@ -26,7 +34,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     addPloyButton.addEventListener("submit", async (event) => {
         event.preventDefault();
         const testPloy = {desc: "Test", due: "today"};
-        addPloyToContainer()
+        addPloyToContainer(testPloy);
         //1. Fetch to Post to DB
         //2. If success, call addPloyToContainer()
         //3. Else, throw error
