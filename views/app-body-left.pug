@@ -1,22 +1,27 @@
 mixin ployRow(desc, due)
-    .task
-        span.task__drag-bar
-        input.task__checkbox(type="checkbox")
-        span.task__ploy-desc= desc
-        span.task__due-date= due
+    .ploy
+        span.ploy__drag-bar
+        input.ploy__checkbox(type="checkbox")
+        span.ploy__ploy-desc= desc
+        span.ploy__due-date= due
 
 .notepad
+    .complete-tab-bar
+        span.complete-tab.tab-active Incomplete
+        span.complete-tab Completed
+    .ploy-action-bar
+
     form(class="add-ploy" action='/ploys' method='post')
         input(type='text' id='add-ploy-field' name='ploy' placeholder='Add a ploy...' required)
         button(type='submit') Add Ploy
-    div(class='task-container')
+    .ploy-container
         +ployRow("Test ploy", "Tomorrow")
         +ployRow("Test ploy 2", "Today")
-        div(class='task')
-        div(class='task')
-        div(class='task')
-        div(class='task')
-        div(class='task')
-        div(class='task')
-        div(class='task')
-        div(class='task')
+        div(class='ploy')
+        div(class='ploy')
+        div(class='ploy')
+        div(class='ploy')
+        div(class='ploy')
+        div(class='ploy')
+        div(class='ploy')
+        div(class='ploy')

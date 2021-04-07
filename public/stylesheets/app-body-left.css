@@ -9,7 +9,29 @@
     flex-direction: column;
     justify-content: center;
 }
- /* Purpose ?? */
+
+/* Incomplete/Complete Tabs at Top */
+.complete-tab-bar{
+    padding: 0px 10px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.complete-tab {
+    font-size: 12px;
+    padding: 5px 10px;
+    color: #3e8bd8;
+}
+
+.complete-tab.tab-active {
+    border: 1px solid #e6e6e6;
+    font-weight: 600;
+    color: black;
+}
+
+ /* Add Ploy Form */
 .add-ploy {
     display: flex;
     flex-direction: column;
@@ -42,34 +64,42 @@
     margin: 10px 5px;
 }
 
-.task-container {
+/* List of Ploys */
+
+.ploy-container {
     overflow-y: auto;
 }
 
-.task {
+.ploy {
     border-bottom: 1px dotted grey;
     height: 25px;
     display: flex;
     align-items: center;
 }
 
-.task:hover {
+.ploy:hover {
     background-color: #faf5cb;
 }
 
-.task__drag-bar {
+.ploy__drag-bar {
     height: 100%;
     width: 20px;
     border-right: 3px solid #afafaf;
 }
 
-.task__checkbox {
+.ploy__checkbox {
     margin: 0px 10px;
     height: 16px;
     width: 14px;
 }
 
-.task__due-date {
+.ploy__ploy-desc{
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.ploy__due-date {
+    font-size: 13px;
     margin-left: auto;
     padding: 0px 30px;
 }
