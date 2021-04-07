@@ -24,21 +24,21 @@ const animationNames = [
         color: '#3292f2'
     },
     {
-        animationName: 'lightblue-violet', 
+        animationName: 'lightblue-violet',
         frameOut: frame2,
         frameIn: frame3,
         color: '#6a4ca6'
     },
     {
-        animationName: 'violet-green', 
-        frameOut: frame3, 
+        animationName: 'violet-green',
+        frameOut: frame3,
         frameIn: frame4,
         color: '#5bb84d'
 
-    }, 
+    },
     {
         animationName: 'green-blue',
-        frameOut: frame4, 
+        frameOut: frame4,
         frameIn: frame1,
         color: '#0060bf'
     }
@@ -74,12 +74,12 @@ const transition = async () => {
     header.style.backgroundColor = currTransition.color
 
 
-    currTransition.frameOut.style.left = '-200%'
+    currTransition.frameOut.style.left = '-250%'
     currTransition.frameIn.style.left = '0%'
     animationNames.push(currTransition)
 
-    
-    
+
+
     // setTimeout(() => {
         //     let animationName = animationNames.shift()
         //     body.style.animationName = animationName;
