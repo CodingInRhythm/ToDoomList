@@ -72,9 +72,32 @@ router.get("/login", csrfProtection, asyncHandler(async (req, res) => {
     res.render('login', {pageTitle: "Login", csrfToken: req.csrfToken()})
 }))
 
-router.post("/login", csrfProtection, asyncHandler(async (req, res) => {
+const loginValidators = [
+  check('username')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a value for username'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a value for Password'),
+];
+
+router.post("/login", csrfProtection, loginValidators, asyncHandler(async (req, res) => {
   const { userName, password } = req.body;
-  res.redirect("/")
+
+  let errors = [];
+  const validatorErrors = validationResult(req);
+
+  if(validatorErrors.isEmpty()) {
+    res.redirect("/")
+  } else {
+    errors = validatorErrors.array().map((error) => error.msg);
+  }
+  res.render('login', {
+    pageTitle: "", //? Brian needs to explain this.
+    userName,
+    errors,
+    csrfToken: req.csrfToken()
+  })
 }))
 
 router.get("/sign-up", csrfProtection, asyncHandler(async (req, res) => {
