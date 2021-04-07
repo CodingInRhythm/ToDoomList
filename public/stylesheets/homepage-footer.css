@@ -41,12 +41,14 @@ h3 {
     vertical-align: top;
     /* line-height: 1rem; */
 }
-
+.lists ul li {
+    padding-right: 25px;
+}
 .lists a {
     font-size: 1.25rem;
     margin: 0.5rem;
     width: 50%;
-    padding-right: 5rem;
+    /* padding-right: 5rem; */
     padding-left: 1rem;
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;

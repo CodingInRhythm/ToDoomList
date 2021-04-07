@@ -87,7 +87,11 @@ router.post("/sign-up", csrfProtection, userValidators, asyncHandler(async (req,
   const { title, firstName, lastName, userName, email, password, confirmPassword } = req.body;
 
   const user = Villain.build({
-    title, firstName, lastName, userName, email
+    title,
+    firstName,
+    lastName,
+    userName,
+    email
   });
 
   const validatorErrors = validationResult(req);
