@@ -12,7 +12,7 @@
 }
 
 .navbar {
-    background-color: blue;
+    background-color: #0060bf;
     height: 8%;
     width: 100%;
 
@@ -47,8 +47,6 @@
     display: flex;
     margin-top: 5px;
 }
-
-
 
 .sidebar-left {
     /* background-color: #e4eff8c2; */

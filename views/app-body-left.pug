@@ -7,7 +7,7 @@ mixin ployRow(desc, due)
 
 .notepad
     form(class="add-ploy" action='/ploys' method='post')
-        input(type='text' id='add-ploy-field' name='ploy' required)
+        input(type='text' id='add-ploy-field' name='ploy' placeholder='Add a ploy...' required)
         button(type='submit') Add Ploy
     div(class='task-container')
         +ployRow("Test ploy", "Tomorrow")
