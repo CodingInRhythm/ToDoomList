@@ -1,0 +1,28 @@
+mixin ployRow(desc, due)
+    .ploy
+        span.ploy__drag-bar
+        input.ploy__checkbox(type="checkbox")
+        span.ploy__ploy-desc= desc
+        span.ploy__due-date= due
+
+.notepad
+    .complete-tab-bar
+        span.complete-tab.tab-active Incomplete
+        span.complete-tab Completed
+    .ploy-action-bar
+        div.action-menu-button Menu 1
+        div.action-menu-button Menu 2
+    form(class="add-ploy" action='/ploys' method='post')
+        input(type='text' id='add-ploy-field' name='ploy' placeholder='Add a ploy...' required)
+        button(type='submit') Add Ploy
+    .ploy-container
+        +ployRow("Test ploy", "Tomorrow")
+        +ployRow("Test ploy 2", "Today")
+        div(class='ploy')
+        div(class='ploy')
+        div(class='ploy')
+        div(class='ploy')
+        div(class='ploy')
+        div(class='ploy')
+        div(class='ploy')
+        div(class='ploy')

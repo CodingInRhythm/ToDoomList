@@ -10,6 +10,8 @@ const { sessionSecret } = require('./config/index');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const { restoreUser } = require('./auth/auth.js');
+const appRouter = require('./routes/app')
+
 
 const app = express();
 
@@ -40,6 +42,7 @@ store.sync();
 app.use(restoreUser);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/app', appRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
