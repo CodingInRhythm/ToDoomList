@@ -5,11 +5,10 @@ const router = express.Router();
 
 
 /* GET home page. */
-// router.get("/", function (req, res, next) {
-//   const schemes = fetch("/schemes")
-//   //todo: add tasks
-//   res.render("app", { tasks, schemes });
-// });
+router.get("/", function (req, res, next) {
+  
+  res.render("app");
+});
 
 //works
 router.post("/schemes", async (req, res) => {
