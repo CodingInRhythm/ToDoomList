@@ -1,8 +1,15 @@
 const addPloyToContainer = (ploy) => {
     const ployContainer = document.querySelector(".ploy-container");
 
-    const newPloyDiv = document.createElement("div");
-    newPloyDiv.classList.add("ploy");
+    let newPloyDiv = document.querySelector(".ploy.empty");
+    if(newPloyDiv){
+        newPloyDiv.classList.remove("empty");
+    }
+    else{
+        newPloyDiv = document.createElement("div");
+        newPloyDiv.classList.add("ploy");
+        ployContainer.append(newPloyDiv);
+    }
 
     const ployDragBar = document.createElement("span");
     ployDragBar.classList.add("ploy__drag-bar");
@@ -23,17 +30,20 @@ const addPloyToContainer = (ploy) => {
     ployDueDate.classList.add("ploy__due-date");
     ployDueDate.innerHTML = ploy.due;
     newPloyDiv.append(ployDesc);
-
-    ployContainer.append(newPloyDiv);
 }
 
 window.addEventListener("DOMContentLoaded", (event) => {
 
     //Logic for Adding Ploys
-    const addPloyForm = document.querySelector(".add-ploy > button");
-    addPloyButton.addEventListener("submit", async (event) => {
+    const addPloyForm = document.querySelector(".add-ploy");
+    addPloyForm.addEventListener("submit", async (event) => {
         event.preventDefault();
-        const testPloy = {desc: "Test", due: "today"};
+
+        const inputForm = document.querySelector("#add-ploy-field");
+        const desc = inputForm.value;
+        const due = "Today";
+
+        const testPloy = {desc, due};
         addPloyToContainer(testPloy);
         //1. Fetch to Post to DB
         //2. If success, call addPloyToContainer()
