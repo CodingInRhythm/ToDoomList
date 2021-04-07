@@ -1,0 +1,17 @@
+extends layout.pug
+
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/app.css")
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+  //- add page specific js 
+//-   script(src="/javascripts/index.js" type="module" defer)
+
+
+block content 
+    div.main-container
+        
+        include app-navbar.pug
+        include app-body.pug
+           
+

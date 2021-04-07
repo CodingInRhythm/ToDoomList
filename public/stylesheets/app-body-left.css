@@ -1,0 +1,123 @@
+.notepad {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    align-self: flex-end;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    /* justify-content: center; */
+}
+
+/* Incomplete/Complete Tabs at Top */
+.complete-tab-bar{
+    padding: 0px 10px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.complete-tab {
+    font-size: 12px;
+    padding: 5px 10px;
+    color: #3e8bd8;
+}
+
+.complete-tab.tab-active {
+    border: 1px solid #e6e6e6;
+    font-weight: 600;
+    color: black;
+}
+
+/* Action bar */
+.ploy-action-bar {
+    padding: 0px 10px;
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0px;
+}
+
+.action-menu-button {
+    border: 1px rgb(199, 199, 199) solid;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    font-size: 10px;
+    color: rgba(0,0,0,0.7);
+}
+
+ /* Add Ploy Form */
+.add-ploy {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 0px 10px;
+}
+
+#add-ploy-field {
+    border: 1px grey solid;
+    border-radius: 5px;
+    width: 100%;
+    height: 35px;
+    padding-left: 10px;
+}
+
+#add-ploy-field:focus {
+    outline: none !important;
+    border: 1px solid rgba(102, 175, 233, 0.6);
+    box-shadow: 0px 0px 4px rgba(102, 175, 233, 0.6);
+}
+
+.add-ploy > button {
+    border: none;
+    border-radius: 3px;
+    align-self: flex-end;
+    color: white;
+    font-weight: 600;
+    background-color: #2e8ceb;
+    padding: 10px 15px;
+    margin: 10px 5px;
+}
+
+/* List of Ploys */
+
+.ploy-container {
+    overflow-y: auto;
+}
+
+.ploy {
+    border-bottom: 1px dotted grey;
+    height: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.ploy:hover {
+    background-color: #faf5cb;
+}
+
+.ploy__drag-bar {
+    height: 100%;
+    width: 20px;
+    border-right: 3px solid #afafaf;
+}
+
+.ploy__checkbox {
+    margin: 0px 10px;
+    height: 16px;
+    width: 14px;
+}
+
+.ploy__ploy-desc{
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.ploy__due-date {
+    font-size: 13px;
+    margin-left: auto;
+    padding: 0px 30px;
+}

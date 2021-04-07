@@ -1,0 +1,13 @@
+mixin schemeEntry(name, ployNum)
+    .scheme-entry
+        span= name
+        .ploy-numbers= ployNum
+.body
+    .sidebar-left
+        a.logo(href="/app")
+        .ploy-menu PLOYS
+        .scheme-menu SCHEME
+            +schemeEntry("Example scheme", 2)
+    .tasks-main
+        include app-body-left.pug
+        include app-body-right.pug
