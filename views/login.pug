@@ -10,6 +10,6 @@ block right
     h2 Been here before? Welcome back!
     form.villain__login-form(action="/users/login" method="post")
         input(type="hidden" name="_csrf" value=csrfToken)
-        +field("Username", "text", "username", username, true)
+        +field("Username", "text", "userName", userName, true)
         +field("Password", "password", "password", password, true)
         button(type="submit") Login
