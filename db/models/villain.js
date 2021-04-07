@@ -9,7 +9,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Villain.associate = function(models) {
     // associations can be defined here
-    Villain.hasMany(models.Scheme, {foreignKey: 'villainId'})
+    Villain.hasMany(models.Scheme, {
+      foreignKey: "villainId",
+      onDelete: "cascade",
+      hooks: true,
+    });
   };
   return Villain;
 };
