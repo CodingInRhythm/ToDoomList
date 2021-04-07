@@ -1,6 +1,4 @@
 
-window.addEventListener("DOMContentLoaded", (event) => {
-
     // Takes in Ploy information and Appends Div to Ploy List
     //Current takes in object {desc: <desc>, due: <due>}
     const addPloyToContainer = (ploy) => {
@@ -23,7 +21,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         const ployCheckBox = document.createElement("input");
         ployCheckBox.classList.add("ploy__checkbox");
         ployCheckBox.setAttribute("type", "checkbox");
-        //Add evebt listener?
+        //Add event listener?
         newPloyDiv.append(ployCheckBox);
 
         const ployDesc = document.createElement("span");
@@ -59,12 +57,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
     }
 
-
     //Logic for Adding Ploys
     const addPloyForm = document.querySelector(".add-ploy");
+    console.log(addPloyForm);
     addPloyForm.addEventListener("submit", async (event) => {
         event.preventDefault();
-
         const inputForm = document.querySelector("#add-ploy-field");
         const desc = inputForm.value;
         const due = "Today";
@@ -91,4 +88,3 @@ window.addEventListener("DOMContentLoaded", (event) => {
             //3. If fail, throw error (?)
         })
     })
-})
