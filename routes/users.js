@@ -11,6 +11,7 @@ const db = require('../db/models')
 
 const { Villain } = db;
 
+
 const userValidators = [
   check('firstName')
   .exists({ checkFalsy: true })
@@ -73,7 +74,7 @@ router.get("/login", csrfProtection, asyncHandler(async (req, res) => {
 }))
 
 const loginValidators = [
-  check('username')
+  check('userName')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a value for username'),
   check('password')
@@ -86,9 +87,19 @@ router.post("/login", csrfProtection, loginValidators, asyncHandler(async (req, 
 
   let errors = [];
   const validatorErrors = validationResult(req);
-
+  console.log('Heloooooo')
+  console.log( await Villain.findByPk(1))
   if(validatorErrors.isEmpty()) {
-    res.redirect("/")
+    const user = await Villain.findOne( { where: { userName } });
+
+    if (user !== null) {
+      const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
+
+      if (passwordMatch) {
+        return res.redirect('/')
+      }
+    }
+    errors.push('Login failed for the provided username and password')
   } else {
     errors = validatorErrors.array().map((error) => error.msg);
   }
