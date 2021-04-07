@@ -1,0 +1,41 @@
+.task-summary{
+    padding-left: 30px;
+    padding-top: 50px;
+    background-color: rgb(228,238,248);
+}
+
+.list-name{
+    font-size: 1.1rem;
+}
+
+.scheme-summary{
+    display: flex;
+    margin-top: 20px;
+}
+
+.scheme-summary-box{
+    background-color: #dbe8f6;
+    padding: 10px;
+    margin-right: 5px;
+}
+
+.scheme-summary-number{
+    font-size: 1.1875rem;
+    font-weight: 600;
+}
+
+.scheme-summary-text{
+    font-size: .75rem
+}
+
+#tasks{
+    color: #0060bf;
+}
+
+#completed{
+    color: rgba(0,0,0,0.4)
+}
+
+#overdue{
+    color: #d74a00;
+}

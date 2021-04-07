@@ -1,4 +1,5 @@
 @import "app-body-left.css";
+@import "app-body-right.css";
 
 .main-container {
     display: flex;
