@@ -11,7 +11,6 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const { restoreUser } = require('./auth/auth.js');
 const appRouter = require('./routes/app')
-
 const app = express();
 
 // view engine setup
