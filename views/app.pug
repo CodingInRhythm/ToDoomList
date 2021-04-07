@@ -1,6 +1,5 @@
 extends layout.pug
 
-
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/app.css")
@@ -11,33 +10,8 @@ append head
 
 block content 
     div.main-container
-        block navbar
-        .navbar
-            form(class='search' action='/')
-                    input(type="text" name="search" id="search-bar")
-                    button(type="submit") 
-                        i(class="fa fa-search") 
-                
-        .body 
-            .sidebar-left
-                .logo LOGO
-                .ploy-menu PLOYS
-                .scheme-menu SCHEME
-            .tasks-main 
-                .notepad
-                    form(class="add-ploy" action='/ploys' method='post')
-                            input(type='text' id='add-ploy-field' name='ploy' required)
-                            button(type='submit') Add Ploy
-                    div(class='task')
-                    div(class='task')
-                    div(class='task')
-                    div(class='task')
-                    div(class='task')
-                    div(class='task')
-                    div(class='task')
-                    div(class='task')    
-                    
-                        
-                .task-summary
-                 
+        
+        include app-navbar.pug
+        include app-body.pug
+           
 

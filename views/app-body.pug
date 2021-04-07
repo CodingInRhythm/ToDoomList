@@ -1,4 +1,21 @@
-extends app.pug 
-
-block body 
-    
+.body
+    .sidebar-left
+        .logo LOGO
+        .ploy-menu PLOYS
+        .scheme-menu SCHEME
+    .tasks-main 
+        .notepad
+            form(class="add-ploy" action='/ploys' method='post')
+                input(type='text' id='add-ploy-field' name='ploy' required)
+                button(type='submit') Add Ploy
+            div(class='task-container')
+                div(class='task')
+                div(class='task')
+                div(class='task')
+                div(class='task')
+                div(class='task')
+                div(class='task')
+                div(class='task')
+                div(class='task')    
+        .task-summary
+        
