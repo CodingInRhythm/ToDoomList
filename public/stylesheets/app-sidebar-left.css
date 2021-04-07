@@ -1,0 +1,38 @@
+.sidebar-left {
+    /* background-color: #e4eff8c2; */
+    height: 100%;
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    background-image: url(../img/evil-cow-image.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 85px;
+    width: 100%;
+
+    background-color:rgb(124, 31, 31);
+}
+
+.ploy-menu, .scheme-menu {
+    border-top: 1px solid grey;
+    font-size: 12px;
+    margin: 10px 10px;
+}
+
+.scheme-entry{
+    display: flex;
+    justify-content: space-between;
+}
+
+.scheme-entry > span{
+    font-size: 12px;
+}
+
+.ploy-numbers {
+    padding: 2px 2px;
+    background-color: rgb(211, 231, 250);
+    font-size: 10px;
+}

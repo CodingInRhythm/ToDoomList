@@ -1,5 +1,6 @@
 @import "app-body-left.css";
 @import "app-body-right.css";
+@import "app-sidebar-left.css";
 
 .main-container {
     display: flex;
@@ -46,18 +47,6 @@
     width: 100%;
     display: flex;
     margin-top: 5px;
-}
-
-.sidebar-left {
-    /* background-color: #e4eff8c2; */
-    height: 100%;
-    width: 10%;
-    display: flex;
-    flex-direction: column;
-}
-
-.ploy-menu, .scheme-menu {
-    border-bottom: 1px solid grey;
 }
 
 .tasks-main {
