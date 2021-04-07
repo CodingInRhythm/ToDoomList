@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
-
+const { loginUser } = require("../auth/auth.js");
 const { csrfProtection, asyncHandler } = require('../utils/utils');
 
 
@@ -10,6 +10,7 @@ const { csrfProtection, asyncHandler } = require('../utils/utils');
 const db = require('../db/models')
 
 const { Villain } = db;
+
 
 const userValidators = [
   check('firstName')
@@ -72,9 +73,43 @@ router.get("/login", csrfProtection, asyncHandler(async (req, res) => {
     res.render('login', {pageTitle: "Login", csrfToken: req.csrfToken()})
 }))
 
-router.post("/login", csrfProtection, asyncHandler(async (req, res) => {
+const loginValidators = [
+  check('userName')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a value for username'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a value for Password'),
+];
+
+router.post("/login", csrfProtection, loginValidators, asyncHandler(async (req, res) => {
   const { userName, password } = req.body;
-  res.redirect("/")
+
+  let errors = [];
+  const validatorErrors = validationResult(req);
+  // console.log('Heloooooo')
+  // console.log( await Villain.findByPk(1))
+  if(validatorErrors.isEmpty()) {
+    const user = await Villain.findOne( { where: { userName } });
+
+    if (user !== null) {
+      const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
+
+      if (passwordMatch) {
+        loginUser(req, res, user);
+        return res.redirect('/')
+      }
+    }
+    errors.push('Login failed for the provided username and password')
+  } else {
+    errors = validatorErrors.array().map((error) => error.msg);
+  }
+  res.render('login', {
+    pageTitle: "", //? Brian needs to explain this.
+    userName,
+    errors,
+    csrfToken: req.csrfToken()
+  })
 }))
 
 router.get("/sign-up", csrfProtection, asyncHandler(async (req, res) => {
@@ -100,6 +135,7 @@ router.post("/sign-up", csrfProtection, userValidators, asyncHandler(async (req,
     const hashedPassword = await bcrypt.hash(password, 10);
     user.hashedPassword = hashedPassword;
     await user.save();
+    loginUser(req, res, user);
     res.redirect("/");
   } else {
     const errors = validatorErrors.array().map((error) => error.msg)
