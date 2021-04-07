@@ -28,14 +28,34 @@
     align-self: flex-end;
 }
 
+.task-container {
+    overflow-y: auto;
+}
+
 .task {
     border-bottom: 1px dotted grey;
     height: 25px;
+    display: flex;
+    align-items: center;
 }
-.task-summary {
-    background-color: #e4eef2;
+
+.task:hover {
+    background-color: #faf5cb;
+}
+
+.task__drag-bar {
     height: 100%;
-    width: 100%;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
+    width: 20px;
+    border-right: 3px solid #afafaf;
+}
+
+.task__checkbox {
+    margin: 0px 10px;
+    height: 16px;
+    width: 14px;
+}
+
+.task__due-date {
+    margin-left: auto;
+    padding: 0px 30px;
 }

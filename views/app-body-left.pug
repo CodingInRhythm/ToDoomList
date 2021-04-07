@@ -1,8 +1,17 @@
+mixin ployRow(desc, due)
+    .task
+        span.task__drag-bar
+        input.task__checkbox(type="checkbox")
+        span.task__ploy-desc= desc
+        span.task__due-date= due
+
 .notepad
     form(class="add-ploy" action='/ploys' method='post')
         input(type='text' id='add-ploy-field' name='ploy' required)
         button(type='submit') Add Ploy
     div(class='task-container')
+        +ployRow("Test ploy", "Tomorrow")
+        +ployRow("Test ploy 2", "Today")
         div(class='task')
         div(class='task')
         div(class='task')
