@@ -1,6 +1,8 @@
 const express = require("express");
-const { db } = require("../config");
+const db = require('../db/models')
 const router = express.Router();
+
+const db = require('../db/models')
 
 /* GET home page. */
 // router.get("/", function (req, res, next) {
@@ -8,7 +10,7 @@ const router = express.Router();
 //   //todo: add tasks
 //   res.render("app", { tasks, schemes });
 // });
-router.post("/schemes", (req, res) => {
+router.post("/schemes", async (req, res) => {
   //destructure req to get Scheme name and Villain id
   const scheme = await db.Scheme.create()
   res.json(scheme)
@@ -21,12 +23,13 @@ router.get("/schemes/:schemeid", async (req, res) => {
   res.json()
 })
 
-router.put("/schemes/:schemeid", (req, res) => {
-  
+router.put("/schemes/:schemeid", async (req, res) => {
+  const id = req.params.id
+  const scheme = await  
 })
 
-router.delete("/schemes/:schemeid", (req, res) => {
-
+router.delete("/schemes/:schemeid", async (req, res) => {
+  await db.Scheme.destroy()
 })
 
 router.post("/ploys", (req, res) => {
