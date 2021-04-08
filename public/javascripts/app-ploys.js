@@ -99,7 +99,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const markComplete =markCompleteButton.innerHTML === "Completed"
         await Promise.all(selected.map(async (ploy) => {
             const ployObj = {id: ploy.id, schemeId: schemeId, completed: markComplete}
-            const updatedPloy = await fetch(`/app/ploys/${ploy.id}`, {
+            await fetch(`/app/ploys/${ploy.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -128,9 +128,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
             } else{
                 markCompleteButton.innerHTML = "Completed";
             }
-            //If tab was changed
-            //1. Send Get request to DB to query all complete/incomplete ploys
-            //2. Reload ploy list
+
+            //If tab was changed?
             await displayPloys(switchToCompleted);
         })
     })
