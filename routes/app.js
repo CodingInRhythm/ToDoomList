@@ -60,10 +60,12 @@ router.delete("/schemes/:schemeid", async (req, res) => {
 
 //works
 router.post("/ploys", async (req, res) => {
-  const {name, schemeId} = req.body
+  const {name, schemeId, completed, dueAt} = req.body
   const ploy = await db.Ploy.create({
     name,
-    schemeId
+    schemeId,
+    completed,
+    dueAt
   })
   res.json({ploy})
 })

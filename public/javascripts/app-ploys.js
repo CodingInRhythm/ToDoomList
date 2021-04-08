@@ -65,7 +65,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         event.preventDefault();
         const inputForm = document.querySelector("#add-ploy-field");
         const name = inputForm.value;
-        const dueAt = "Today";
+        const dueAt = null;
 
         const testPloy = {name, dueAt, schemeId: 2, completed: false};
         const postedPloy = await fetch('/app/ploys', {
