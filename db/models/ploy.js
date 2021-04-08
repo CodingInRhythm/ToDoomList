@@ -5,7 +5,6 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     completed: DataTypes.BOOLEAN,
     dueAt: DataTypes.DATE,
-    schemeId: DataTypes.INTEGER
   }, {});
   Ploy.associate = function(models) {
     // associations can be defined here

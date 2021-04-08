@@ -129,7 +129,6 @@ const ploys = [
 
     // Joker: Kill The Batman: Nuclear Bomb # 11
     { name: "Find a nuclear bomb facility", dueAt: '2022-04-01', schemeId: 11, },
-
 ]
 
 module.exports = {

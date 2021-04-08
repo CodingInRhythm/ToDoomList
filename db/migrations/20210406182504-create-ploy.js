@@ -24,7 +24,6 @@ module.exports = {
         type: Sequelize.DATE,
       },
       schemeId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: "Schemes" },
       },
