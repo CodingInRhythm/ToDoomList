@@ -54,9 +54,9 @@ window.addEventListener("DOMContentLoaded", (e) => {
                     })
                     ployCheckBox.checked = true;
                 }
-                else{
+                // else{
                     ployCheckBox.checked = !ployCheckBox.checked;
-                }
+                // }
             }
             displayPloyData(ployCheckBox.checked, targetId);
         })

@@ -56,7 +56,8 @@
     right: 0px;
     /* z-index: 1; */
     background-color: white;
-    padding: 30px 10px;
+    padding-left: 15px;
+    padding-top: 40px;
 }
 
 .ploy-data__name-form{
