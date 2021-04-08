@@ -48,15 +48,19 @@ window.addEventListener("DOMContentLoaded", (e) => {
                 //If other divs are selected, uncheck, else just toggle
                 let selected = getSelectedPloys();
                 if(selected.length >= 1){
-                    selected.forEach(ploy => {
-                        const checkBox = ploy.querySelector(".ploy__checkbox");
-                        checkBox.checked = false;
-                    })
-                    ployCheckBox.checked = true;
+                    if(selected.length === 1 && selected[0].id === targetId){
+                        ployCheckBox.checked = false;
+                    } else{
+                        selected.forEach(ploy => {
+                            const checkBox = ploy.querySelector(".ploy__checkbox");
+                            checkBox.checked = false;
+                        })
+                        ployCheckBox.checked = true;
+                    }
                 }
-                // else{
+                else{
                     ployCheckBox.checked = !ployCheckBox.checked;
-                // }
+                }
             }
             displayPloyData(ployCheckBox.checked, targetId);
         })
