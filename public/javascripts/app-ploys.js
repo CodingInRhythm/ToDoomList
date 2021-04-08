@@ -158,4 +158,5 @@ window.addEventListener("DOMContentLoaded", (e) => {
         })
     })
 
+    displayPloys();
 })
