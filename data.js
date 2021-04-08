@@ -23,7 +23,7 @@ const schemes = [
 
 const ploys = [
     {name: "Find spiderman's location", dueAt: '2022-01-01', schemeId: 1, },
-    {name: "Gather energy on Titan", schemeId: 2}
+    {name: "Gather energy on Titan", schemeId: 2},
 ]
 
 module.exports = {
