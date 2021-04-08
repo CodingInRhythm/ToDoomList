@@ -1,3 +1,7 @@
+.hidden{
+    display: none;
+}
+
 .task-summary{
     padding-left: 30px;
     padding-top: 50px;
@@ -43,4 +47,12 @@
 
 #overdue{
     color: #d74a00;
+}
+
+.ploy-data{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    background-color: white;
 }

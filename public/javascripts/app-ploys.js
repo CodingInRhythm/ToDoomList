@@ -39,21 +39,52 @@ window.addEventListener("DOMContentLoaded", (e) => {
         //If click anywhere in div, will check/uncheck checkbox, display info on right
         newPloyDiv.addEventListener("click", (ev) => {
             ev.stopPropagation();
-            if(ev.target.className !== "ploy__checkbox"){
-                ployCheckBox.checked = !ployCheckBox.checked;
+            let targetId = ev.target.id;
+            //If it clicks child div
+            if(targetId === ""){
+                targetId = ev.target.parentElement.id;
             }
-
-            displayPloyData();
+            if(ev.target.className !== "ploy__checkbox"){
+                //If other divs are selected, uncheck, else just toggle
+                let selected = getSelectedPloys();
+                if(selected.length != 1){
+                    selected.forEach(ploy => {
+                        const checkBox = ploy.querySelector(".ploy__checkbox");
+                        checkBox.checked = false;
+                    })
+                    ployCheckBox.checked = true;
+                }
+                else{
+                    ployCheckBox.checked = !ployCheckBox.checked;
+                }
+            }
+            displayPloyData(ployCheckBox.checked, targetId);
         })
     }
 
     //Will toggle ploy data div on right part of body
-    const displayPloyData = () => {
+    const displayPloyData = (display, id) => {
+        if(display){
+            const ployDataDiv = document.getElementById(`data-${id}`);
+            const shownDataDiv = document.querySelector(".ploy-data:not(.hidden)");
+            if(shownDataDiv && shownDataDiv.id !== `data-${id}`){
+                shownDataDiv.classList.add("hidden");
+            }
+            ployDataDiv.classList.remove("hidden");
+        }
+        else{
+            ployDataDiv.classList.add("hidden");
+        }
+
     }
 
     // Creates hidden ploy data divs that will display on right body
     const createPloyDataDiv = async (ploy) => {
+        const mainBody = document.querySelector(".tasks-main");
         const dataDiv = document.createElement("div");
+        dataDiv.classList.add("ploy-data", "hidden")
+        dataDiv.id = `data-${ploy.id}`;
+        mainBody.append(dataDiv);
     }
 
     //Might need to modify for search
