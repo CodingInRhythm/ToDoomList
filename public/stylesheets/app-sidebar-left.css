@@ -16,15 +16,71 @@
     background-color:rgb(124, 31, 31);
 }
 
+.scheme-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.scheme-dropdown {
+    /* display: inline-block; */
+}
+
+
+.add-scheme-button {
+    position: relative;
+    /* left: 159.5px; */
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1px;
+    border: .5px solid rgba(0, 183, 255, 0.863);
+    border-radius: 1.5px;
+}
+
 .ploy-menu, .scheme-menu {
     border-top: 1px solid grey;
     font-size: 12px;
     margin: 10px 10px;
-    font-family: "Segoe UI","Helvetica Neue"
+    font-family: "Segoe UI", "Helvetica Neue"
 }
 
-.ploy-menu, .scheme-menu:hover {
+.ploy-menu:hover {
+    background-color: lightblue;
+} 
+.scheme-menu:hover {
+    background-color: lightblue;
+
+}
+
+.ploy-menu:active {
+    background-color: lightblue;
+    font-weight: 500;
     
+} 
+
+
+.scheme-menu:focus {
+    background-color: lightblue;
+    font-weight: 500;
+}
+
+.scheme-dropdown > div, .ploy-dropdown {
+    display:none;
+}
+
+.scheme-menu:hover > .scheme-dropdown > div {
+    display:flex;
+    flex-direction: column;
+}
+
+.ploy-menu:hover > .ploy-dropdown {
+    display: flex;
+    flex-direction: column;
 }
 
 .scheme-entry{

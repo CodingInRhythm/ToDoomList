@@ -5,9 +5,14 @@ mixin schemeEntry(name, ployNum)
 .body
     .sidebar-left
         a.logo(href="/app")
-        .ploy-menu PLOYS
-        .scheme-menu SCHEME
-            +schemeEntry("Example scheme", 2)
+        .ploy-menu All Ploys
+            .ploy-dropdown 
+                .div PLOY 1
+                .div PLOY 2
+        .scheme-menu 
+            .scheme-dropdown Schemes
+                +schemeEntry("Example scheme", 2)
+            button.add-scheme-button +
     .tasks-main
         include app-body-left.pug
         include app-body-right.pug
