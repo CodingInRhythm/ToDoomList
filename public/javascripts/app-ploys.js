@@ -64,12 +64,12 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
     //Will toggle ploy data div on right part of body
     const displayPloyData = (display, id) => {
+        const shownDataDiv = document.querySelector(".ploy-data:not(.hidden)");
+        if(shownDataDiv && shownDataDiv.id !== `data-${id}`){
+            shownDataDiv.classList.add("hidden");
+        }
+        const ployDataDiv = document.getElementById(`data-${id}`);
         if(display){
-            const ployDataDiv = document.getElementById(`data-${id}`);
-            const shownDataDiv = document.querySelector(".ploy-data:not(.hidden)");
-            if(shownDataDiv && shownDataDiv.id !== `data-${id}`){
-                shownDataDiv.classList.add("hidden");
-            }
             ployDataDiv.classList.remove("hidden");
         }
         else{
