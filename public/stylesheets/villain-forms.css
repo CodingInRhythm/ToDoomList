@@ -1,4 +1,5 @@
 @import "signup-left.css";
+@import "signup-right.css";
 
 html, body{
     height: 100%;
@@ -7,21 +8,6 @@ html, body{
 .villain__blocks{
     display: flex;
     height:100%;
-}
-
-/* .villain__left-block{
-    width: 50%;
-    height: 100%;
-    display:inline-block;
-    background-color: rgb(0, 96, 191);
-} */
-
-.villain__right-block{
-    width: 50%;
-    height: 100%;
-    display:inline-block;
-    box-sizing: border-box;
-    padding: 10px;
 }
 
 .villain__button-link{
