@@ -47,7 +47,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             if(ev.target.className !== "ploy__checkbox"){
                 //If other divs are selected, uncheck, else just toggle
                 let selected = getSelectedPloys();
-                if(selected.length != 1){
+                if(selected.length >= 1){
                     selected.forEach(ploy => {
                         const checkBox = ploy.querySelector(".ploy__checkbox");
                         checkBox.checked = false;
@@ -138,6 +138,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         });
         const postPloy = await postedPloy.json();
         addPloyToContainer(postPloy.ploy);
+        createPloyDataDiv(postPloy.ploy);
         inputForm.value = "";
     })
 
