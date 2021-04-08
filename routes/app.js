@@ -29,7 +29,12 @@ router.post("/schemes", async (req, res) => {
 router.get("/schemes/:schemeid", async (req, res) => {
   const id = parseInt(req.params.schemeid, 10)
   const scheme = await db.Scheme.findByPk(id)
-  res.json({scheme})
+  const ploys = await db.Ploy.findAll({
+    where: {
+      schemeId: id
+    }
+  })
+  res.json({scheme, ploys})
 })
 
 //works
@@ -55,10 +60,12 @@ router.delete("/schemes/:schemeid", async (req, res) => {
 
 //works
 router.post("/ploys", async (req, res) => {
-  const {name, schemeId} = req.body
+  const {name, schemeId, completed, dueAt} = req.body
   const ploy = await db.Ploy.create({
     name,
-    schemeId
+    schemeId,
+    completed,
+    dueAt
   })
   res.json({ploy})
 })
@@ -71,13 +78,15 @@ router.get("/ploys/:ployid", async (req, res) => {
 })
 
 //works
+//Not sure how dueAt is going to be updated
 router.put("/ploys/:ployid", async (req, res) => {
-  const {name, schemeId} = req.body
+  const {name, schemeId, completed} = req.body
   const id = parseInt(req.params.ployid, 10)
   const ploy = await db.Ploy.findByPk(id)
   await ploy.update({
     name,
-    schemeId
+    schemeId,
+    completed
   })
   res.json({ploy})
 })
