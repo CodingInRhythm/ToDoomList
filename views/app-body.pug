@@ -18,9 +18,9 @@ mixin schemeEntry(name, ployNum)
                     p Add a Schme 
                     p Please enter a new scheme name: 
                     form
-                        input(class="modal-form" name='modal-form' type='text' required)
-                        button(type='submit') Add 
-                        button(type='submit') Cancel
+                        input(id="modal-form" name='modal-form' type='text' required)
+                        button(type='submit' id="add-list") Add 
+                        button(type='submit' id="exit-modal") Cancel
     .tasks-main
         include app-body-left.pug
         include app-body-right.pug

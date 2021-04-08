@@ -1,0 +1,14 @@
+.add-scheme-modal {
+  display: none; /* Hidden by default */
+  position: absolute; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  justify-content: center;
+  align-content: center;
+  width: 50%; /* Full width */
+  height: 50%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: white;
+  border: 1px grey solid; 
+  border-radius: 4px;
+  /* Black w/ opacity */
+}
