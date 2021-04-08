@@ -1,4 +1,3 @@
-let userId = 1;
 let schemeId = 2;
 window.addEventListener("DOMContentLoaded", (e) => {
     // Takes in Ploy information and Appends Div to Ploy List
@@ -116,10 +115,26 @@ window.addEventListener("DOMContentLoaded", (e) => {
             })
             await displayPloys();
         })
-
         nameForm.append(nameInput);
         nameForm.append(renameButton);
+
+        //Due date display
+        const dueDiv = document.createElement("div");
+        dueDiv.classList.add("ploy-data__due-at");
+        const dueLabelSpan = document.createElement("span");
+        dueLabelSpan.innerHTML = "Due: ";
+        const dueAtSpan = document.createElement("span");
+        if(ploy.dueAt){
+            dueAtSpan.innerHTML = ploy.dueAt;
+        } else {
+            dueAtSpan.innerHTML = "Never";
+        }
+
+        dueDiv.append(dueLabelSpan);
+        dueDiv.append(dueAtSpan);
+
         dataDiv.append(nameForm);
+        dataDiv.append(dueDiv);
     }
 
     //Might need to modify for search

@@ -77,3 +77,7 @@
     border: 1px solid rgba(102, 175, 233, 0.6);
     box-shadow: 0px 0px 4px rgba(102, 175, 233, 0.6);
 }
+
+.ploy-data__due-at{
+    margin-top: 10px;
+}
