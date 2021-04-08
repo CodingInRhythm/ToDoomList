@@ -1,15 +1,19 @@
 const express = require("express");
 const db = require('../db/models')
 const router = express.Router();
+const { csrfProtection, asyncHandler } = require('../utils/utils');
+const { requireAuth } = require("../auth/auth.js")
 
 
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
-  // const schemes = fetch("/schemes")
-  //todo: add tasks
-  res.render("app");
-});
+
+router.get("/", requireAuth, asyncHandler ( async (req, res, next) => {
+  const { userId } = req.session.auth
+  const user = await db.Villain.findByPk( userId )
+  res.render("app", { user });
+}));
+
 
 //works
 router.post("/schemes", async (req, res) => {
@@ -32,7 +36,7 @@ router.get("/schemes/:schemeid", async (req, res) => {
 router.put("/schemes/:schemeid", async (req, res) => {
   const { name, villainId } = req.body;
   const id = parseInt(req.params.schemeid, 10)
-  const scheme = await db.Scheme.findByPk(id) 
+  const scheme = await db.Scheme.findByPk(id)
   await scheme.update({
     name,
     villainId
@@ -44,7 +48,7 @@ router.put("/schemes/:schemeid", async (req, res) => {
 router.delete("/schemes/:schemeid", async (req, res) => {
   const id = parseInt(req.params.schemeid, 10)
   const scheme = await db.Scheme.findByPk(id)
-  
+
   await scheme.destroy()
   res.status(204).end()
 })
@@ -62,7 +66,7 @@ router.post("/ploys", async (req, res) => {
 //works
 router.get("/ploys/:ployid", async (req, res) => {
   const id = parseInt(req.params.ployid, 10)
-  const ploy = await db.Ploy.findByPk(id) 
+  const ploy = await db.Ploy.findByPk(id)
   res.json({ploy})
 })
 
