@@ -13,10 +13,7 @@ module.exports = {
       */
 
       
-   return queryInterface.bulkInsert('Villains', 
-   
-     villains
-     , {});
+   return queryInterface.bulkInsert('Villains', villains, {});
   },
 
   down: (queryInterface, Sequelize) => {
