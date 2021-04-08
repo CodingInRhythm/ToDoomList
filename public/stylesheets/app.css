@@ -1,6 +1,7 @@
 @import "app-body-left.css";
 @import "app-body-right.css";
 @import "app-sidebar-left.css";
+@import "modal.css";
 
 .main-container {
     display: flex;
