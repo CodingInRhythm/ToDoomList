@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
                 body: JSON.stringify({name})
                 
             })
-
+             modal.style.display = "none";
             // todo add scheme to sidebar 
             
         })
