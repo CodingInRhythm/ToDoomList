@@ -32,7 +32,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const ployDueDate = document.createElement("span");
         ployDueDate.classList.add("ploy__due-date");
         ployDueDate.innerHTML = ploy.due;
-        newPloyDiv.append(ployDesc);
+        newPloyDiv.append(ployDueDate);
     }
 
     //Takes in userId, schemeId, and boolean for complete/incomplete tasks
@@ -40,22 +40,25 @@ window.addEventListener("DOMContentLoaded", (e) => {
     const displayPloys = (userId, schemeId, complete) => {
         //Steps
         //1. Send GET request using params to query ploys
+
         const ploys = [
             {desc: "ploy1", due: "Today"},
             {desc: "ploy2", due: ""}];   //Probably won't be in this format?
-        //2. Empty out ploy-container
-        const ployContainer = document.querySelector(".ploy-container");
-        ployContainer.innerHTML = "";
-        for(let i = 0; i < 10; i++){
-            const emptyDiv = document.createElement("div");
-            emptyDiv.classList.add("ploy", "empty");
-            ployContainer.append(emptyDiv);
-        }
-        //2. Call addPloyToContainer() for every returned ploy
-        for(let ploy in ploys){
-            addPloyToContainer(ploy);
-        }
+            //2. Empty out ploy-container
+            const ployContainer = document.querySelector(".ploy-container");
+            ployContainer.innerHTML = "";
+            for(let i = 0; i < 10; i++){
+                const emptyDiv = document.createElement("div");
+                emptyDiv.classList.add("ploy", "empty");
+                ployContainer.append(emptyDiv);
+            }
+            //2. Call addPloyToContainer() for every returned ploy
+            ploys.forEach(ploy => {
+                addPloyToContainer(ploy);
+            })
     }
+
+    // displayPloys(1,2,3); //Testing displayPloys
 
     //Logic for Adding Ploys
     const addPloyForm = document.querySelector(".add-ploy");
@@ -83,6 +86,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             //Add logic, if tab was changed
             //1. Send Get request to DB to query all complete/incomplete ploys
             //2. If success, reload ploy list
+            displayPloys(1,2,3);
             //3. If fail, throw error (?)
         })
     })
