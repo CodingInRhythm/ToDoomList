@@ -41,8 +41,12 @@ window.addEventListener("DOMContentLoaded", (e) => {
     //Takes in userId, schemeId, and boolean for complete/incomplete tasks
     //Might need to modify for search
     //Not sure how userId will be used yet
-    const displayPloys = async (completed) => {
+    const displayPloys = async () => {
         //Steps
+        //0. Check if on completed tab or not
+        const activeTab = document.querySelector(".complete-tab.tab-active");
+        const completed = (activeTab.innerHTML === "Completed");
+
         //1. Send GET request using params to query ploys
         const scheme = await fetch(`/app/schemes/${schemeId}`);
         const schemeObj = await scheme.json();
@@ -82,10 +86,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
         addPloyToContainer(postPloy.ploy);
     })
 
-    //Event Listener for Marking Tasks as Complete/Uncomplete
-    const markCompleteButton = document.querySelector(".mark_complete");
-    markCompleteButton.addEventListener("click", async (ev) => {
-        //1. Get all Selected Ploys
+    // Helper function, returns all Ploys that have checked Checkboxes
+    const getSelectedPloys = () => {
         const allPloys = document.querySelectorAll(".ploy:not(.empty)");
         let selected = [];
         allPloys.forEach(ploy => {
@@ -94,6 +96,30 @@ window.addEventListener("DOMContentLoaded", (e) => {
                 selected.push(ploy);
             }
         })
+        return selected;
+    }
+
+    //Event Listener for Deleting Ploys
+    const deleteTaskButton = document.querySelector(".delete_ploy");
+    deleteTaskButton.addEventListener("click", async (ev) => {
+        //1. Get all Selected Ploys
+        let selected = getSelectedPloys();
+
+        //2. Send DELETE requests for ploys
+        await Promise.all(selected.map(async (ploy) => {
+            await fetch(`/app/ploys/${ploy.id}`, {
+                method: "DELETE"
+            })
+        }));
+        //3. Redisplay ploy table
+        await displayPloys();
+    })
+
+    //Event Listener for Marking Tasks as Complete/Uncomplete
+    const markCompleteButton = document.querySelector(".mark_complete");
+    markCompleteButton.addEventListener("click", async (ev) => {
+        //1. Get all Selected Ploys
+        let selected = getSelectedPloys();
 
         //2. Send PUT request to change completed flag
         const markComplete =markCompleteButton.innerHTML === "Completed"
@@ -108,9 +134,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             })
         }));
         //3. Redisplay ploy table
-        const activeTab = document.querySelector(".complete-tab.tab-active");
-        const activeCompletedTab = (activeTab.innerHTML === "Completed");
-        await displayPloys(activeCompletedTab);
+        await displayPloys();
     })
 
     //Logic for Switching between Incomplete/Complete Task list
@@ -129,8 +153,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
                 markCompleteButton.innerHTML = "Completed";
             }
 
-            //If tab was changed?
-            await displayPloys(switchToCompleted);
+            //Check if tab was changed for optimization?
+            await displayPloys();
         })
     })
 
