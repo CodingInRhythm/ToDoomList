@@ -75,16 +75,21 @@ window.addEventListener("DOMContentLoaded", (e) => {
         else{
             ployDataDiv.classList.add("hidden");
         }
-
     }
 
     // Creates hidden ploy data divs that will display on right body
-    const createPloyDataDiv = async (ploy) => {
+    const createPloyDataDiv = (ploy) => {
         const mainBody = document.querySelector(".tasks-main");
         const dataDiv = document.createElement("div");
         dataDiv.classList.add("ploy-data", "hidden")
         dataDiv.id = `data-${ploy.id}`;
         mainBody.append(dataDiv);
+
+        const nameInput = document.createElement("input");
+        nameInput.setAttribute("type", "text");
+        nameInput.classList.add("ploy-data__name-field");
+        nameInput.value = ploy.name;
+        dataDiv.append(nameInput);
     }
 
     //Might need to modify for search
@@ -107,12 +112,12 @@ window.addEventListener("DOMContentLoaded", (e) => {
             ployContainer.append(emptyDiv);
         }
         //2. Call addPloyToContainer() for every returned ploy + create hidden data divs
-        schemeObj.ploys.forEach(ploy => {
+        schemeObj.ploys.forEach((ploy) => {
             if(ploy.completed === completed){
                 addPloyToContainer(ploy);
                 createPloyDataDiv(ploy);
             }
-        })
+        });
     }
 
     //Logic for Adding Ploys from Form
