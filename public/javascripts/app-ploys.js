@@ -83,6 +83,34 @@ window.addEventListener("DOMContentLoaded", (e) => {
         //3. Else, throw error
     })
 
+    //Event Listener for Marking Tasks as Complete/Uncomplete
+    const markCompleteButton = document.querySelector(".mark_complete");
+    markCompleteButton.addEventListener("click", async (ev) => {
+        //1. Get all Selected Ploys
+        const allPloys = document.querySelectorAll(".ploy:not(.empty)");
+        let selected = [];
+        allPloys.forEach(ploy => {
+            const checkBox = ploy.querySelector(".ploy__checkbox");
+            if(checkBox.checked){
+                selected.push(ploy);
+            }
+        })
+
+        //2. Send PUT request to change completed flag
+        if(markCompleteButton.innerHTML === "Uncompleted"){
+            // selected.forEach(ploy => {
+
+            //     const updatePloy = await fetch(`/app/ploys/${}`)
+            // })
+        } else{
+
+        }
+        //3. Redisplay ploy table
+        const activeTab = document.querySelector(".complete-tab.tab-active");
+        const activeCompletedTab = (activeTab.innerHTML === "Completed");
+        await displayPloys(1,2, activeCompletedTab);
+    })
+
     //Logic for Switching between Incomplete/Complete Task list
     const completeTabs = document.querySelectorAll(".complete-tab");
     completeTabs.forEach(tab => {
@@ -91,10 +119,20 @@ window.addEventListener("DOMContentLoaded", (e) => {
             activeTab.classList.remove("tab-active");
             tab.classList.add("tab-active");
 
+            const switchToCompleted = tab.innerHTML==="Completed";
+            // Switch action menu button for Completing/Uncompleting tasks
+            if(switchToCompleted){
+                markCompleteButton.innerHTML = "Uncompleted";
+            } else{
+                markCompleteButton.innerHTML = "Completed";
+            }
             //If tab was changed
             //1. Send Get request to DB to query all complete/incomplete ploys
             //2. Reload ploy list
-            await displayPloys(1,2,tab.innerHTML==="Completed");
+            await displayPloys(1,2, switchToCompleted);
         })
     })
+
+
+
 })
