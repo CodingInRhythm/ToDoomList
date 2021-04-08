@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
-const { loginUser } = require("../auth/auth.js");
+const { loginUser, logoutUser } = require("../auth/auth.js");
 const { csrfProtection, asyncHandler } = require('../utils/utils');
 
 
@@ -73,6 +73,11 @@ router.get("/login", csrfProtection, asyncHandler(async (req, res) => {
     res.render('login', {pageTitle: "Login", csrfToken: req.csrfToken()})
 }))
 
+router.post('/logout', (req, res) => {
+  logoutUser(req, res);
+  res.redirect('/');
+})
+
 const loginValidators = [
   check('userName')
     .exists({ checkFalsy: true })
@@ -97,7 +102,7 @@ router.post("/login", csrfProtection, loginValidators, asyncHandler(async (req, 
 
       if (passwordMatch) {
         loginUser(req, res, user);
-        return res.redirect('/')
+        return res.redirect('/app')
       }
     }
     errors.push('Login failed for the provided username and password')
