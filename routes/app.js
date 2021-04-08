@@ -96,7 +96,7 @@ router.delete("/ploys/:ployid", async (req, res) => {
 
 router.get("/search/:string", async (req, res) => {
   //destructure regEx to search for task
-  const string = req.params.string; //not called this
+  const string = req.params.string //not called this
   const ploys = await db.Ploy.findAll({
     where: {
       name: {
