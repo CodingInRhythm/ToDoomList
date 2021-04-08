@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400&family=MuseoModerno:wght@200&family=Roboto:wght@300&family=Sue+Ellen+Francisco&display=swap');
+
+/*! Font Families:
+font-family: 'Inria Sans', sans-serif;
+font-family: 'MuseoModerno', cursive;
+font-family: 'Roboto', sans-serif;
+font-family: 'Sue Ellen Francisco', cursive;
+*/
+
+/*? I set the general style for the right side of the page*/
+
+.villain__right-block{
+    width: 50%;
+    height: 100%;
+    display:inline-block;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+/*? Login button styles*/
+
+.login-btn {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: flex-end;
+    margin: 15px;
+}
+
+.login-btn h2 {
+    font-weight: 900;
+    display: inline-block;
+    position: relative;
+    left: 85px;
+    font-size: 1.25rem;
+    line-height: 120%;
+}
+
+.login-btn a {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 1.25rem;
+    position: relative;
+    top: 35px;
+    right: 15px;
+    padding:  0.5rem 1.35rem;
+    border: 1px solid rgba(2, 71, 139, 0.65);
+    border-radius: 5px;
+}
+
+.login-btn a:hover {
+    background-color: rgba(0, 96, 191, 0.125);
+}
+
+
+/*? Sign up form functionality*/
+
+.tdl-signup-form {
+    height: 750px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 23px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+}
+.tdl-signup-form h2 {
+    font-size: 35px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    margin-bottom: 23px;
+    position: relative;
+    left: 50px;
+}
+
+.villain__input-field{
+    box-sizing: border-box;
+    position: relative;
+    left: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.5);
+    width: 175%;
+    height: 2.55em;
+    font-size: 23px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    padding: 15px;
+}
+
+#register-btn {
+    box-sizing: border-box;
+    position: relative;
+    left: 50px;
+    border: 3px solid rgba(0, 0, 0, 0.65);
+    background-color: rgba(1, 90, 255, 0.705);
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.5);
+    width: 175%;
+    height: 2.55em;
+    font-size: 23px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+}
+
+#register-btn:hover {
+    cursor: pointer;
+    background-color: rgba(54, 117, 235, 0.863);
+
+}
+
+.divider {
+    margin-bottom: 18px;
+    margin-top: 40px;
+    text-align: center;
+    width: 200%;
+    position: relative;
+    left: 20px;
+}
+
+/*? The Divider Line: */
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+  }
+
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #000;
+  }
+
+  .divider:not(:empty)::before {
+    margin-right: .25em;
+  }
+
+  .divider:not(:empty)::after {
+    margin-left: .25em;
+  }
+
+  /*? The demo user button */
+
+#demo-user__btn {
+    box-sizing: border-box;
+    position: relative;
+    left: 56.5px;
+    border: 3px solid rgba(0, 0, 0, 0.65);
+    background-color: rgba(52, 238, 145, 0.863);
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.5);
+    width: 165%;
+    height: 2.85em;
+    font-size: 23px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+}
