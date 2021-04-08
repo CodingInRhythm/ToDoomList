@@ -10,13 +10,23 @@ block content
     div.villain__blocks
         div.villain__left-block
             article.villain__left-block-upper-half
-                h1= pageTitle
-                div
-                    if errors
-                        ul
-                             each error in errors
-                                li= error
+                div.container-main
+                    img(src="../img/evil-cow-image.png", alt="Evil Cow TDL" id="evilCow")
+                    div.evil-peeps
+                        img(src="../img/mad_max_fr_img.jpg", alt="Immortan Joe" id="mm-baddie")
+                        img(src="../img/DarthRevan_img.jpg", alt="The Best Sith Lord: Darth Revan" id="star-wars-baddie")
+                        img(src="../img/isabella_pnl.jpg", alt="Isabella Promised Neverland" id="anime-baddie")
+                    div.evil-desc
+                        h2.para.
+                            Join millions of fellow villains
+                            getting more organized and productive!
             article.villain__left-block-lower-half
-
         div.villain__right-block
             block right
+
+                //- h1= pageTitle
+                //- div
+                //-     if errors
+                //-         ul
+                //-              each error in errors
+                //-                 li= error

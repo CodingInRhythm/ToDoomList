@@ -1,3 +1,5 @@
+@import "signup-left.css";
+
 html, body{
     height: 100%;
 }
@@ -7,12 +9,12 @@ html, body{
     height:100%;
 }
 
-.villain__left-block{
+/* .villain__left-block{
     width: 50%;
     height: 100%;
     display:inline-block;
     background-color: rgb(0, 96, 191);
-}
+} */
 
 .villain__right-block{
     width: 50%;
