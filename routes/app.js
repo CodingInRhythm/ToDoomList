@@ -79,12 +79,13 @@ router.get("/ploys/:ployid", async (req, res) => {
 
 //works
 router.put("/ploys/:ployid", async (req, res) => {
-  const {name, schemeId} = req.body
+  const {name, schemeId, completed} = req.body
   const id = parseInt(req.params.ployid, 10)
   const ploy = await db.Ploy.findByPk(id)
   await ploy.update({
     name,
-    schemeId
+    schemeId,
+    completed
   })
   res.json({ploy})
 })
