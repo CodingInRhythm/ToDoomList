@@ -1,6 +1,8 @@
 const express = require("express");
 const db = require('../db/models')
 const router = express.Router();
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op;
 const { csrfProtection, asyncHandler } = require('../utils/utils');
 const { requireAuth } = require("../auth/auth.js")
 
@@ -14,6 +16,7 @@ router.get("/", requireAuth, asyncHandler ( async (req, res, next) => {
   res.render("app", { user });
 }));
 
+router.get("/")
 
 //works
 router.post("/schemes", async (req, res) => {
@@ -70,6 +73,7 @@ router.get("/ploys/:ployid", async (req, res) => {
   res.json({ploy})
 })
 
+
 //works
 router.put("/ploys/:ployid", async (req, res) => {
   const {name, schemeId} = req.body
@@ -89,4 +93,18 @@ router.delete("/ploys/:ployid", async (req, res) => {
   await ploy.destroy()
   res.status(204).end()
 })
+
+router.get("/search/:string", async (req, res) => {
+  //destructure regEx to search for task
+  const string = req.params.string; //not called this
+  const ploys = await db.Ploy.findAll({
+    where: {
+      name: {
+      [Op.substring]: string,
+      }
+    },
+  });
+  res.json({ ploys });
+});
+
 module.exports = router;
