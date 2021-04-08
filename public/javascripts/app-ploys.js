@@ -42,7 +42,18 @@ window.addEventListener("DOMContentLoaded", (e) => {
             if(ev.target.className !== "ploy__checkbox"){
                 ployCheckBox.checked = !ployCheckBox.checked;
             }
+
+            displayPloyData();
         })
+    }
+
+    //Will toggle ploy data div on right part of body
+    const displayPloyData = () => {
+    }
+
+    // Creates hidden ploy data divs that will display on right body
+    const createPloyDataDiv = async (ploy) => {
+        const dataDiv = document.createElement("div");
     }
 
     //Might need to modify for search
@@ -64,10 +75,11 @@ window.addEventListener("DOMContentLoaded", (e) => {
             emptyDiv.classList.add("ploy", "empty");
             ployContainer.append(emptyDiv);
         }
-        //2. Call addPloyToContainer() for every returned ploy
+        //2. Call addPloyToContainer() for every returned ploy + create hidden data divs
         schemeObj.ploys.forEach(ploy => {
             if(ploy.completed === completed){
                 addPloyToContainer(ploy);
+                createPloyDataDiv(ploy);
             }
         })
     }
