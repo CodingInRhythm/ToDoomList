@@ -17,10 +17,8 @@ router.get("/", requireAuth, asyncHandler ( async (req, res, next) => {
 
 //works
 router.post("/schemes", async (req, res) => {
-  let villainId = 1;  //default value if auth fails?
-  if(req.session.auth){
-    villainId = req.session.auth.userId;
-  }
+  const villainId = req.session.auth.userId;
+
   const { name } = req.body;
   const scheme = await db.Scheme.create({
     name,
