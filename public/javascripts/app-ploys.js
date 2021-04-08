@@ -38,7 +38,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
         newPloyDiv.append(ployDueDate);
     }
 
-    //Takes in userId, schemeId, and boolean for complete/incomplete tasks
     //Might need to modify for search
     //Not sure how userId will be used yet
     const displayPloys = async () => {

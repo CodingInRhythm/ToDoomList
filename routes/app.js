@@ -20,7 +20,9 @@ router.get("/")
 
 //works
 router.post("/schemes", async (req, res) => {
-   const { name, villainId } = req.body;
+  const villainId = req.session.auth.userId;
+
+  const { name } = req.body;
   const scheme = await db.Scheme.create({
     name,
     villainId
