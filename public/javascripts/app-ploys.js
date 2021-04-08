@@ -87,12 +87,34 @@ window.addEventListener("DOMContentLoaded", (e) => {
         dataDiv.id = `data-${ploy.id}`;
         mainBody.append(dataDiv);
 
+        //Creating Name/Rename ploy form
         const nameForm = document.createElement("form");
         nameForm.classList.add("ploy-data__name-form");
+
         const nameInput = document.createElement("input");
         nameInput.setAttribute("type", "text");
         nameInput.value = ploy.name;
+
+        const renameButton = document.createElement("button");
+        renameButton.setAttribute("type", "submit");
+        renameButton.innerHTML = "Rename";
+        renameButton.addEventListener("click", async (ev) => {
+            ev.preventDefault();
+            let newName = nameInput.value;
+            //Still works even without passing in completed?
+            const ployObj = {name: newName, schemeId: schemeId}
+            await fetch(`/app/ploys/${ploy.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(ployObj)
+            })
+            await displayPloys();
+        })
+
         nameForm.append(nameInput);
+        nameForm.append(renameButton);
         dataDiv.append(nameForm);
     }
 
@@ -184,7 +206,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         //2. Send PUT request to change completed flag
         const markComplete =markCompleteButton.innerHTML === "Completed"
         await Promise.all(selected.map(async (ploy) => {
-            const ployObj = {id: ploy.id, schemeId: schemeId, completed: markComplete}
+            const ployObj = {name: ploy.name, schemeId: schemeId, completed: markComplete}
             await fetch(`/app/ploys/${ploy.id}`, {
                 method: "PUT",
                 headers: {
