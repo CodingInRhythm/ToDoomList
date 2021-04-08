@@ -78,6 +78,17 @@
     box-shadow: 0px 0px 4px rgba(102, 175, 233, 0.6);
 }
 
-.ploy-data__due-at{
+.ploy-data__data-field{
     margin-top: 10px;
+    margin-left: 20px;
+}
+
+.ploy-data__data-field__label{
+    font-size: 12px;
+    color:rgba(0, 0, 0, 0.6);
+    font-weight: 600;
+}
+
+.ploy-data__data-field__data{
+    font-size: 12px;
 }

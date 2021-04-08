@@ -120,10 +120,12 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         //Due date display
         const dueDiv = document.createElement("div");
-        dueDiv.classList.add("ploy-data__due-at");
+        dueDiv.classList.add("ploy-data__data-field");
         const dueLabelSpan = document.createElement("span");
+        dueLabelSpan.classList.add("ploy-data__data-field__label");
         dueLabelSpan.innerHTML = "Due: ";
         const dueAtSpan = document.createElement("span");
+        dueAtSpan.classList.add("ploy-data__data-field__data");
         if(ploy.dueAt){
             dueAtSpan.innerHTML = ploy.dueAt;
         } else {
@@ -133,8 +135,21 @@ window.addEventListener("DOMContentLoaded", (e) => {
         dueDiv.append(dueLabelSpan);
         dueDiv.append(dueAtSpan);
 
+        //Add scheme div
+        const schemeDiv = document.createElement("div");
+        schemeDiv.classList.add("ploy-data__data-field");
+        const schemeLabelSpan = document.createElement("span");
+        schemeLabelSpan.innerHTML = "Scheme: ";
+        schemeLabelSpan.classList.add("ploy-data__data-field__label");
+        const schemeSpan = document.createElement("span");
+        schemeSpan.innerHTML = ploy.schemeId;     //Should figure out how to get Scheme name
+        schemeSpan.classList.add("ploy-data__data-field__data");
+        schemeDiv.append(schemeLabelSpan);
+        schemeDiv.append(schemeSpan);
+
         dataDiv.append(nameForm);
         dataDiv.append(dueDiv);
+        dataDiv.append(schemeDiv);
     }
 
     //Might need to modify for search
