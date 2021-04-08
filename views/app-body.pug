@@ -1,7 +1,7 @@
-mixin schemeEntry(name, ployNum)
-    .scheme-entry
-        span= name
-        .ploy-numbers= ployNum
+//- mixin schemeEntry(name, ployNum)
+//-     .scheme-entry
+//-         span= name
+//-         .ploy-numbers= ployNum
 .body
     .sidebar-left
         a.logo(href="/app")
@@ -11,7 +11,6 @@ mixin schemeEntry(name, ployNum)
                 .div PLOY 2
         .scheme-menu 
             .scheme-dropdown Schemes
-                +schemeEntry("Example scheme", 2)
             button.add-scheme-button +
             .add-scheme-modal
                 .modal-content
