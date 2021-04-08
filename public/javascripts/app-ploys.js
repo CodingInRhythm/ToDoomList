@@ -37,13 +37,15 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
     //Takes in userId, schemeId, and boolean for complete/incomplete tasks
     //Might need to modify for search
-    const displayPloys = (userId, schemeId, complete) => {
+    const displayPloys = async (userId, schemeId, complete) => {
         //Steps
         //1. Send GET request using params to query ploys
-
-        const ploys = [
-            {desc: "ploy1", due: "Today"},
-            {desc: "ploy2", due: ""}];   //Probably won't be in this format?
+        const ploys = await fetch(`/app/schemes/${schemeId}`);
+        const ployList = await ploys.json();
+        console.log(ployList);
+        // const ploys = [
+        //     {desc: "ploy1", due: "Today"},
+        //     {desc: "ploy2", due: ""}];   //Probably won't be in this format?
             //2. Empty out ploy-container
             const ployContainer = document.querySelector(".ploy-container");
             ployContainer.innerHTML = "";
@@ -53,12 +55,12 @@ window.addEventListener("DOMContentLoaded", (e) => {
                 ployContainer.append(emptyDiv);
             }
             //2. Call addPloyToContainer() for every returned ploy
-            ploys.forEach(ploy => {
-                addPloyToContainer(ploy);
-            })
+            // ployList.forEach(ploy => {
+            //     addPloyToContainer(ploy);
+            // })
     }
 
-    // displayPloys(1,2,3); //Testing displayPloys
+    // await displayPloys(1,2,3); //Testing displayPloys
 
     //Logic for Adding Ploys
     const addPloyForm = document.querySelector(".add-ploy");
@@ -78,15 +80,15 @@ window.addEventListener("DOMContentLoaded", (e) => {
     //Logic for Switching between Incomplete/Complete Task list
     const completeTabs = document.querySelectorAll(".complete-tab");
     completeTabs.forEach(tab => {
-        tab.addEventListener("click", (ev) => {
+        tab.addEventListener("click", async (ev) => {
             const activeTab = document.querySelector(".complete-tab.tab-active");
             activeTab.classList.remove("tab-active");
             tab.classList.add("tab-active");
 
             //Add logic, if tab was changed
             //1. Send Get request to DB to query all complete/incomplete ploys
-            //2. If success, reload ploy list
-            displayPloys(1,2,3);
+            //2. If success, reload ploy list\
+            await displayPloys(1,2,tab.innerHTML==="Completed");
             //3. If fail, throw error (?)
         })
     })
