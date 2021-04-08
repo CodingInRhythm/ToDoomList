@@ -1,5 +1,4 @@
-
-
+import newScheme from "./schemes.js"
 window.addEventListener('DOMContentLoaded', async (event) => {
     const modal = document.querySelector(".add-scheme-modal")
     const modalButton = document.querySelector(".add-scheme-button")
@@ -22,6 +21,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
                 body: JSON.stringify({name})
                 
             })
+            newScheme.getSchemes()
              modal.style.display = "none";
             // todo add scheme to sidebar 
             
