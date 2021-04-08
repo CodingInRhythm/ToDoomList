@@ -163,6 +163,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
     searchBar.addEventListener("submit", async (event) => {
       event.preventDefault();
       console.log(searchBar);
+
+      //1. Fetch all queried ploys
       const input = document.querySelector("#search-bar");
       const string = input.value;
 
