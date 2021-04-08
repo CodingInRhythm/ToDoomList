@@ -16,7 +16,17 @@ router.get("/", requireAuth, asyncHandler ( async (req, res, next) => {
   res.render("app", { user });
 }));
 
-router.get("/")
+router.get("/schemes", async(req, res) => {
+
+  const villainId = req.session.auth.userId;
+
+  const schemes = await db.Scheme.findAll( {
+    where: {
+      villainId
+    }
+  })
+  res.json({schemes})
+})
 
 //works
 router.post("/schemes", async (req, res) => {
