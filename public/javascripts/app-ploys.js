@@ -159,5 +159,36 @@ window.addEventListener("DOMContentLoaded", (e) => {
         })
     })
 
+    //Logic for adding ploys from search list
+    const searchBar = document.querySelector(".search");
+    searchBar.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      console.log(searchBar);
+      const input = document.querySelector("#search-bar");
+      const string = input.value;
+
+      const ploys = await fetch(`/app/search/${string}`);
+      const ploysObj = await ploys.json();
+
+      const activeTab = document.querySelector(".complete-tab.tab-active");
+      const completed = activeTab.innerHTML === "Completed";
+
+      //2. Empty out ploy-container
+      const ployContainer = document.querySelector(".ploy-container");
+      ployContainer.innerHTML = "";
+      for (let i = 0; i < 10; i++) {
+        const emptyDiv = document.createElement("div");
+        emptyDiv.classList.add("ploy", "empty");
+        ployContainer.append(emptyDiv);
+      }
+      //2. Call addPloyToContainer() for every returned ploy
+      ploysObj.ploys.forEach((ploy) => {
+         {
+             console.log(ploy)
+          addPloyToContainer(ploy);
+        }
+      });
+    });
+
     displayPloys();
 })
