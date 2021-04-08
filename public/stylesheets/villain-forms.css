@@ -30,16 +30,6 @@ html, body{
     padding-bottom: 15px;
 }
 
-.villain__input-field{
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    color: rgba(0, 0, 0, 0.5);
-    width: 50%;
-    height: 2em;
-
-    font-size: 23px;
-}
 
 .villain__input-field:focus{
     outline: none !important;
