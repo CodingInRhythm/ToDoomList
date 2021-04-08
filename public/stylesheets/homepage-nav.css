@@ -11,7 +11,7 @@ header {
     top: 0;
     width: 100%;
     animation: .5s linear;
-    
+    background-color: #0060bf;
 }
 
 .home-page-image {
