@@ -13,6 +13,11 @@ mixin schemeEntry(name, ployNum)
             .scheme-dropdown Schemes
                 +schemeEntry("Example scheme", 2)
             button.add-scheme-button +
+            .add-scheme-modal
+                .modal-content
+                    p Add a Schme 
+                    p Please enter a new scheme name: 
+                    
     .tasks-main
         include app-body-left.pug
         include app-body-right.pug
