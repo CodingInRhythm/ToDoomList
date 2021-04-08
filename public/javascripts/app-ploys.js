@@ -84,6 +84,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         });
         const postPloy = await postedPloy.json();
         addPloyToContainer(postPloy.ploy);
+        inputForm.value = "";
     })
 
     // Helper function, returns all Ploys that have checked Checkboxes
