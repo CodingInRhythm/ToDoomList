@@ -24,7 +24,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const ployCheckBox = document.createElement("input");
         ployCheckBox.classList.add("ploy__checkbox");
         ployCheckBox.setAttribute("type", "checkbox");
-        //Add event listener?
         newPloyDiv.append(ployCheckBox);
 
         const ployDesc = document.createElement("span");
@@ -36,6 +35,14 @@ window.addEventListener("DOMContentLoaded", (e) => {
         ployDueDate.classList.add("ploy__due-date");
         ployDueDate.innerHTML = ploy.dueAt;
         newPloyDiv.append(ployDueDate);
+
+        //If click anywhere in div, will check/uncheck checkbox, display info on right
+        newPloyDiv.addEventListener("click", (ev) => {
+            ev.stopPropagation();
+            if(ev.target.className !== "ploy__checkbox"){
+                ployCheckBox.checked = !ployCheckBox.checked;
+            }
+        })
     }
 
     //Might need to modify for search
