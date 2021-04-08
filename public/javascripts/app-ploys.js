@@ -37,32 +37,27 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
     //Takes in userId, schemeId, and boolean for complete/incomplete tasks
     //Might need to modify for search
+    //Not sure how userId will be used yet
     const displayPloys = async (userId, schemeId, completed) => {
         //Steps
         //1. Send GET request using params to query ploys
         const scheme = await fetch(`/app/schemes/${schemeId}`);
         const schemeObj = await scheme.json();
-        console.log(schemeObj.ploys);
-        // const ploys = [
-        //     {desc: "ploy1", due: "Today"},
-        //     {desc: "ploy2", due: ""}];   //Probably won't be in this format?
-            //2. Empty out ploy-container
-            const ployContainer = document.querySelector(".ploy-container");
-            ployContainer.innerHTML = "";
-            for(let i = 0; i < 10; i++){
-                const emptyDiv = document.createElement("div");
-                emptyDiv.classList.add("ploy", "empty");
-                ployContainer.append(emptyDiv);
+        //2. Empty out ploy-container
+        const ployContainer = document.querySelector(".ploy-container");
+        ployContainer.innerHTML = "";
+        for(let i = 0; i < 10; i++){
+            const emptyDiv = document.createElement("div");
+            emptyDiv.classList.add("ploy", "empty");
+            ployContainer.append(emptyDiv);
+        }
+        //2. Call addPloyToContainer() for every returned ploy
+        schemeObj.ploys.forEach(ploy => {
+            if(ploy.completed === completed){
+                addPloyToContainer(ploy);
             }
-            //2. Call addPloyToContainer() for every returned ploy
-            schemeObj.ploys.forEach(ploy => {
-                if(ploy.completed === completed){
-                    addPloyToContainer(ploy);
-                }
-            })
+        })
     }
-
-    // await displayPloys(1,2,3); //Testing displayPloys
 
     //Logic for Adding Ploys
     const addPloyForm = document.querySelector(".add-ploy");
@@ -72,9 +67,18 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const name = inputForm.value;
         const dueAt = "Today";
 
-        const testPloy = {name, dueAt};
-        addPloyToContainer(testPloy);
+        const testPloy = {name, dueAt, schemeId: 2, completed: false};
+        const postedPloy = await fetch('/app/ploys', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(testPloy)
+        });
+        const postPloy = await postedPloy.json();
+        addPloyToContainer(postPloy.ploy);
         //1. Fetch to Post to DB
+
         //2. If success, call addPloyToContainer()
         //3. Else, throw error
     })
@@ -87,11 +91,10 @@ window.addEventListener("DOMContentLoaded", (e) => {
             activeTab.classList.remove("tab-active");
             tab.classList.add("tab-active");
 
-            //Add logic, if tab was changed
+            //If tab was changed
             //1. Send Get request to DB to query all complete/incomplete ploys
-            //2. If success, reload ploy list\
+            //2. Reload ploy list
             await displayPloys(1,2,tab.innerHTML==="Completed");
-            //3. If fail, throw error (?)
         })
     })
 })
