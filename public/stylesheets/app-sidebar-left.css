@@ -22,14 +22,8 @@
     justify-content: space-between;
 }
 
-.scheme-dropdown {
-    /* display: inline-block; */
-}
-
-
 .add-scheme-button {
     position: relative;
-    /* left: 159.5px; */
     top: 5px;
     width: 12px;
     height: 12px;
@@ -62,7 +56,6 @@
     font-weight: 500;
     
 } 
-
 
 .scheme-menu:focus {
     background-color: lightblue;
