@@ -1,15 +1,17 @@
 const express = require("express");
 const db = require('../db/models')
 const router = express.Router();
+const { csrfProtection, asyncHandler } = require('../utils/utils');
+const { requireAuth } = require("../auth/auth.js")
 
 
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
-  // const schemes = fetch("/schemes")
-  //todo: add tasks
-  res.render("app", { });
-});
+router.get("/", requireAuth, asyncHandler ( async (req, res, next) => {
+  const { userId } = req.session.auth
+  const user = await db.Villain.findByPk( userId )
+  res.render("app", { user });
+}));
 
 //works
 router.post("/schemes", async (req, res) => {
