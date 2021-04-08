@@ -94,7 +94,8 @@ font-family: 'Sue Ellen Francisco', cursive;
     box-sizing: border-box;
     position: relative;
     left: 50px;
-    border: 1px solid #ccc;
+    border: 3px solid rgba(0, 0, 0, 0.65);
+    background-color: rgba(1, 90, 255, 0.705);
     border-radius: 5px;
     color: rgba(0, 0, 0, 0.5);
     width: 175%;
@@ -106,4 +107,57 @@ font-family: 'Sue Ellen Francisco', cursive;
 
 #register-btn:hover {
     cursor: pointer;
+    background-color: rgba(54, 117, 235, 0.863);
+
+}
+
+.divider {
+    margin-bottom: 18px;
+    margin-top: 40px;
+    text-align: center;
+    width: 200%;
+    position: relative;
+    left: 20px;
+}
+
+/*? The Divider Line: */
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+  }
+
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #000;
+  }
+
+  .divider:not(:empty)::before {
+    margin-right: .25em;
+  }
+
+  .divider:not(:empty)::after {
+    margin-left: .25em;
+  }
+
+  /*? The demo user button */
+
+#demo-user__btn {
+    box-sizing: border-box;
+    position: relative;
+    left: 56.5px;
+    border: 3px solid rgba(0, 0, 0, 0.65);
+    background-color: rgba(52, 238, 145, 0.863);
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.5);
+    width: 165%;
+    height: 2.85em;
+    font-size: 23px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
 }
