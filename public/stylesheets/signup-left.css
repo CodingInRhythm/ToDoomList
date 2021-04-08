@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400&family=MuseoModerno:wght@200&family=Roboto:wght@300&family=Sue+Ellen+Francisco&display=swap');
+
+/*
+font-family: 'Inria Sans', sans-serif;
+font-family: 'MuseoModerno', cursive;
+font-family: 'Roboto', sans-serif;
+font-family: 'Sue Ellen Francisco', cursive;
+*/
+
+
 .villain__left-block{
     width: 50%;
     height: 100%;
@@ -32,6 +42,8 @@ article.villain__left-block-lower-half {
 }
 
 .container-main #evilCow {
+    position: relative;
+    left: 6.5rem;
     margin: 4%;
     width: 30%;
     height: 25%;
@@ -58,6 +70,7 @@ article.villain__left-block-lower-half {
 }
 
 .evil-desc {
+    font-family: 'Inria Sans', sans-serif;
     color: #fff;
     opacity: 0.5;
     display: flex;
@@ -67,7 +80,7 @@ article.villain__left-block-lower-half {
 }
 
 .evil-desc h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 500;
     line-height: 120%;
 }
