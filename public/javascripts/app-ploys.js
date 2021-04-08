@@ -1,4 +1,4 @@
-
+window.addEventListener("DOMContentLoaded", (e) => {
     // Takes in Ploy information and Appends Div to Ploy List
     //Current takes in object {desc: <desc>, due: <due>}
     const addPloyToContainer = (ploy) => {
@@ -59,7 +59,6 @@
 
     //Logic for Adding Ploys
     const addPloyForm = document.querySelector(".add-ploy");
-    console.log(addPloyForm);
     addPloyForm.addEventListener("submit", async (event) => {
         event.preventDefault();
         const inputForm = document.querySelector("#add-ploy-field");
@@ -67,7 +66,6 @@
         const due = "Today";
 
         const testPloy = {desc, due};
-        console.log("test");
         addPloyToContainer(testPloy);
         //1. Fetch to Post to DB
         //2. If success, call addPloyToContainer()
@@ -88,3 +86,4 @@
             //3. If fail, throw error (?)
         })
     })
+})
