@@ -1,4 +1,3 @@
-let userId = 1;
 let schemeId = 2;
 window.addEventListener("DOMContentLoaded", (e) => {
     // Takes in Ploy information and Appends Div to Ploy List
@@ -24,7 +23,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const ployCheckBox = document.createElement("input");
         ployCheckBox.classList.add("ploy__checkbox");
         ployCheckBox.setAttribute("type", "checkbox");
-        //Add event listener?
         newPloyDiv.append(ployCheckBox);
 
         const ployDesc = document.createElement("span");
@@ -36,6 +34,122 @@ window.addEventListener("DOMContentLoaded", (e) => {
         ployDueDate.classList.add("ploy__due-date");
         ployDueDate.innerHTML = ploy.dueAt;
         newPloyDiv.append(ployDueDate);
+
+        //If click anywhere in div, will check/uncheck checkbox, display info on right
+        newPloyDiv.addEventListener("click", (ev) => {
+            ev.stopPropagation();
+            let targetId = ev.target.id;
+            //If it clicks child div
+            if(targetId === ""){
+                targetId = ev.target.parentElement.id;
+            }
+            if(ev.target.className !== "ploy__checkbox"){
+                //If other divs are selected, uncheck, else just toggle
+                let selected = getSelectedPloys();
+                if(selected.length >= 1){
+                    if(selected.length === 1 && selected[0].id === targetId){
+                        ployCheckBox.checked = false;
+                    } else{
+                        selected.forEach(ploy => {
+                            const checkBox = ploy.querySelector(".ploy__checkbox");
+                            checkBox.checked = false;
+                        })
+                        ployCheckBox.checked = true;
+                    }
+                }
+                else{
+                    ployCheckBox.checked = !ployCheckBox.checked;
+                }
+            }
+            displayPloyData(ployCheckBox.checked, targetId);
+        })
+    }
+
+    //Will toggle ploy data div on right part of body
+    //Display argument should be boolean of whether to show or hide
+    //id argument should be ployId
+    const displayPloyData = (display, id) => {
+        const shownDataDiv = document.querySelector(".ploy-data:not(.hidden)");
+        if(shownDataDiv && shownDataDiv.id !== `data-${id}`){
+            shownDataDiv.classList.add("hidden");
+        }
+        const ployDataDiv = document.getElementById(`data-${id}`);
+        if(display){
+            ployDataDiv.classList.remove("hidden");
+        }
+        else{
+            ployDataDiv.classList.add("hidden");
+        }
+    }
+
+    // Creates hidden ploy data divs that will display on right body
+    const createPloyDataDiv = (ploy) => {
+        const mainBody = document.querySelector(".tasks-main");
+        const dataDiv = document.createElement("div");
+        dataDiv.classList.add("ploy-data", "hidden")
+        dataDiv.id = `data-${ploy.id}`;
+        mainBody.append(dataDiv);
+
+        //Creating Name/Rename ploy form
+        const nameForm = document.createElement("form");
+        nameForm.classList.add("ploy-data__name-form");
+
+        const nameInput = document.createElement("input");
+        nameInput.setAttribute("type", "text");
+        nameInput.value = ploy.name;
+
+        const renameButton = document.createElement("button");
+        renameButton.setAttribute("type", "submit");
+        renameButton.innerHTML = "Rename";
+        renameButton.addEventListener("click", async (ev) => {
+            ev.preventDefault();
+            let newName = nameInput.value;
+            //Still works even without passing in completed?
+            const ployObj = {name: newName, schemeId: schemeId}
+            await fetch(`/app/ploys/${ploy.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(ployObj)
+            })
+            await displayPloys();
+        })
+        nameForm.append(nameInput);
+        nameForm.append(renameButton);
+
+        //Due date display
+        const dueDiv = document.createElement("div");
+        dueDiv.classList.add("ploy-data__data-field");
+        const dueLabelSpan = document.createElement("span");
+        dueLabelSpan.classList.add("ploy-data__data-field__label");
+        dueLabelSpan.innerHTML = "Due: ";
+        const dueAtSpan = document.createElement("span");
+        dueAtSpan.classList.add("ploy-data__data-field__data");
+        if(ploy.dueAt){
+            dueAtSpan.innerHTML = ploy.dueAt;
+        } else {
+            dueAtSpan.innerHTML = "Never";
+        }
+
+        dueDiv.append(dueLabelSpan);
+        dueDiv.append(dueAtSpan);
+
+        //Add scheme div
+        const schemeDiv = document.createElement("div");
+        schemeDiv.classList.add("ploy-data__data-field");
+        const schemeLabelSpan = document.createElement("span");
+        schemeLabelSpan.innerHTML = "Scheme: ";
+        schemeLabelSpan.classList.add("ploy-data__data-field__label");
+        const schemeSpan = document.createElement("span");
+        schemeSpan.innerHTML = ploy.schemeId;     //Should figure out how to get Scheme name
+        schemeSpan.classList.add("ploy-data__data-field__data");
+        schemeDiv.append(schemeLabelSpan);
+        schemeDiv.append(schemeSpan);
+
+        dataDiv.append(nameForm);
+        dataDiv.append(dueDiv);
+        dataDiv.append(schemeDiv);
     }
 
     //Might need to modify for search
@@ -57,12 +171,13 @@ window.addEventListener("DOMContentLoaded", (e) => {
             emptyDiv.classList.add("ploy", "empty");
             ployContainer.append(emptyDiv);
         }
-        //2. Call addPloyToContainer() for every returned ploy
-        schemeObj.ploys.forEach(ploy => {
+        //2. Call addPloyToContainer() for every returned ploy + create hidden data divs
+        schemeObj.ploys.forEach((ploy) => {
             if(ploy.completed === completed){
                 addPloyToContainer(ploy);
+                createPloyDataDiv(ploy);
             }
-        })
+        });
     }
 
     //Logic for Adding Ploys from Form
@@ -83,6 +198,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         });
         const postPloy = await postedPloy.json();
         addPloyToContainer(postPloy.ploy);
+        createPloyDataDiv(postPloy.ploy);
         inputForm.value = "";
     })
 
@@ -124,7 +240,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         //2. Send PUT request to change completed flag
         const markComplete =markCompleteButton.innerHTML === "Completed"
         await Promise.all(selected.map(async (ploy) => {
-            const ployObj = {id: ploy.id, schemeId: schemeId, completed: markComplete}
+            const ployObj = {name: ploy.name, schemeId: schemeId, completed: markComplete}
             await fetch(`/app/ploys/${ploy.id}`, {
                 method: "PUT",
                 headers: {
