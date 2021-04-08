@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", (e) => {
     // Takes in Ploy information and Appends Div to Ploy List
-    //Current takes in object {desc: <desc>, due: <due>}
+    //Current takes in object with {name: <name>, dueAt: <dueAt>}
     const addPloyToContainer = (ploy) => {
         const ployContainer = document.querySelector(".ploy-container");
 
@@ -26,23 +26,23 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         const ployDesc = document.createElement("span");
         ployDesc.classList.add("ploy__ploy-desc");
-        ployDesc.innerHTML = ploy.desc;
+        ployDesc.innerHTML = ploy.name;
         newPloyDiv.append(ployDesc);
 
         const ployDueDate = document.createElement("span");
         ployDueDate.classList.add("ploy__due-date");
-        ployDueDate.innerHTML = ploy.due;
+        ployDueDate.innerHTML = ploy.dueAt;
         newPloyDiv.append(ployDueDate);
     }
 
     //Takes in userId, schemeId, and boolean for complete/incomplete tasks
     //Might need to modify for search
-    const displayPloys = async (userId, schemeId, complete) => {
+    const displayPloys = async (userId, schemeId, completed) => {
         //Steps
         //1. Send GET request using params to query ploys
-        const ploys = await fetch(`/app/schemes/${schemeId}`);
-        const ployList = await ploys.json();
-        console.log(ployList);
+        const scheme = await fetch(`/app/schemes/${schemeId}`);
+        const schemeObj = await scheme.json();
+        console.log(schemeObj.ploys);
         // const ploys = [
         //     {desc: "ploy1", due: "Today"},
         //     {desc: "ploy2", due: ""}];   //Probably won't be in this format?
@@ -55,9 +55,11 @@ window.addEventListener("DOMContentLoaded", (e) => {
                 ployContainer.append(emptyDiv);
             }
             //2. Call addPloyToContainer() for every returned ploy
-            // ployList.forEach(ploy => {
-            //     addPloyToContainer(ploy);
-            // })
+            schemeObj.ploys.forEach(ploy => {
+                if(ploy.completed === completed){
+                    addPloyToContainer(ploy);
+                }
+            })
     }
 
     // await displayPloys(1,2,3); //Testing displayPloys
@@ -67,10 +69,10 @@ window.addEventListener("DOMContentLoaded", (e) => {
     addPloyForm.addEventListener("submit", async (event) => {
         event.preventDefault();
         const inputForm = document.querySelector("#add-ploy-field");
-        const desc = inputForm.value;
-        const due = "Today";
+        const name = inputForm.value;
+        const dueAt = "Today";
 
-        const testPloy = {desc, due};
+        const testPloy = {name, dueAt};
         addPloyToContainer(testPloy);
         //1. Fetch to Post to DB
         //2. If success, call addPloyToContainer()
