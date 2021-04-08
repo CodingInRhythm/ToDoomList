@@ -9,11 +9,14 @@ append head
 block content
     div.villain__blocks
         div.villain__left-block
-            h1= pageTitle
+            article.villain__left-block-upper-half
+                h1= pageTitle
                 div
                     if errors
                         ul
                              each error in errors
                                 li= error
+            article.villain__left-block-lower-half
+
         div.villain__right-block
             block right
