@@ -51,13 +51,28 @@
 
 .ploy-data{
     height: 100%;
-    width: 100%;
-    position: relative;
-    z-index: 1;
+    width: 45%;
+    position: absolute;
+    right: 0px;
+    /* z-index: 1; */
     background-color: white;
     padding: 30px 10px;
 }
 
-.ploy-data__name-field{
+.ploy-data__name-form{
+    display: flex;
     width: 95%;
+    height: 30px;
+}
+
+.ploy-data__name-form > input{
+    border: 1px grey solid;
+    border-radius: 5px;
+    width: 90%;
+}
+
+.ploy-data__name-form > input:focus {
+    outline: none !important;
+    border: 1px solid rgba(102, 175, 233, 0.6);
+    box-shadow: 0px 0px 4px rgba(102, 175, 233, 0.6);
 }

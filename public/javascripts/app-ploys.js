@@ -63,6 +63,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
     }
 
     //Will toggle ploy data div on right part of body
+    //Display argument should be boolean of whether to show or hide
+    //id argument should be ployId
     const displayPloyData = (display, id) => {
         const shownDataDiv = document.querySelector(".ploy-data:not(.hidden)");
         if(shownDataDiv && shownDataDiv.id !== `data-${id}`){
@@ -85,11 +87,13 @@ window.addEventListener("DOMContentLoaded", (e) => {
         dataDiv.id = `data-${ploy.id}`;
         mainBody.append(dataDiv);
 
+        const nameForm = document.createElement("form");
+        nameForm.classList.add("ploy-data__name-form");
         const nameInput = document.createElement("input");
         nameInput.setAttribute("type", "text");
-        nameInput.classList.add("ploy-data__name-field");
         nameInput.value = ploy.name;
-        dataDiv.append(nameInput);
+        nameForm.append(nameInput);
+        dataDiv.append(nameForm);
     }
 
     //Might need to modify for search

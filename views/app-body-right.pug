@@ -6,7 +6,9 @@ mixin summaryBox (number, summaryId)
 //Divs displaying data for ploys, for reference
 mixin ployDataDiv (ploy_name)
     .ploy-data
-        input.ploy-data__name-field(type="text" value=ploy_name)
+        form.ploy-data__name-form
+            input.ploy-data__name-field(type="text" value=ploy_name)
+            
 
 .task-summary
     h3.list-name Put List Name Here
