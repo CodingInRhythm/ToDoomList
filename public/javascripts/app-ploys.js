@@ -97,16 +97,16 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         //2. Send PUT request to change completed flag
         const markComplete =markCompleteButton.innerHTML === "Completed"
-        selected.forEach(async (ploy) => {
+        await Promise.all(selected.map(async (ploy) => {
             const ployObj = {id: ploy.id, schemeId: schemeId, completed: markComplete}
-            const updatePloy = await fetch(`/app/ploys/${ploy.id}`, {
+            const updatedPloy = await fetch(`/app/ploys/${ploy.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(ployObj)
             })
-        });
+        }));
         //3. Redisplay ploy table
         const activeTab = document.querySelector(".complete-tab.tab-active");
         const activeCompletedTab = (activeTab.innerHTML === "Completed");
