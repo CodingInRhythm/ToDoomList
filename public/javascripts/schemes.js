@@ -1,5 +1,6 @@
 import { displayPloys } from './app-ploys.js'
-
+import Ploys from "./ploys.js";
+import {updateSummary} from "./updateSummary.js"
 class Scheme {
     constructor() {
 
@@ -40,6 +41,13 @@ class Scheme {
             newDiv.appendChild(newSpan)
             newDiv.appendChild(button)
             newDiv.setAttribute('id', `${scheme.id}`)
+
+            newDiv.addEventListener('click', async () => {
+                const schemeObj = await Ploys.getPloys(scheme.id)
+                displayPloys(scheme.id)
+                updateSummary(schemeObj)
+            })
+
             schemeDropdown.appendChild(newDiv)
         })
     }
