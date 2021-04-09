@@ -29,7 +29,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
             await Ploys.deletePloy(ploy.id);
         }));
         //3. Redisplay ploy table
-        await displayPloys(schemeId);
+        const schemeObj = await Ploys.getPloys(e);
+        await displayPloys(schemeObj);
     })
 
     //Event Listener for Marking Tasks as Complete/Uncomplete
@@ -45,7 +46,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
             await Ploys.updatePloy(ploy.id, ployObj);
         }));
         //3. Redisplay ploy table
-        await displayPloys(schemeId);
+        const schemeObj = await Ploys.getPloys(e);
+        await displayPloys(schemeObj);
     })
 
     //Logic for Switching between Incomplete/Complete Task list
@@ -65,7 +67,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
             }
 
             //Check if tab was changed for optimization?
-            await displayPloys(schemeId);
+            const schemeObj = await Ploys.getPloys(e);
+            await displayPloys(schemeObj);
         })
     })
 
@@ -103,8 +106,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
         }
       });
     });
-
-    displayPloys(1);
+    // let schemesTest = await Ploys.getPloys(1);
+    // displayPloys(schemesTest);
 })
 
 // Takes in Ploy information and Appends Div to Ploy List
@@ -176,14 +179,19 @@ window.addEventListener("DOMContentLoaded", (e) => {
 //Might need to modify for search
     //Not sure how userId will be used yet
 
-    const displayPloys = async (e = 1) => {
+    const displayPloys = async (schemeObj) => {
         //Steps
         //0. Check if on completed tab or not
         const activeTab = document.querySelector(".complete-tab.tab-active");
         const completed = (activeTab.innerHTML === "Completed");
 
         //1. Send GET request using params to query ploys
-        const schemeObj = await Ploys.getPloys(e);
+        // const schemeObj = await Ploys.getPloys(e);
+        //Placeholder, remove once scheme call is changed
+        if(typeof schemeObj === "number"){
+            schemeObj = await Ploys.getPloys(schemeObj);
+        }
+
 
         //Note: quick hack, will probably want to change
         schemeId = schemeObj.scheme.id;
@@ -265,7 +273,9 @@ window.addEventListener("DOMContentLoaded", (e) => {
             //Still works even without passing in completed?
             const ployObj = {name: newName, schemeId: schemeId}
             await Ploys.updatePloy(ploy.id, ployObj);
-            await displayPloys(schemeId);
+
+            const schemeObj = await Ploys.getPloys(e);
+            await displayPloys(schemeObj);
         })
         nameForm.append(nameInput);
         nameForm.append(renameButton);

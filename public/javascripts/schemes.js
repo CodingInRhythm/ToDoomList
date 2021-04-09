@@ -1,4 +1,5 @@
 import { displayPloys } from './app-ploys.js'
+import Ploys from "./ploys.js";
 
 class Scheme {
     constructor() {
@@ -34,7 +35,10 @@ class Scheme {
             newSpan.innerText = scheme.name
             newDiv.appendChild(newSpan)
             newDiv.setAttribute('id', `${scheme.id}`)
-            newDiv.addEventListener('click', displayPloys)
+            newDiv.addEventListener('click', async (e) => {
+                let schemeObj = await Ploys.getPloys(scheme.id);
+                displayPloys(schemeObj);
+            });
             schemeDropdown.appendChild(newDiv)
         })
     }
