@@ -1,4 +1,4 @@
-let schemeId = 2;
+let schemeId = 1;
 // window.addEventListener("DOMContentLoaded", (e) => {
     // Takes in Ploy information and Appends Div to Ploy List
     //Current takes in object with {id: <id> name: <name>, dueAt: <dueAt>}
@@ -164,6 +164,10 @@ let schemeId = 2;
         //1. Send GET request using params to query ploys
         const scheme = await fetch(`/app/schemes/${e === 1 ? 1 : e.target.parentNode.id}`);
         const schemeObj = await scheme.json();
+
+        //Note: quick hack, will probably want to change
+        schemeId = schemeObj.id;
+
         //2. Empty out ploy-container
         const ployContainer = document.querySelector(".ploy-container");
         ployContainer.innerHTML = "";
