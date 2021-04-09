@@ -1,5 +1,7 @@
 import Ploys from "./ploys.js";
+import newScheme from "./schemes.js";
 
+//Track what scheme we're on
 let schemeId = 1;
 window.addEventListener("DOMContentLoaded", (e) => {
     //Logic for Adding Ploys from Form
@@ -12,12 +14,12 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         const addPloy = {name, dueAt, schemeId: schemeId, completed: false};
         const postPloy = await Ploys.createPloy(addPloy);
-
+        const scheme = await newScheme.getScheme(schemeId);
         //Ploy is incomplete by default, only update page if on incomplete tab
         const activeTab = document.querySelector(".complete-tab.tab-active");
         if(activeTab.innerHTML === "Incomplete"){
             addPloyToContainer(postPloy.ploy);
-            createPloyDataDiv(postPloy.ploy);
+            createPloyDataDiv(postPloy.ploy, scheme.name);
         }
         inputForm.value = "";
     })
@@ -103,12 +105,13 @@ window.addEventListener("DOMContentLoaded", (e) => {
       const mainBody = document.querySelector(".ploy-data-container");
       mainBody.innerHTML = "";
       //2. Call addPloyToContainer() for every returned ploy
-      ploysObj.ploys.forEach((ploy) => {
+      Promise.all(ploysObj.ploys.map(async (ploy) => {
          {
              addPloyToContainer(ploy);
-             createPloyDataDiv(ploy);
+             const scheme = await newScheme.getScheme(ploy.schemeId);
+             createPloyDataDiv(ploy, scheme.scheme.name);
         }
-      });
+      }));
     });
     //Default display?
     // let schemesTest = await Ploys.getPloys(1);
@@ -214,7 +217,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         schemeObj.ploys.forEach((ploy) => {
             if(ploy.completed === completed){
                 addPloyToContainer(ploy);
-                createPloyDataDiv(ploy);
+                createPloyDataDiv(ploy, schemeObj.scheme.name);
             }
         });
     }
@@ -250,7 +253,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
     }
 
     // Creates hidden ploy data divs that will display on right body
-    const createPloyDataDiv = (ploy) => {
+    const createPloyDataDiv = (ploy, schemeName) => {
         const mainBody = document.querySelector(".ploy-data-container");
         const dataDiv = document.createElement("div");
         dataDiv.classList.add("ploy-data", "hidden")
@@ -305,7 +308,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         schemeLabelSpan.innerHTML = "Scheme: ";
         schemeLabelSpan.classList.add("ploy-data__data-field__label");
         const schemeSpan = document.createElement("span");
-        schemeSpan.innerHTML = ploy.schemeId;     //Should figure out how to get Scheme name
+        schemeSpan.innerHTML = schemeName;     //Should figure out how to get Scheme name
         schemeSpan.classList.add("ploy-data__data-field__data");
         schemeDiv.append(schemeLabelSpan);
         schemeDiv.append(schemeSpan);
