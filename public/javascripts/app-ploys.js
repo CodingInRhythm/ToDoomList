@@ -5,7 +5,7 @@ import { updateSummaryName, updatePloyCounter } from "./updateSummary.js";
 
 //Track what scheme we're on
 let schemeId = 1;
-let searchQuery = "";
+let lastQuery = "";
 window.addEventListener("DOMContentLoaded", (e) => {
     //Logic for Adding Ploys from Form
     const addPloyForm = document.querySelector(".add-ploy");
@@ -193,7 +193,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const mainBody = document.querySelector(".ploy-data-container");
         mainBody.innerHTML = "";
 
-        //If called after selecting a scheme
+        //If called after selecting a scheme/scheme object exists
         if(schemeObj.scheme){
             //Note: quick hack, will probably want to change
             schemeId = schemeObj.scheme.id;
