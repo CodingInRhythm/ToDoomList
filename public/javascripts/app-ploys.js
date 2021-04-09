@@ -189,8 +189,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const completed = (activeTab.innerHTML === "Completed");
 
         //1. Send GET request using params to query ploys
-        const scheme = await fetch(`/app/schemes/${typeof e === "number" ? e : e.target.parentNode.id}`);
-        const schemeObj = await scheme.json();
+        const schemeObj = await Ploys.getPloys(e);
 
         //Note: quick hack, will probably want to change
         schemeId = schemeObj.scheme.id;

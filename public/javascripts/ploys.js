@@ -5,6 +5,13 @@ class Ploys{
 
     }
 
+    static getPloys = async (schemeId) => {
+        const scheme = await fetch(`/app/schemes/${typeof schemeId === "number" ? schemeId : schemeId.target.parentNode.id}`);
+        const schemeObj = await scheme.json();
+        return schemeObj;
+        // {scheme, ploys}
+    }
+
     static createPloy = async (ployObj) => {
         const postedPloy = await fetch('/app/ploys', {
             method: 'POST',
