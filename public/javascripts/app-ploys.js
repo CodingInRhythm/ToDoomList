@@ -113,7 +113,7 @@ let schemeId = 1;
                 },
                 body: JSON.stringify(ployObj)
             })
-            await displayPloys();
+            await displayPloys(schemeId);
         })
         nameForm.append(nameInput);
         nameForm.append(renameButton);
@@ -162,11 +162,12 @@ let schemeId = 1;
         const completed = (activeTab.innerHTML === "Completed");
 
         //1. Send GET request using params to query ploys
-        const scheme = await fetch(`/app/schemes/${e === 1 ? 1 : e.target.parentNode.id}`);
+        const scheme = await fetch(`/app/schemes/${typeof e === "number" ? e : e.target.parentNode.id}`);
         const schemeObj = await scheme.json();
 
+        console.log(schemeObj.scheme.id);
         //Note: quick hack, will probably want to change
-        schemeId = schemeObj.id;
+        schemeId = schemeObj.scheme.id;
 
         //2. Empty out ploy-container
         const ployContainer = document.querySelector(".ploy-container");
@@ -238,7 +239,7 @@ let schemeId = 1;
             })
         }));
         //3. Redisplay ploy table
-        await displayPloys();
+        await displayPloys(schemeId);
     })
 
     //Event Listener for Marking Tasks as Complete/Uncomplete
@@ -260,7 +261,7 @@ let schemeId = 1;
             })
         }));
         //3. Redisplay ploy table
-        await displayPloys();
+        await displayPloys(schemeId);
     })
 
     //Logic for Switching between Incomplete/Complete Task list
@@ -280,7 +281,7 @@ let schemeId = 1;
             }
 
             //Check if tab was changed for optimization?
-            await displayPloys();
+            await displayPloys(schemeId);
         })
     })
 
@@ -317,7 +318,7 @@ let schemeId = 1;
       });
     });
 
-    displayPloys();
+    displayPloys(1);
 // })
 
 
