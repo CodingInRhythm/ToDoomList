@@ -13,8 +13,12 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const addPloy = {name, dueAt, schemeId: schemeId, completed: false};
         const postPloy = await Ploys.createPloy(addPloy);
 
-        addPloyToContainer(postPloy.ploy);
-        createPloyDataDiv(postPloy.ploy);
+        //Ploy is incomplete by default, only update page if on incomplete tab
+        const activeTab = document.querySelector(".complete-tab.tab-active");
+        if(activeTab.innerHTML === "Incomplete"){
+            addPloyToContainer(postPloy.ploy);
+            createPloyDataDiv(postPloy.ploy);
+        }
         inputForm.value = "";
     })
 
@@ -176,10 +180,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         })
     }
 
-
-//Might need to modify for search
-    //Not sure how userId will be used yet
-
+    //Scheme object should be an object containing {scheme, ploys} (result of calling Ploys.getPloys());
     const displayPloys = (schemeObj) => {
         //Steps
         //0. Check if on completed tab or not
