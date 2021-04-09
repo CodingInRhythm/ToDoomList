@@ -1,6 +1,6 @@
 import { displayPloys } from './app-ploys.js'
 import Ploys from "./ploys.js";
-import { updateSummary } from "./updateSummary.js"
+import {updateSummaryName, updatePloyCounter} from "./updateSummary.js"
 
 class Scheme {
     constructor() {
@@ -45,8 +45,9 @@ class Scheme {
 
             newDiv.addEventListener('click', async () => {
                 const schemeObj = await Ploys.getPloys(scheme.id)
-                displayPloys(scheme.id)
-                updateSummary(schemeObj)
+                displayPloys(schemeObj)
+                updateSummaryName(schemeObj)
+                updatePloyCounter(schemeObj)
             })
 
             schemeDropdown.appendChild(newDiv)
@@ -60,8 +61,6 @@ class Scheme {
         let removeDiv = document.createElement('div');
         let renameDiv = document.createElement('div');
 
-
-
         let spanRemove = document.createElement('span');
         let spanRename = document.createElement('span');
 
@@ -74,13 +73,13 @@ class Scheme {
         spanRemove.addEventListener('click', this.showRemoveModal)
         spanRename.addEventListener('click', this.showRenameModal)
 
+
         removeDiv.appendChild(spanRemove);
         renameDiv.appendChild(spanRename);
 
         optionsDiv.appendChild(removeDiv);
         optionsDiv.appendChild(renameDiv);
 
-        // console.log(e.target.parentNode)
         e.target.parentNode.appendChild(optionsDiv);
 
     }

@@ -24,4 +24,8 @@ block right
                         button(type="submit" id="register-btn") Sign Up!
                         div.divider OR
                     div.demo-user-btn
-                        button(type="submit" id="demo-user__btn--sign-up") Demo User
+                        form.demovillain__signup-form(action="/users/login" method="post")
+                            input(type="hidden" name="_csrf" value=csrfToken)
+                            input(type="hidden" name= "userName" value= "Thanoz")
+                            input(type="hidden" name= "password" value="Evil00!")
+                            button(type="submit" id="demo-user__btn--sign-up") Demo User
