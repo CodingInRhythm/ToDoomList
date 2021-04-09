@@ -49,6 +49,15 @@ article.villain__left-block-lower-half {
     height: 25%;
 }
 
+.img-link {
+    width: 80%;
+}
+
+#evilCow {
+    height: 65% !important;
+    width: 38% !important;
+}
+
 .container-main .evil-peeps {
     height: 100%;
 }
