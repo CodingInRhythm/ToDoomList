@@ -3,7 +3,7 @@ const updateSummary = (schemeObj) => {
     // //Grab target scheme from dropdown and update summary h3
     // const targetScheme = e.target.innerHTML;
     const taskSummaryScheme = document.querySelector(".list-name");
-    taskSummaryScheme.innerHTML = schemeObj.name;
+    taskSummaryScheme.innerHTML = schemeObj.scheme.name;
     
     let numCompletedPloysCounter = 0
     let numPloysCounter = 0

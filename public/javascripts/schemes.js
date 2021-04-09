@@ -37,6 +37,7 @@ class Scheme {
             newDiv.setAttribute('id', `${scheme.id}`)
             newDiv.addEventListener('click', async () => {
                 const schemeObj = await Ploys.getPloys(scheme.id)
+                console.log(schemeObj)
                 displayPloys(scheme.id)
                 updateSummary(schemeObj)
             })
