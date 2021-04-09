@@ -1,4 +1,5 @@
 import Ploys from "./ploys.js";
+import { updateSummaryName, updatePloyCounter } from "./updateSummary.js";
 
 let schemeId = 1;
 window.addEventListener("DOMContentLoaded", (e) => {
@@ -12,9 +13,10 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         const addPloy = {name, dueAt, schemeId: schemeId, completed: false};
         const postPloy = await Ploys.createPloy(addPloy);
-
+        const schemeObj = await Ploys.getPloys(schemeId);
         addPloyToContainer(postPloy.ploy);
         createPloyDataDiv(postPloy.ploy);
+        updatePloyCounter(schemeObj);
         inputForm.value = "";
     })
 

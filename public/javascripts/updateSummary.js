@@ -1,24 +1,36 @@
-const updateSummary = (schemeObj) => {
+const updateSummaryName = (schemeObj) => {
     // const schemeDropdown = document.querySelector(".scheme-dropdown");
     // //Grab target scheme from dropdown and update summary h3
     // const targetScheme = e.target.innerHTML;
     const taskSummaryScheme = document.querySelector(".list-name");
     taskSummaryScheme.innerHTML = schemeObj.scheme.name;
-    
+}
+
+const updatePloyCounter = (schemeObj) => {
+    console.log(schemeObj)
     let numCompletedPloysCounter = 0
     let numPloysCounter = 0
-    const numCompletedPloysContainer = document.getElementById("completed");
-    const numPloysContainer = document.getElementById("tasks")
-    schemeObj.ploys.forEach((ploy) => {
-        if (ploy.completed) {
-        numCompletedPloysCounter++
-        numCompletedPloysContainer.innerHTML = numCompletedPloysCounter 
-        }
-        numPloysCounter++
+    let numCompletedPloysContainer = document.getElementById("completed");
+    let numPloysContainer = document.getElementById("tasks")
+    if (schemeObj.ploys.length) {
+        schemeObj.ploys.forEach((ploy) => {
+            if (ploy.completed) {
+            numCompletedPloysCounter++
+            numCompletedPloysContainer.innerHTML = numCompletedPloysCounter 
+            }
+            numPloysCounter++
+            numPloysContainer.innerHTML = numPloysCounter
+            });
+    }
+    else{
+        console.log("made it??!?!?!")
+        console.log(numPloysCounter)
+        numCompletedPloysContainer.innerHTML = numCompletedPloysCounter
         numPloysContainer.innerHTML = numPloysCounter
-   });
+    }
 }
 
 export {
-    updateSummary
+    updateSummaryName,
+    updatePloyCounter
 }
