@@ -19,9 +19,11 @@ class Scheme {
 
     displaySchemes = async () => {
 
+        this.clearSchemesUI();
+
         const schemesObj = await this.getSchemes()
 
-        // gets HTML div to add schemes to. 
+        // gets HTML div to add schemes to.
         const schemeDropdown = document.querySelector('.scheme-dropdown')
 
         // iterates over each scheme making a div element attached to page
@@ -36,6 +38,11 @@ class Scheme {
             schemeDropdown.appendChild(newDiv)
         })
     }
+
+    clearSchemesUI = () => {
+        const schemeDropdown = document.querySelector('.scheme-dropdown');
+        schemeDropdown.innerHTML = null;
+    };
 
 }
 
