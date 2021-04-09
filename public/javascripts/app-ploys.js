@@ -3,6 +3,7 @@ import newScheme from "./schemes.js";
 
 //Track what scheme we're on
 let schemeId = 1;
+let searchQuery = "";
 window.addEventListener("DOMContentLoaded", (e) => {
     //Logic for Adding Ploys from Form
     const addPloyForm = document.querySelector(".add-ploy");
@@ -86,32 +87,13 @@ window.addEventListener("DOMContentLoaded", (e) => {
       //1. Fetch all queried ploys
       const input = document.querySelector("#search-bar");
       const string = input.value;
+      searchQuery = string;
 
       const ploysObj = await Ploys.searchPloys(string);
 
-      const activeTab = document.querySelector(".complete-tab.tab-active");
-      const completed = activeTab.innerHTML === "Completed";
+      console.log(ploysObj);
 
-      //2. Empty out ploy-container
-      const ployContainer = document.querySelector(".ploy-container");
-      ployContainer.innerHTML = "";
-      for (let i = 0; i < 10; i++) {
-        const emptyDiv = document.createElement("div");
-        emptyDiv.classList.add("ploy", "empty");
-        ployContainer.append(emptyDiv);
-      }
-
-      //2.5 Clear ploy data divs
-      const mainBody = document.querySelector(".ploy-data-container");
-      mainBody.innerHTML = "";
-      //2. Call addPloyToContainer() for every returned ploy
-      Promise.all(ploysObj.ploys.map(async (ploy) => {
-         {
-             addPloyToContainer(ploy);
-             const scheme = await newScheme.getScheme(ploy.schemeId);
-             createPloyDataDiv(ploy, scheme.scheme.name);
-        }
-      }));
+      await displayPloys({scheme: null, ploys: ploysObj.ploys});
     });
     //Default display?
     // let schemesTest = await Ploys.getPloys(1);
@@ -184,21 +166,11 @@ window.addEventListener("DOMContentLoaded", (e) => {
     }
 
     //Scheme object should be an object containing {scheme, ploys} (result of calling Ploys.getPloys());
-    const displayPloys = (schemeObj) => {
+    const displayPloys = async (schemeObj) => {
         //Steps
         //0. Check if on completed tab or not
         const activeTab = document.querySelector(".complete-tab.tab-active");
         const completed = (activeTab.innerHTML === "Completed");
-
-        //1. Send GET request using params to query ploys
-        // const schemeObj = await Ploys.getPloys(e);
-        //Placeholder, remove once scheme call is changed
-        // if(typeof schemeObj === "number"){
-        //     schemeObj = await Ploys.getPloys(schemeObj);
-        // }
-
-        //Note: quick hack, will probably want to change
-        schemeId = schemeObj.scheme.id;
 
         //2. Empty out ploy-container
         const ployContainer = document.querySelector(".ploy-container");
@@ -213,13 +185,31 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const mainBody = document.querySelector(".ploy-data-container");
         mainBody.innerHTML = "";
 
-        //3. Call addPloyToContainer() for every returned ploy + create hidden data divs
-        schemeObj.ploys.forEach((ploy) => {
-            if(ploy.completed === completed){
-                addPloyToContainer(ploy);
-                createPloyDataDiv(ploy, schemeObj.scheme.name);
-            }
-        });
+        //If called after selecting a scheme
+        if(schemeObj.scheme){
+            //Note: quick hack, will probably want to change
+            schemeId = schemeObj.scheme.id;
+
+            //3. Call addPloyToContainer() for every returned ploy + create hidden data divs
+            schemeObj.ploys.forEach((ploy) => {
+                if(ploy.completed === completed){
+                    addPloyToContainer(ploy);
+                    createPloyDataDiv(ploy, schemeObj.scheme.name);
+                }
+            });
+        } else{     //Called by search function
+            //3. Call addPloyToContainer() for every returned ploy
+            Promise.all(schemeObj.ploys.map(async (ploy) => {
+               {
+                   if(ploy.completed === completed){
+                      addPloyToContainer(ploy);
+                      const scheme = await newScheme.getScheme(ploy.schemeId);
+                      createPloyDataDiv(ploy, scheme.scheme.name);
+                   }
+              }
+            }));
+        }
+
     }
 
     // Helper function, returns all Ploys that have checked Checkboxes
