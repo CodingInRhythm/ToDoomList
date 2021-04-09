@@ -1,5 +1,7 @@
 import Ploys from "./ploys.js";
 import newScheme from "./schemes.js";
+import { updateSummaryName, updatePloyCounter } from "./updateSummary.js";
+
 
 //Track what scheme we're on
 let schemeId = 1;
@@ -15,13 +17,17 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         const addPloy = {name, dueAt, schemeId: schemeId, completed: false};
         const postPloy = await Ploys.createPloy(addPloy);
+
         const scheme = await newScheme.getScheme(schemeId);
+        const schemeObj = await Ploys.getPloys(schemeId);
         //Ploy is incomplete by default, only update page if on incomplete tab
         const activeTab = document.querySelector(".complete-tab.tab-active");
         if(activeTab.innerHTML === "Incomplete"){
             addPloyToContainer(postPloy.ploy);
             createPloyDataDiv(postPloy.ploy, scheme.name);
         }
+        updatePloyCounter(schemeObj);
+
         inputForm.value = "";
     })
 
@@ -38,6 +44,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         //3. Redisplay ploy table
         const schemeObj = await Ploys.getPloys(schemeId);
         await displayPloys(schemeObj);
+        await updatePloyCounter(schemeObj);
     })
 
     //Event Listener for Marking Tasks as Complete/Uncomplete
@@ -55,6 +62,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         //3. Redisplay ploy table
         const schemeObj = await Ploys.getPloys(schemeId);
         await displayPloys(schemeObj);
+        await updatePloyCounter(schemeObj);
     })
 
     //Logic for Switching between Incomplete/Complete Task list

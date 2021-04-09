@@ -89,10 +89,10 @@ const loginValidators = [
 
 router.post("/login", csrfProtection, loginValidators, asyncHandler(async (req, res) => {
   const { userName, password } = req.body;
+  console.log('Heloooooo')
 
   let errors = [];
   const validatorErrors = validationResult(req);
-  // console.log('Heloooooo')
   // console.log( await Villain.findByPk(1))
   if(validatorErrors.isEmpty()) {
     const user = await Villain.findOne( { where: { userName } });
