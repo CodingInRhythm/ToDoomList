@@ -21,8 +21,9 @@ block content
       p Please enter a new scheme name:
       form
           input(id="modal-form" name='modal-form' type='text' required)
-          button(type='submit' id="add-list") Add
-          button(type='submit' id="exit-modal") Cancel
+          div#modal-button-container  
+            button(type='submit' id="add-list") Add
+            button(type='submit' id="exit-modal") Cancel
   div.main-container
 
     include app-navbar.pug
