@@ -4,6 +4,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     const modalButton = document.querySelector(".add-scheme-button")
     const mainContainer = document.querySelector(".main-container")
     modalButton.addEventListener("click", async (e) => {
+        //sets modal to be visible, trying to blur out everything else BUT modal
         modal.style.display = 'flex'
         mainContainer.style.filter = 'blur(5px)'
         modal.style.filter = 'none' 
