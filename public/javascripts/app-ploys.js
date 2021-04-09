@@ -180,7 +180,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
 //Might need to modify for search
     //Not sure how userId will be used yet
 
-    const displayPloys = async (schemeObj) => {
+    const displayPloys = (schemeObj) => {
         //Steps
         //0. Check if on completed tab or not
         const activeTab = document.querySelector(".complete-tab.tab-active");
@@ -192,7 +192,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
         // if(typeof schemeObj === "number"){
         //     schemeObj = await Ploys.getPloys(schemeObj);
         // }
-
 
         //Note: quick hack, will probably want to change
         schemeId = schemeObj.scheme.id;

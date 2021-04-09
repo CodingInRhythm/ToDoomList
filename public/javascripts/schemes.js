@@ -33,9 +33,9 @@ class Scheme {
             let newSpan = document.createElement('span')
             let button = document.createElement('button')
 
-            button.addEventListener('click', this.displayDropdown) 
-            newDiv.addEventListener('click', displayPloys)
-            
+            button.addEventListener('click', this.displayDropdown)
+            // newDiv.addEventListener('click', displayPloys)
+
             newDiv.classList.add('scheme-entry')
             newSpan.innerText = scheme.name
             newDiv.appendChild(newSpan)
@@ -55,11 +55,11 @@ class Scheme {
 
     displayDropdown(e) {
 
-        
+
         let optionsDiv = document.createElement('div');
         let removeDiv = document.createElement('div');
         let renameDiv = document.createElement('div');
-        
+
         let spanRemove = document.createElement('span');
         let spanRename = document.createElement('span');
 
@@ -68,13 +68,13 @@ class Scheme {
 
         console.log(spanRename)
         console.log(spanRemove)
-        
+
         removeDiv.appendChild(spanRemove);
         renameDiv.appendChild(spanRename);
-        
+
         optionsDiv.appendChild(removeDiv);
         optionsDiv.appendChild(renameDiv);
-        
+
         e.target.parentNode.appendChild(optionsDiv);
 
     }
