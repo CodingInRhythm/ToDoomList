@@ -33,6 +33,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         //3. Redisplay ploy table
         const schemeObj = await Ploys.getPloys(schemeId);
         await displayPloys(schemeObj);
+        await updatePloyCounter(schemeObj);
     })
 
     //Event Listener for Marking Tasks as Complete/Uncomplete
@@ -50,6 +51,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         //3. Redisplay ploy table
         const schemeObj = await Ploys.getPloys(schemeId);
         await displayPloys(schemeObj);
+        await updatePloyCounter(schemeObj);
     })
 
     //Logic for Switching between Incomplete/Complete Task list
