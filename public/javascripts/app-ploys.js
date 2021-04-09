@@ -1,9 +1,5 @@
 let schemeId = 1;
 window.addEventListener("DOMContentLoaded", (e) => {
-
-
-
-
     //Logic for Adding Ploys from Form
     const addPloyForm = document.querySelector(".add-ploy");
     addPloyForm.addEventListener("submit", async (event) => {
@@ -91,7 +87,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
     const searchBar = document.querySelector(".search");
     searchBar.addEventListener("submit", async (event) => {
       event.preventDefault();
-      console.log(searchBar);
 
       //1. Fetch all queried ploys
       const input = document.querySelector("#search-bar");
@@ -111,11 +106,15 @@ window.addEventListener("DOMContentLoaded", (e) => {
         emptyDiv.classList.add("ploy", "empty");
         ployContainer.append(emptyDiv);
       }
+
+      //2.5 Clear ploy data divs
+      const mainBody = document.querySelector(".ploy-data-container");
+      mainBody.innerHTML = "";
       //2. Call addPloyToContainer() for every returned ploy
       ploysObj.ploys.forEach((ploy) => {
          {
-             console.log(ploy)
-          addPloyToContainer(ploy);
+             addPloyToContainer(ploy);
+             createPloyDataDiv(ploy);
         }
       });
     });
@@ -202,7 +201,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const scheme = await fetch(`/app/schemes/${typeof e === "number" ? e : e.target.parentNode.id}`);
         const schemeObj = await scheme.json();
 
-        console.log(schemeObj.scheme.id);
         //Note: quick hack, will probably want to change
         schemeId = schemeObj.scheme.id;
 
