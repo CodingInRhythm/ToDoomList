@@ -1,6 +1,119 @@
+import Ploys from "./ploys.js";
+
 let schemeId = 1;
-// window.addEventListener("DOMContentLoaded", (e) => {
-    // Takes in Ploy information and Appends Div to Ploy List
+window.addEventListener("DOMContentLoaded", (e) => {
+    //Logic for Adding Ploys from Form
+    const addPloyForm = document.querySelector(".add-ploy");
+    addPloyForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const inputForm = document.querySelector("#add-ploy-field");
+        const name = inputForm.value;
+        const dueAt = null;
+
+        const addPloy = {name, dueAt, schemeId: schemeId, completed: false};
+        const postPloy = await Ploys.createPloy(addPloy);
+
+        addPloyToContainer(postPloy.ploy);
+        createPloyDataDiv(postPloy.ploy);
+        inputForm.value = "";
+    })
+
+    //Event Listener for Deleting Ploys
+    const deleteTaskButton = document.querySelector(".delete_ploy");
+    deleteTaskButton.addEventListener("click", async (ev) => {
+        //1. Get all Selected Ploys
+        let selected = getSelectedPloys();
+
+        //2. Send DELETE requests for ploys
+        await Promise.all(selected.map(async (ploy) => {
+            await Ploys.deletePloy(ploy.id);
+        }));
+        //3. Redisplay ploy table
+        await displayPloys(schemeId);
+    })
+
+    //Event Listener for Marking Tasks as Complete/Uncomplete
+    const markCompleteButton = document.querySelector(".mark_complete");
+    markCompleteButton.addEventListener("click", async (ev) => {
+        //1. Get all Selected Ploys
+        let selected = getSelectedPloys();
+
+        //2. Send PUT request to change completed flag
+        const markComplete =markCompleteButton.innerHTML === "Completed"
+        await Promise.all(selected.map(async (ploy) => {
+            const ployObj = {name: ploy.name, schemeId: schemeId, completed: markComplete}
+            await fetch(`/app/ploys/${ploy.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(ployObj)
+            })
+        }));
+        //3. Redisplay ploy table
+        await displayPloys(schemeId);
+    })
+
+    //Logic for Switching between Incomplete/Complete Task list
+    const completeTabs = document.querySelectorAll(".complete-tab");
+    completeTabs.forEach(tab => {
+        tab.addEventListener("click", async (ev) => {
+            const activeTab = document.querySelector(".complete-tab.tab-active");
+            activeTab.classList.remove("tab-active");
+            tab.classList.add("tab-active");
+
+            const switchToCompleted = tab.innerHTML==="Completed";
+            // Switch action menu button for Completing/Uncompleting tasks
+            if(switchToCompleted){
+                markCompleteButton.innerHTML = "Uncompleted";
+            } else{
+                markCompleteButton.innerHTML = "Completed";
+            }
+
+            //Check if tab was changed for optimization?
+            await displayPloys(schemeId);
+        })
+    })
+
+    //Logic for adding ploys from search list
+    const searchBar = document.querySelector(".search");
+    searchBar.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      //1. Fetch all queried ploys
+      const input = document.querySelector("#search-bar");
+      const string = input.value;
+
+      const ploysObj = await Ploys.searchPloys(string);
+
+      const activeTab = document.querySelector(".complete-tab.tab-active");
+      const completed = activeTab.innerHTML === "Completed";
+
+      //2. Empty out ploy-container
+      const ployContainer = document.querySelector(".ploy-container");
+      ployContainer.innerHTML = "";
+      for (let i = 0; i < 10; i++) {
+        const emptyDiv = document.createElement("div");
+        emptyDiv.classList.add("ploy", "empty");
+        ployContainer.append(emptyDiv);
+      }
+
+      //2.5 Clear ploy data divs
+      const mainBody = document.querySelector(".ploy-data-container");
+      mainBody.innerHTML = "";
+      //2. Call addPloyToContainer() for every returned ploy
+      ploysObj.ploys.forEach((ploy) => {
+         {
+             addPloyToContainer(ploy);
+             createPloyDataDiv(ploy);
+        }
+      });
+    });
+
+    displayPloys(1);
+})
+
+// Takes in Ploy information and Appends Div to Ploy List
     //Current takes in object with {id: <id> name: <name>, dueAt: <dueAt>}
     const addPloyToContainer = (ploy) => {
         const ployContainer = document.querySelector(".ploy-container");
@@ -63,6 +176,57 @@ let schemeId = 1;
             }
             displayPloyData(ployCheckBox.checked, targetId);
         })
+    }
+
+
+//Might need to modify for search
+    //Not sure how userId will be used yet
+
+    const displayPloys = async (e = 1) => {
+        //Steps
+        //0. Check if on completed tab or not
+        const activeTab = document.querySelector(".complete-tab.tab-active");
+        const completed = (activeTab.innerHTML === "Completed");
+
+        //1. Send GET request using params to query ploys
+        const schemeObj = await Ploys.getPloys(e);
+
+        //Note: quick hack, will probably want to change
+        schemeId = schemeObj.scheme.id;
+
+        //2. Empty out ploy-container
+        const ployContainer = document.querySelector(".ploy-container");
+        ployContainer.innerHTML = "";
+        for(let i = 0; i < 10; i++){
+            const emptyDiv = document.createElement("div");
+            emptyDiv.classList.add("ploy", "empty");
+            ployContainer.append(emptyDiv);
+        }
+
+        //2.5 Clear ploy data divs
+        const mainBody = document.querySelector(".ploy-data-container");
+        mainBody.innerHTML = "";
+
+        //3. Call addPloyToContainer() for every returned ploy + create hidden data divs
+        schemeObj.ploys.forEach((ploy) => {
+            if(ploy.completed === completed){
+                addPloyToContainer(ploy);
+                createPloyDataDiv(ploy);
+            }
+        });
+    }
+
+    // Helper function, returns all Ploys that have checked Checkboxes
+    const getSelectedPloys = () => {
+        const allPloys = document.querySelectorAll(".ploy:not(.empty)");
+        let selected = [];
+        allPloys.forEach(ploy => {
+            const checkBox = ploy.querySelector(".ploy__checkbox");
+            if(checkBox.checked){
+                selected.push(ploy);
+            }
+        })
+        return selected;
     }
 
     //Will toggle ploy data div on right part of body
@@ -151,176 +315,6 @@ let schemeId = 1;
         dataDiv.append(dueDiv);
         dataDiv.append(schemeDiv);
     }
-
-    //Might need to modify for search
-    //Not sure how userId will be used yet
-
-    const displayPloys = async (e = 1) => {
-        //Steps
-        //0. Check if on completed tab or not
-        const activeTab = document.querySelector(".complete-tab.tab-active");
-        const completed = (activeTab.innerHTML === "Completed");
-
-        //1. Send GET request using params to query ploys
-        const scheme = await fetch(`/app/schemes/${typeof e === "number" ? e : e.target.parentNode.id}`);
-        const schemeObj = await scheme.json();
-
-        console.log(schemeObj.scheme.id);
-        //Note: quick hack, will probably want to change
-        schemeId = schemeObj.scheme.id;
-
-        //2. Empty out ploy-container
-        const ployContainer = document.querySelector(".ploy-container");
-        ployContainer.innerHTML = "";
-        for(let i = 0; i < 10; i++){
-            const emptyDiv = document.createElement("div");
-            emptyDiv.classList.add("ploy", "empty");
-            ployContainer.append(emptyDiv);
-        }
-
-        //2.5 Clear ploy data divs
-        const mainBody = document.querySelector(".ploy-data-container");
-        mainBody.innerHTML = "";
-
-        //3. Call addPloyToContainer() for every returned ploy + create hidden data divs
-        schemeObj.ploys.forEach((ploy) => {
-            if(ploy.completed === completed){
-                addPloyToContainer(ploy);
-                createPloyDataDiv(ploy);
-            }
-        });
-    }
-
-    //Logic for Adding Ploys from Form
-    const addPloyForm = document.querySelector(".add-ploy");
-    addPloyForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        const inputForm = document.querySelector("#add-ploy-field");
-        const name = inputForm.value;
-        const dueAt = null;
-
-        const testPloy = {name, dueAt, schemeId: schemeId, completed: false};
-        const postedPloy = await fetch('/app/ploys', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(testPloy)
-        });
-        const postPloy = await postedPloy.json();
-        addPloyToContainer(postPloy.ploy);
-        createPloyDataDiv(postPloy.ploy);
-        inputForm.value = "";
-    })
-
-    // Helper function, returns all Ploys that have checked Checkboxes
-    const getSelectedPloys = () => {
-        const allPloys = document.querySelectorAll(".ploy:not(.empty)");
-        let selected = [];
-        allPloys.forEach(ploy => {
-            const checkBox = ploy.querySelector(".ploy__checkbox");
-            if(checkBox.checked){
-                selected.push(ploy);
-            }
-        })
-        return selected;
-    }
-
-    //Event Listener for Deleting Ploys
-    const deleteTaskButton = document.querySelector(".delete_ploy");
-    deleteTaskButton.addEventListener("click", async (ev) => {
-        //1. Get all Selected Ploys
-        let selected = getSelectedPloys();
-
-        //2. Send DELETE requests for ploys
-        await Promise.all(selected.map(async (ploy) => {
-            await fetch(`/app/ploys/${ploy.id}`, {
-                method: "DELETE"
-            })
-        }));
-        //3. Redisplay ploy table
-        await displayPloys(schemeId);
-    })
-
-    //Event Listener for Marking Tasks as Complete/Uncomplete
-    const markCompleteButton = document.querySelector(".mark_complete");
-    markCompleteButton.addEventListener("click", async (ev) => {
-        //1. Get all Selected Ploys
-        let selected = getSelectedPloys();
-
-        //2. Send PUT request to change completed flag
-        const markComplete =markCompleteButton.innerHTML === "Completed"
-        await Promise.all(selected.map(async (ploy) => {
-            const ployObj = {name: ploy.name, schemeId: schemeId, completed: markComplete}
-            await fetch(`/app/ploys/${ploy.id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(ployObj)
-            })
-        }));
-        //3. Redisplay ploy table
-        await displayPloys(schemeId);
-    })
-
-    //Logic for Switching between Incomplete/Complete Task list
-    const completeTabs = document.querySelectorAll(".complete-tab");
-    completeTabs.forEach(tab => {
-        tab.addEventListener("click", async (ev) => {
-            const activeTab = document.querySelector(".complete-tab.tab-active");
-            activeTab.classList.remove("tab-active");
-            tab.classList.add("tab-active");
-
-            const switchToCompleted = tab.innerHTML==="Completed";
-            // Switch action menu button for Completing/Uncompleting tasks
-            if(switchToCompleted){
-                markCompleteButton.innerHTML = "Uncompleted";
-            } else{
-                markCompleteButton.innerHTML = "Completed";
-            }
-
-            //Check if tab was changed for optimization?
-            await displayPloys(schemeId);
-        })
-    })
-
-    //Logic for adding ploys from search list
-    const searchBar = document.querySelector(".search");
-    searchBar.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      console.log(searchBar);
-
-      //1. Fetch all queried ploys
-      const input = document.querySelector("#search-bar");
-      const string = input.value;
-
-      const ploys = await fetch(`/app/search/${string}`);
-      const ploysObj = await ploys.json();
-
-      const activeTab = document.querySelector(".complete-tab.tab-active");
-      const completed = activeTab.innerHTML === "Completed";
-
-      //2. Empty out ploy-container
-      const ployContainer = document.querySelector(".ploy-container");
-      ployContainer.innerHTML = "";
-      for (let i = 0; i < 10; i++) {
-        const emptyDiv = document.createElement("div");
-        emptyDiv.classList.add("ploy", "empty");
-        ployContainer.append(emptyDiv);
-      }
-      //2. Call addPloyToContainer() for every returned ploy
-      ploysObj.ploys.forEach((ploy) => {
-         {
-             console.log(ploy)
-          addPloyToContainer(ploy);
-        }
-      });
-    });
-
-    displayPloys(1);
-// })
-
 
 export {
     displayPloys,
