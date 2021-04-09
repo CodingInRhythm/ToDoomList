@@ -1,3 +1,5 @@
+import Ploys from "./ploys.js";
+
 let schemeId = 1;
 window.addEventListener("DOMContentLoaded", (e) => {
     //Logic for Adding Ploys from Form
@@ -8,15 +10,9 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const name = inputForm.value;
         const dueAt = null;
 
-        const testPloy = {name, dueAt, schemeId: schemeId, completed: false};
-        const postedPloy = await fetch('/app/ploys', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(testPloy)
-        });
-        const postPloy = await postedPloy.json();
+        const addPloy = {name, dueAt, schemeId: schemeId, completed: false};
+        const postPloy = await Ploys.createPloy(addPloy);
+
         addPloyToContainer(postPloy.ploy);
         createPloyDataDiv(postPloy.ploy);
         inputForm.value = "";
@@ -92,8 +88,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
       const input = document.querySelector("#search-bar");
       const string = input.value;
 
-      const ploys = await fetch(`/app/search/${string}`);
-      const ploysObj = await ploys.json();
+      const ploysObj = await Ploys.searchPloys(string);
 
       const activeTab = document.querySelector(".complete-tab.tab-active");
       const completed = activeTab.innerHTML === "Completed";
