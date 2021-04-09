@@ -1,6 +1,6 @@
 let userId = 1;
 let schemeId = 2;
-window.addEventListener("DOMContentLoaded", (e) => {
+// window.addEventListener("DOMContentLoaded", (e) => {
     // Takes in Ploy information and Appends Div to Ploy List
     //Current takes in object with {id: <id> name: <name>, dueAt: <dueAt>}
     const addPloyToContainer = (ploy) => {
@@ -40,14 +40,15 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
     //Might need to modify for search
     //Not sure how userId will be used yet
-    const displayPloys = async () => {
+
+    const displayPloys = async (e = 1) => {
         //Steps
         //0. Check if on completed tab or not
         const activeTab = document.querySelector(".complete-tab.tab-active");
         const completed = (activeTab.innerHTML === "Completed");
 
         //1. Send GET request using params to query ploys
-        const scheme = await fetch(`/app/schemes/${schemeId}`);
+        const scheme = await fetch(`/app/schemes/${e === 1 ? 1 : e.target.parentNode.id}`);
         const schemeObj = await scheme.json();
         //2. Empty out ploy-container
         const ployContainer = document.querySelector(".ploy-container");
@@ -192,4 +193,9 @@ window.addEventListener("DOMContentLoaded", (e) => {
     });
 
     displayPloys();
-})
+// })
+
+
+export {
+    displayPloys,
+}
