@@ -15,7 +15,16 @@ append head
 
 
 block content
-    div.main-container
+  div.add-scheme-modal#add-scheme-modal
+    .modal-content
+      p Add a Scheme
+      p Please enter a new scheme name:
+      form
+          input(id="modal-form" name='modal-form' type='text' required)
+          div#modal-button-container  
+            button(type='submit' id="add-list") Add
+            button(type='submit' id="exit-modal") Cancel
+  div.main-container
 
-        include app-navbar.pug
-        include app-body.pug
+    include app-navbar.pug
+    include app-body.pug

@@ -8,7 +8,7 @@
   align-content: center;
   box-sizing: border-box;
   width: 25%; /* Full width */
-  height: 25%; /* Full height */
+  height: 35%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: white;
   border: 1px grey solid; 
@@ -17,7 +17,26 @@
   /* Black w/ opacity */
 }
 
+#modal-form {
+  height: 35px;
+  width: 350px;
+  margin-bottom: 5px;
+}
 #add-list {
   background-color: rgb(0, 140, 255);
   color: white;
+  border: .5px solid rgb(0, 140, 255);
+  border-radius: 1px;
+  margin-right: 10px;
+}
+
+
+#modal-button-container {
+  display:flex;
+  justify-content: flex-start;
+}
+#add-list, #exit-modal{
+
+  height: 35px;
+  width: 70px;
 }
