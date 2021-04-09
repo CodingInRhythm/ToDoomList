@@ -5,13 +5,24 @@ class Scheme {
 
     }
 
+    getScheme = async (id) => {
+        const scheme = await fetch(`app/schemes/${id}`);
+        return await scheme.json()
+    }
+
+
     getSchemes = async () =>  {
         // fetches all schemes and make javascript object from response
         const schemes = await fetch('app/schemes')
-        const schemesObj = await schemes.json();
+        return await schemes.json();
+    }
+
+    displaySchemes = async () => {
+
+        const schemesObj = await this.getSchemes()
 
         // gets HTML div to add schemes to. 
-        const schemeDropdown = document.querySelector('.scheme-dropdown') 
+        const schemeDropdown = document.querySelector('.scheme-dropdown')
 
         // iterates over each scheme making a div element attached to page
         schemesObj.schemes.forEach(scheme => {
@@ -29,5 +40,5 @@ class Scheme {
 }
 
 let newScheme = new Scheme();
-newScheme.getSchemes();
+newScheme.displaySchemes();
 export default newScheme
