@@ -1,26 +1,21 @@
 import newScheme from "./schemes.js"
 window.addEventListener('DOMContentLoaded', async (event) => {
     // console.log(`DISHES A VERY BAD JOKE`);
-    const modal = document.getElementById("add-scheme-modal")
-    const modalButton = document.querySelector(".add-scheme-button")
+    const modal = document.getElementById("rename-scheme-modal")
     const mainContainer = document.querySelector(".main-container")
-    modalButton.addEventListener("click", async (e) => {
-        //sets modal to be visible, trying to blur out everything else BUT modal
-        modal.style.display = 'flex'
-        mainContainer.style.filter = 'blur(2px)'
-    })
         // modal.style.filter = 'none'
-    const addListButton = document.getElementById("add-list")
-    const exitModalButton = document.getElementById("exit-modal")
+    const addListButton = document.querySelector(".rename-list")
+    const exitModalButton = document.getElementById("exit-rename-modal")
 
     addListButton.addEventListener("click", async (e) => {
-        e.preventDefault()
-        const listField = document.getElementById("modal-form")
-        console.log(listField)
+        const listField = document.getElementById("rename-modal-form")
+        const btnRename = document.querySelector(".rename-list");
+        // console.log(btnRename.id, `AHHHHHHHHHHHHHHHHHHHHHHHH`);
+        // console.log(listField)
         const name = listField.value
-        console.log(name)
-        const postedScheme = await fetch('/app/schemes', {
-            method: 'POST',
+        // console.log(name)
+        await fetch(`/app/schemes/${btnRename.id}`, {
+            method: 'PUT',
             headers: {
                 "Content-type": "application/json"},
             body: JSON.stringify({name})

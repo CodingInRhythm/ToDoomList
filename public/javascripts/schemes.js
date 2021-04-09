@@ -64,6 +64,22 @@ class Scheme {
         let spanRemove = document.createElement('span');
         let spanRename = document.createElement('span');
 
+        spanRename.setAttribute('class', 'rename-btn');
+
+        const modal = document.getElementById("rename-scheme-modal");
+        const mainContainer = document.querySelector(".main-container");
+
+        spanRename.addEventListener("click", async (e) => {
+        // e.stopImmediatePropagation();
+        const btnRename = document.querySelector(".rename-list");
+        btnRename.setAttribute('id', `${e.target.parentNode.parentNode.parentNode.id}`)
+        // console.log(e.target.parentNode.parentNode.parentNode.id);
+        console.log(`JUST ANYTHING`);
+        //? Sets modal to be visible, trying to blur out everything else BUT modal
+        modal.style.display = 'flex'
+        mainContainer.style.filter = 'blur(2px)'
+    })
+
         spanRemove.innerText = 'Remove Scheme'
         spanRename.innerText = 'Rename Scheme'
 
@@ -87,7 +103,7 @@ class Scheme {
     showRemoveModal = async (e) => {
         e.stopPropagation()
 
-        console.log(e.target.parentNode.parentNode.parentNode, 'und')
+        // console.log(e.target.parentNode.parentNode.parentNode, 'und')
 
         await fetch(`app/schemes/${e.target.parentNode.parentNode.parentNode.id}`, {
             method: "DELETE"
@@ -99,7 +115,7 @@ class Scheme {
 
     showRenameModal = (e) => {
         e.stopPropagation()
-        console.log(e, 'rename');
+
     }
 
     clearSchemesUI = () => {
@@ -108,6 +124,7 @@ class Scheme {
     };
 
 }
+
 
 let newScheme = new Scheme();
 newScheme.displaySchemes();

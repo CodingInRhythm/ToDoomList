@@ -1,9 +1,9 @@
-.add-scheme-modal {
+.add-scheme-modal, .rename-scheme-modal{
   display: none; /* Hidden by default */
   position: absolute; /* Stay in place */
   z-index: 1; /* Sit on top */
   top: 50%;
-  left: 25%;  
+  left: 25%;
   justify-content: center;
   align-content: center;
   box-sizing: border-box;
@@ -11,18 +11,18 @@
   height: 35%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: white;
-  border: 1px grey solid; 
+  border: 1px grey solid;
   border-radius: 4px;
   backdrop-filter: blur(10px);
   /* Black w/ opacity */
 }
 
-#modal-form {
+#modal-form, #rename-modal-form {
   height: 35px;
   width: 350px;
   margin-bottom: 5px;
 }
-#add-list {
+#add-list, .rename-list {
   background-color: rgb(0, 140, 255);
   color: white;
   border: .5px solid rgb(0, 140, 255);
@@ -35,7 +35,7 @@
   display:flex;
   justify-content: flex-start;
 }
-#add-list, #exit-modal{
+#add-list, #exit-modal, .rename-list, #exit-rename-modal{
 
   height: 35px;
   width: 70px;

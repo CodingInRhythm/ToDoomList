@@ -53,12 +53,11 @@ router.get("/schemes/:schemeid", async (req, res) => {
 
 //works
 router.put("/schemes/:schemeid", async (req, res) => {
-  const { name, villainId } = req.body;
+  const { name } = req.body;
   const id = parseInt(req.params.schemeid, 10)
   const scheme = await db.Scheme.findByPk(id)
   await scheme.update({
-    name,
-    villainId
+    name
   })
   res.json({scheme})
 })

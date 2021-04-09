@@ -8,9 +8,11 @@ append head
 
   script(src='/javascripts/app-ploys.js' type="module")
 
-  script(src='/javascripts/schemes.js' type="module") 
+  script(src='/javascripts/schemes.js' type="module")
 
   script(src="/javascripts/list-modal.js" type="module")
+
+  script(src="/javascripts/rename-modal.js" type="module")
 
 
 
@@ -21,9 +23,18 @@ block content
       p Please enter a new scheme name:
       form
           input(id="modal-form" name='modal-form' type='text' required)
-          div#modal-button-container  
+          div#modal-button-container
             button(type='submit' id="add-list") Add
             button(type='submit' id="exit-modal") Cancel
+  div.rename-scheme-modal#rename-scheme-modal
+    .modal-content
+      p Rename the Scheme
+      p Please enter a new scheme name:
+      form
+          input(id="rename-modal-form" name='modal-form' type='text' required)
+          div#modal-button-container
+            button(type='submit' class="rename-list") Rename
+            button(type='submit' id="exit-rename-modal") Cancel
   div.main-container
 
     include app-navbar.pug
