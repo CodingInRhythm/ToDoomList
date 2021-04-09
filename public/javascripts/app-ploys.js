@@ -1,4 +1,4 @@
-let schemeId = 2;
+let schemeId = 1;
 // window.addEventListener("DOMContentLoaded", (e) => {
     // Takes in Ploy information and Appends Div to Ploy List
     //Current takes in object with {id: <id> name: <name>, dueAt: <dueAt>}
@@ -84,7 +84,7 @@ let schemeId = 2;
 
     // Creates hidden ploy data divs that will display on right body
     const createPloyDataDiv = (ploy) => {
-        const mainBody = document.querySelector(".tasks-main");
+        const mainBody = document.querySelector(".ploy-data-container");
         const dataDiv = document.createElement("div");
         dataDiv.classList.add("ploy-data", "hidden")
         dataDiv.id = `data-${ploy.id}`;
@@ -113,7 +113,7 @@ let schemeId = 2;
                 },
                 body: JSON.stringify(ployObj)
             })
-            await displayPloys();
+            await displayPloys(schemeId);
         })
         nameForm.append(nameInput);
         nameForm.append(renameButton);
@@ -162,8 +162,13 @@ let schemeId = 2;
         const completed = (activeTab.innerHTML === "Completed");
 
         //1. Send GET request using params to query ploys
-        const scheme = await fetch(`/app/schemes/${e === 1 ? 1 : e.target.parentNode.id}`);
+        const scheme = await fetch(`/app/schemes/${typeof e === "number" ? e : e.target.parentNode.id}`);
         const schemeObj = await scheme.json();
+
+        console.log(schemeObj.scheme.id);
+        //Note: quick hack, will probably want to change
+        schemeId = schemeObj.scheme.id;
+
         //2. Empty out ploy-container
         const ployContainer = document.querySelector(".ploy-container");
         ployContainer.innerHTML = "";
@@ -172,7 +177,12 @@ let schemeId = 2;
             emptyDiv.classList.add("ploy", "empty");
             ployContainer.append(emptyDiv);
         }
-        //2. Call addPloyToContainer() for every returned ploy + create hidden data divs
+
+        //2.5 Clear ploy data divs
+        const mainBody = document.querySelector(".ploy-data-container");
+        mainBody.innerHTML = "";
+
+        //3. Call addPloyToContainer() for every returned ploy + create hidden data divs
         schemeObj.ploys.forEach((ploy) => {
             if(ploy.completed === completed){
                 addPloyToContainer(ploy);
@@ -229,7 +239,7 @@ let schemeId = 2;
             })
         }));
         //3. Redisplay ploy table
-        await displayPloys();
+        await displayPloys(schemeId);
     })
 
     //Event Listener for Marking Tasks as Complete/Uncomplete
@@ -251,7 +261,7 @@ let schemeId = 2;
             })
         }));
         //3. Redisplay ploy table
-        await displayPloys();
+        await displayPloys(schemeId);
     })
 
     //Logic for Switching between Incomplete/Complete Task list
@@ -271,7 +281,7 @@ let schemeId = 2;
             }
 
             //Check if tab was changed for optimization?
-            await displayPloys();
+            await displayPloys(schemeId);
         })
     })
 
@@ -308,7 +318,7 @@ let schemeId = 2;
       });
     });
 
-    displayPloys();
+    displayPloys(1);
 // })
 
 
