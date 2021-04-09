@@ -22,5 +22,11 @@ class Ploys{
         const ploysObj = await ploys.json();
         return ploysObj;
     }
+
+    static deletePloy = async (ployId) => {
+        return await fetch(`/app/ploys/${ployId}`, {
+            method: "DELETE"
+        });
+    }
 }
 export default Ploys;

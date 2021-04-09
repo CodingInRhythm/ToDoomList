@@ -18,8 +18,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
         inputForm.value = "";
     })
 
-
-
     //Event Listener for Deleting Ploys
     const deleteTaskButton = document.querySelector(".delete_ploy");
     deleteTaskButton.addEventListener("click", async (ev) => {
@@ -28,9 +26,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         //2. Send DELETE requests for ploys
         await Promise.all(selected.map(async (ploy) => {
-            await fetch(`/app/ploys/${ploy.id}`, {
-                method: "DELETE"
-            })
+            await Ploys.deletePloy(ploy.id);
         }));
         //3. Redisplay ploy table
         await displayPloys(schemeId);
