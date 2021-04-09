@@ -84,7 +84,7 @@ let schemeId = 1;
 
     // Creates hidden ploy data divs that will display on right body
     const createPloyDataDiv = (ploy) => {
-        const mainBody = document.querySelector(".tasks-main");
+        const mainBody = document.querySelector(".ploy-data-container");
         const dataDiv = document.createElement("div");
         dataDiv.classList.add("ploy-data", "hidden")
         dataDiv.id = `data-${ploy.id}`;
@@ -176,7 +176,12 @@ let schemeId = 1;
             emptyDiv.classList.add("ploy", "empty");
             ployContainer.append(emptyDiv);
         }
-        //2. Call addPloyToContainer() for every returned ploy + create hidden data divs
+
+        //2.5 Clear ploy data divs
+        const mainBody = document.querySelector(".ploy-data-container");
+        mainBody.innerHTML = "";
+
+        //3. Call addPloyToContainer() for every returned ploy + create hidden data divs
         schemeObj.ploys.forEach((ploy) => {
             if(ploy.completed === completed){
                 addPloyToContainer(ploy);

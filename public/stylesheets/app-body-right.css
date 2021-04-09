@@ -49,11 +49,16 @@
     color: #d74a00;
 }
 
-.ploy-data{
+.ploy-data-container {
     height: 100%;
     width: 45%;
     position: absolute;
     right: 0px;
+}
+
+.ploy-data{
+    height: 100%;
+    width: 100%;
     /* z-index: 1; */
     background-color: white;
     padding-left: 15px;
