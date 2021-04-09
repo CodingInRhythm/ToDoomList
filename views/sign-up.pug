@@ -7,10 +7,10 @@ mixin field(label, fieldType, fieldName, fieldValue, require)
 block right
         div
             div.login-btn
-                h2 Already a member?
+                h2.signup-h2 Already a member?
                 a.villain__button-link(href="/users/login") Log In
             div.tdl-signup-form
-                h2 Sign up for free.
+                h2.signup-msg Sign up for free.
                 div.form-fields
                     form.villain__signup-form(action="/users/sign-up" method="post")
                         input(type="hidden" name="_csrf" value=csrfToken)
@@ -22,6 +22,6 @@ block right
                         +field("Password", "password", "password", user.password, true)
                         +field("Confirm Password", "password", "confirmPassword", "", true)
                         button(type="submit" id="register-btn") Sign Up!
-                        div.divider OR 
+                        div.divider OR
                     div.demo-user-btn
-                        button(type="submit" id="demo-user__btn") Demo User
+                        button(type="submit" id="demo-user__btn--sign-up") Demo User
