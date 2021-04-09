@@ -31,17 +31,51 @@ class Scheme {
         schemesObj.schemes.forEach(scheme => {
             let newDiv = document.createElement('div')
             let newSpan = document.createElement('span')
+            let button = document.createElement('button')
+
+            button.addEventListener('click', this.displayDropdown) 
+            newDiv.addEventListener('click', displayPloys)
+            
             newDiv.classList.add('scheme-entry')
             newSpan.innerText = scheme.name
             newDiv.appendChild(newSpan)
+            newDiv.appendChild(button)
             newDiv.setAttribute('id', `${scheme.id}`)
+
             newDiv.addEventListener('click', async () => {
                 const schemeObj = await Ploys.getPloys(scheme.id)
                 displayPloys(scheme.id)
                 updateSummary(schemeObj)
             })
+
             schemeDropdown.appendChild(newDiv)
         })
+    }
+
+    displayDropdown(e) {
+
+        
+        let optionsDiv = document.createElement('div');
+        let removeDiv = document.createElement('div');
+        let renameDiv = document.createElement('div');
+        
+        let spanRemove = document.createElement('span');
+        let spanRename = document.createElement('span');
+
+        spanRemove.innerText = 'Remove Text'
+        spanRename.innerText = 'Rename Text'
+
+        console.log(spanRename)
+        console.log(spanRemove)
+        
+        removeDiv.appendChild(spanRemove);
+        renameDiv.appendChild(spanRename);
+        
+        optionsDiv.appendChild(removeDiv);
+        optionsDiv.appendChild(renameDiv);
+        
+        e.target.parentNode.appendChild(optionsDiv);
+
     }
 
     clearSchemesUI = () => {
