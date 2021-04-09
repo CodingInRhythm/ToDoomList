@@ -35,7 +35,7 @@ class Scheme {
             let button = document.createElement('button')
 
             button.addEventListener('click', this.displayDropdown.bind(this))
-            newDiv.addEventListener('click', displayPloys)
+            // newDiv.addEventListener('click', displayPloys)
 
             newDiv.classList.add('scheme-entry')
             newSpan.innerText = scheme.name
