@@ -6,7 +6,7 @@
 
 
 div.un-scrolled {
-    height: 100vh;
+    height: 65rem;
     width: 100vw;
     animation: .5s linear;
     background-color: #0060bf;
