@@ -28,11 +28,20 @@ font-family: 'Sue Ellen Francisco', cursive;
     margin: 15px;
 }
 
-.login-btn h2 {
+.login-btn .signup-h2 {
     font-weight: 900;
     display: inline-block;
     position: relative;
     left: 85px;
+    font-size: 1.25rem;
+    line-height: 120%;
+}
+
+.login-btn .login-h2 {
+    font-weight: 900;
+    display: inline-block;
+    position: relative;
+    left: 125px;
     font-size: 1.25rem;
     line-height: 120%;
 }
@@ -68,8 +77,17 @@ font-family: 'Sue Ellen Francisco', cursive;
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
 }
-.tdl-signup-form h2 {
+.tdl-signup-form .signup-msg {
     font-size: 35px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    margin-bottom: 23px;
+    position: relative;
+    left: 50px;
+}
+
+.tdl-signup-form .login-msg {
+    font-size: 30px;
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
     margin-bottom: 23px;
@@ -149,7 +167,7 @@ font-family: 'Sue Ellen Francisco', cursive;
 
   /*? The demo user button */
 
-#demo-user__btn {
+#demo-user__btn--sign-up {
     box-sizing: border-box;
     position: relative;
     left: 58px;
@@ -157,15 +175,60 @@ font-family: 'Sue Ellen Francisco', cursive;
     background-color: rgba(52, 238, 145, 0.863);
     border-radius: 5px;
     color: rgba(0, 0, 0, 0.5);
-    width: 165%;
+    width: 164%;
     height: 2.85em;
     font-size: 26px;
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
 }
 
-#demo-user__btn:hover {
+#demo-user__btn--login {
+    box-sizing: border-box;
+    position: relative;
+    left: 60px;
+    border: 3px solid rgba(0, 0, 0, 0.65);
+    background-color: rgba(52, 238, 145, 0.863);
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.5);
+    width: 336%;
+    height: 2.85em;
+    font-size: 26px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+}
+
+#demo-user__btn--sign-up:hover {
     cursor: pointer;
     background-color: rgba(13, 235, 131, 0.863);
+    box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+#demo-user__btn--login:hover {
+    cursor: pointer;
+    background-color: rgba(13, 235, 131, 0.863);
+    box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+/*? Sign-up Button */
+
+#sign-up__btn {
+    box-sizing: border-box;
+    position: relative;
+    left: 50px;
+    border: 3px solid rgba(0, 0, 0, 0.65);
+    background-color: rgba(1, 90, 255, 0.705);
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.5);
+    width: 175%;
+    height: 2.55em;
+    font-size: 23px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+}
+
+#sign-up__btn:hover {
+    cursor: pointer;
+    background-color: rgba(54, 117, 235, 0.863);
     box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.2);
 }

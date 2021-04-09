@@ -5,11 +5,16 @@ mixin field(label, fieldType, fieldName, fieldValue, require)
         input.villain__input-field(type=fieldType name=fieldName value=fieldValue required=require placeholder=label)
 
 block right
-    a.villain__button-link(href="/users/sign-up") Sign Up
-
-    h2 Been here before? Welcome back!
-    form.villain__login-form(action="/users/login" method="post")
-        input(type="hidden" name="_csrf" value=csrfToken)
-        +field("Username", "text", "userName", userName, true)
-        +field("Password", "password", "password", password, true)
-        button(type="submit") Login
+    div.login-btn
+                h2.login-h2 New to the site?
+                a.villain__button-link(href="/users/sign-up") Sign Up For Free
+    div.tdl-signup-form
+        h2.login-msg Been here before? Welcome back!
+        form.villain__login-form(action="/users/login" method="post")
+            input(type="hidden" name="_csrf" value=csrfToken)
+            +field("Username", "text", "userName", userName, true)
+            +field("Password", "password", "password", password, true)
+            button(type="submit" id="sign-up__btn") Login
+            div.divider OR
+        div.demo-user-btn
+            button(type="submit" id="demo-user__btn--login") Demo User
