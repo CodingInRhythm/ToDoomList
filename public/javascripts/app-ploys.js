@@ -1,195 +1,8 @@
 let schemeId = 1;
-// window.addEventListener("DOMContentLoaded", (e) => {
-    // Takes in Ploy information and Appends Div to Ploy List
-    //Current takes in object with {id: <id> name: <name>, dueAt: <dueAt>}
-    const addPloyToContainer = (ploy) => {
-        const ployContainer = document.querySelector(".ploy-container");
+window.addEventListener("DOMContentLoaded", (e) => {
 
-        let newPloyDiv = document.querySelector(".ploy.empty");
-        if(newPloyDiv){
-            newPloyDiv.classList.remove("empty");
-        }
-        else{
-            newPloyDiv = document.createElement("div");
-            newPloyDiv.classList.add("ploy");
-            ployContainer.append(newPloyDiv);
-        }
-        newPloyDiv.id = ploy.id;    //Adding ploy id to div for access later
 
-        const ployDragBar = document.createElement("span");
-        ployDragBar.classList.add("ploy__drag-bar");
-        newPloyDiv.append(ployDragBar);
 
-        const ployCheckBox = document.createElement("input");
-        ployCheckBox.classList.add("ploy__checkbox");
-        ployCheckBox.setAttribute("type", "checkbox");
-        newPloyDiv.append(ployCheckBox);
-
-        const ployDesc = document.createElement("span");
-        ployDesc.classList.add("ploy__ploy-desc");
-        ployDesc.innerHTML = ploy.name;
-        newPloyDiv.append(ployDesc);
-
-        const ployDueDate = document.createElement("span");
-        ployDueDate.classList.add("ploy__due-date");
-        ployDueDate.innerHTML = ploy.dueAt;
-        newPloyDiv.append(ployDueDate);
-
-        //If click anywhere in div, will check/uncheck checkbox, display info on right
-        newPloyDiv.addEventListener("click", (ev) => {
-            ev.stopPropagation();
-            let targetId = ev.target.id;
-            //If it clicks child div
-            if(targetId === ""){
-                targetId = ev.target.parentElement.id;
-            }
-            if(ev.target.className !== "ploy__checkbox"){
-                //If other divs are selected, uncheck, else just toggle
-                let selected = getSelectedPloys();
-                if(selected.length >= 1){
-                    if(selected.length === 1 && selected[0].id === targetId){
-                        ployCheckBox.checked = false;
-                    } else{
-                        selected.forEach(ploy => {
-                            const checkBox = ploy.querySelector(".ploy__checkbox");
-                            checkBox.checked = false;
-                        })
-                        ployCheckBox.checked = true;
-                    }
-                }
-                else{
-                    ployCheckBox.checked = !ployCheckBox.checked;
-                }
-            }
-            displayPloyData(ployCheckBox.checked, targetId);
-        })
-    }
-
-    //Will toggle ploy data div on right part of body
-    //Display argument should be boolean of whether to show or hide
-    //id argument should be ployId
-    const displayPloyData = (display, id) => {
-        const shownDataDiv = document.querySelector(".ploy-data:not(.hidden)");
-        if(shownDataDiv && shownDataDiv.id !== `data-${id}`){
-            shownDataDiv.classList.add("hidden");
-        }
-        const ployDataDiv = document.getElementById(`data-${id}`);
-        if(display){
-            ployDataDiv.classList.remove("hidden");
-        }
-        else{
-            ployDataDiv.classList.add("hidden");
-        }
-    }
-
-    // Creates hidden ploy data divs that will display on right body
-    const createPloyDataDiv = (ploy) => {
-        const mainBody = document.querySelector(".ploy-data-container");
-        const dataDiv = document.createElement("div");
-        dataDiv.classList.add("ploy-data", "hidden")
-        dataDiv.id = `data-${ploy.id}`;
-        mainBody.append(dataDiv);
-
-        //Creating Name/Rename ploy form
-        const nameForm = document.createElement("form");
-        nameForm.classList.add("ploy-data__name-form");
-
-        const nameInput = document.createElement("input");
-        nameInput.setAttribute("type", "text");
-        nameInput.value = ploy.name;
-
-        const renameButton = document.createElement("button");
-        renameButton.setAttribute("type", "submit");
-        renameButton.innerHTML = "Rename";
-        renameButton.addEventListener("click", async (ev) => {
-            ev.preventDefault();
-            let newName = nameInput.value;
-            //Still works even without passing in completed?
-            const ployObj = {name: newName, schemeId: schemeId}
-            await fetch(`/app/ploys/${ploy.id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(ployObj)
-            })
-            await displayPloys(schemeId);
-        })
-        nameForm.append(nameInput);
-        nameForm.append(renameButton);
-
-        //Due date display
-        const dueDiv = document.createElement("div");
-        dueDiv.classList.add("ploy-data__data-field");
-        const dueLabelSpan = document.createElement("span");
-        dueLabelSpan.classList.add("ploy-data__data-field__label");
-        dueLabelSpan.innerHTML = "Due: ";
-        const dueAtSpan = document.createElement("span");
-        dueAtSpan.classList.add("ploy-data__data-field__data");
-        if(ploy.dueAt){
-            dueAtSpan.innerHTML = ploy.dueAt;
-        } else {
-            dueAtSpan.innerHTML = "Never";
-        }
-
-        dueDiv.append(dueLabelSpan);
-        dueDiv.append(dueAtSpan);
-
-        //Add scheme div
-        const schemeDiv = document.createElement("div");
-        schemeDiv.classList.add("ploy-data__data-field");
-        const schemeLabelSpan = document.createElement("span");
-        schemeLabelSpan.innerHTML = "Scheme: ";
-        schemeLabelSpan.classList.add("ploy-data__data-field__label");
-        const schemeSpan = document.createElement("span");
-        schemeSpan.innerHTML = ploy.schemeId;     //Should figure out how to get Scheme name
-        schemeSpan.classList.add("ploy-data__data-field__data");
-        schemeDiv.append(schemeLabelSpan);
-        schemeDiv.append(schemeSpan);
-
-        dataDiv.append(nameForm);
-        dataDiv.append(dueDiv);
-        dataDiv.append(schemeDiv);
-    }
-
-    //Might need to modify for search
-    //Not sure how userId will be used yet
-
-    const displayPloys = async (e = 1) => {
-        //Steps
-        //0. Check if on completed tab or not
-        const activeTab = document.querySelector(".complete-tab.tab-active");
-        const completed = (activeTab.innerHTML === "Completed");
-
-        //1. Send GET request using params to query ploys
-        const scheme = await fetch(`/app/schemes/${typeof e === "number" ? e : e.target.parentNode.id}`);
-        const schemeObj = await scheme.json();
-
-        console.log(schemeObj.scheme.id);
-        //Note: quick hack, will probably want to change
-        schemeId = schemeObj.scheme.id;
-
-        //2. Empty out ploy-container
-        const ployContainer = document.querySelector(".ploy-container");
-        ployContainer.innerHTML = "";
-        for(let i = 0; i < 10; i++){
-            const emptyDiv = document.createElement("div");
-            emptyDiv.classList.add("ploy", "empty");
-            ployContainer.append(emptyDiv);
-        }
-
-        //2.5 Clear ploy data divs
-        const mainBody = document.querySelector(".ploy-data-container");
-        mainBody.innerHTML = "";
-
-        //3. Call addPloyToContainer() for every returned ploy + create hidden data divs
-        schemeObj.ploys.forEach((ploy) => {
-            if(ploy.completed === completed){
-                addPloyToContainer(ploy);
-                createPloyDataDiv(ploy);
-            }
-        });
-    }
 
     //Logic for Adding Ploys from Form
     const addPloyForm = document.querySelector(".add-ploy");
@@ -213,18 +26,7 @@ let schemeId = 1;
         inputForm.value = "";
     })
 
-    // Helper function, returns all Ploys that have checked Checkboxes
-    const getSelectedPloys = () => {
-        const allPloys = document.querySelectorAll(".ploy:not(.empty)");
-        let selected = [];
-        allPloys.forEach(ploy => {
-            const checkBox = ploy.querySelector(".ploy__checkbox");
-            if(checkBox.checked){
-                selected.push(ploy);
-            }
-        })
-        return selected;
-    }
+
 
     //Event Listener for Deleting Ploys
     const deleteTaskButton = document.querySelector(".delete_ploy");
@@ -319,8 +121,212 @@ let schemeId = 1;
     });
 
     displayPloys(1);
-// })
+})
 
+// Takes in Ploy information and Appends Div to Ploy List
+    //Current takes in object with {id: <id> name: <name>, dueAt: <dueAt>}
+    const addPloyToContainer = (ploy) => {
+        const ployContainer = document.querySelector(".ploy-container");
+
+        let newPloyDiv = document.querySelector(".ploy.empty");
+        if(newPloyDiv){
+            newPloyDiv.classList.remove("empty");
+        }
+        else{
+            newPloyDiv = document.createElement("div");
+            newPloyDiv.classList.add("ploy");
+            ployContainer.append(newPloyDiv);
+        }
+        newPloyDiv.id = ploy.id;    //Adding ploy id to div for access later
+
+        const ployDragBar = document.createElement("span");
+        ployDragBar.classList.add("ploy__drag-bar");
+        newPloyDiv.append(ployDragBar);
+
+        const ployCheckBox = document.createElement("input");
+        ployCheckBox.classList.add("ploy__checkbox");
+        ployCheckBox.setAttribute("type", "checkbox");
+        newPloyDiv.append(ployCheckBox);
+
+        const ployDesc = document.createElement("span");
+        ployDesc.classList.add("ploy__ploy-desc");
+        ployDesc.innerHTML = ploy.name;
+        newPloyDiv.append(ployDesc);
+
+        const ployDueDate = document.createElement("span");
+        ployDueDate.classList.add("ploy__due-date");
+        ployDueDate.innerHTML = ploy.dueAt;
+        newPloyDiv.append(ployDueDate);
+
+        //If click anywhere in div, will check/uncheck checkbox, display info on right
+        newPloyDiv.addEventListener("click", (ev) => {
+            ev.stopPropagation();
+            let targetId = ev.target.id;
+            //If it clicks child div
+            if(targetId === ""){
+                targetId = ev.target.parentElement.id;
+            }
+            if(ev.target.className !== "ploy__checkbox"){
+                //If other divs are selected, uncheck, else just toggle
+                let selected = getSelectedPloys();
+                if(selected.length >= 1){
+                    if(selected.length === 1 && selected[0].id === targetId){
+                        ployCheckBox.checked = false;
+                    } else{
+                        selected.forEach(ploy => {
+                            const checkBox = ploy.querySelector(".ploy__checkbox");
+                            checkBox.checked = false;
+                        })
+                        ployCheckBox.checked = true;
+                    }
+                }
+                else{
+                    ployCheckBox.checked = !ployCheckBox.checked;
+                }
+            }
+            displayPloyData(ployCheckBox.checked, targetId);
+        })
+    }
+
+
+//Might need to modify for search
+    //Not sure how userId will be used yet
+
+    const displayPloys = async (e = 1) => {
+        //Steps
+        //0. Check if on completed tab or not
+        const activeTab = document.querySelector(".complete-tab.tab-active");
+        const completed = (activeTab.innerHTML === "Completed");
+
+        //1. Send GET request using params to query ploys
+        const scheme = await fetch(`/app/schemes/${typeof e === "number" ? e : e.target.parentNode.id}`);
+        const schemeObj = await scheme.json();
+
+        console.log(schemeObj.scheme.id);
+        //Note: quick hack, will probably want to change
+        schemeId = schemeObj.scheme.id;
+
+        //2. Empty out ploy-container
+        const ployContainer = document.querySelector(".ploy-container");
+        ployContainer.innerHTML = "";
+        for(let i = 0; i < 10; i++){
+            const emptyDiv = document.createElement("div");
+            emptyDiv.classList.add("ploy", "empty");
+            ployContainer.append(emptyDiv);
+        }
+
+        //2.5 Clear ploy data divs
+        const mainBody = document.querySelector(".ploy-data-container");
+        mainBody.innerHTML = "";
+
+        //3. Call addPloyToContainer() for every returned ploy + create hidden data divs
+        schemeObj.ploys.forEach((ploy) => {
+            if(ploy.completed === completed){
+                addPloyToContainer(ploy);
+                createPloyDataDiv(ploy);
+            }
+        });
+    }
+
+    // Helper function, returns all Ploys that have checked Checkboxes
+    const getSelectedPloys = () => {
+        const allPloys = document.querySelectorAll(".ploy:not(.empty)");
+        let selected = [];
+        allPloys.forEach(ploy => {
+            const checkBox = ploy.querySelector(".ploy__checkbox");
+            if(checkBox.checked){
+                selected.push(ploy);
+            }
+        })
+        return selected;
+    }
+
+    //Will toggle ploy data div on right part of body
+    //Display argument should be boolean of whether to show or hide
+    //id argument should be ployId
+    const displayPloyData = (display, id) => {
+        const shownDataDiv = document.querySelector(".ploy-data:not(.hidden)");
+        if(shownDataDiv && shownDataDiv.id !== `data-${id}`){
+            shownDataDiv.classList.add("hidden");
+        }
+        const ployDataDiv = document.getElementById(`data-${id}`);
+        if(display){
+            ployDataDiv.classList.remove("hidden");
+        }
+        else{
+            ployDataDiv.classList.add("hidden");
+        }
+    }
+
+    // Creates hidden ploy data divs that will display on right body
+    const createPloyDataDiv = (ploy) => {
+        const mainBody = document.querySelector(".ploy-data-container");
+        const dataDiv = document.createElement("div");
+        dataDiv.classList.add("ploy-data", "hidden")
+        dataDiv.id = `data-${ploy.id}`;
+        mainBody.append(dataDiv);
+
+        //Creating Name/Rename ploy form
+        const nameForm = document.createElement("form");
+        nameForm.classList.add("ploy-data__name-form");
+
+        const nameInput = document.createElement("input");
+        nameInput.setAttribute("type", "text");
+        nameInput.value = ploy.name;
+
+        const renameButton = document.createElement("button");
+        renameButton.setAttribute("type", "submit");
+        renameButton.innerHTML = "Rename";
+        renameButton.addEventListener("click", async (ev) => {
+            ev.preventDefault();
+            let newName = nameInput.value;
+            //Still works even without passing in completed?
+            const ployObj = {name: newName, schemeId: schemeId}
+            await fetch(`/app/ploys/${ploy.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(ployObj)
+            })
+            await displayPloys(schemeId);
+        })
+        nameForm.append(nameInput);
+        nameForm.append(renameButton);
+
+        //Due date display
+        const dueDiv = document.createElement("div");
+        dueDiv.classList.add("ploy-data__data-field");
+        const dueLabelSpan = document.createElement("span");
+        dueLabelSpan.classList.add("ploy-data__data-field__label");
+        dueLabelSpan.innerHTML = "Due: ";
+        const dueAtSpan = document.createElement("span");
+        dueAtSpan.classList.add("ploy-data__data-field__data");
+        if(ploy.dueAt){
+            dueAtSpan.innerHTML = ploy.dueAt;
+        } else {
+            dueAtSpan.innerHTML = "Never";
+        }
+
+        dueDiv.append(dueLabelSpan);
+        dueDiv.append(dueAtSpan);
+
+        //Add scheme div
+        const schemeDiv = document.createElement("div");
+        schemeDiv.classList.add("ploy-data__data-field");
+        const schemeLabelSpan = document.createElement("span");
+        schemeLabelSpan.innerHTML = "Scheme: ";
+        schemeLabelSpan.classList.add("ploy-data__data-field__label");
+        const schemeSpan = document.createElement("span");
+        schemeSpan.innerHTML = ploy.schemeId;     //Should figure out how to get Scheme name
+        schemeSpan.classList.add("ploy-data__data-field__data");
+        schemeDiv.append(schemeLabelSpan);
+        schemeDiv.append(schemeSpan);
+
+        dataDiv.append(nameForm);
+        dataDiv.append(dueDiv);
+        dataDiv.append(schemeDiv);
+    }
 
 export {
     displayPloys,
