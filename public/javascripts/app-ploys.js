@@ -1,7 +1,11 @@
 import Ploys from "./ploys.js";
+import newScheme from "./schemes.js";
 import { updateSummaryName, updatePloyCounter } from "./updateSummary.js";
 
+
+//Track what scheme we're on
 let schemeId = 1;
+let searchQuery = "";
 window.addEventListener("DOMContentLoaded", (e) => {
     //Logic for Adding Ploys from Form
     const addPloyForm = document.querySelector(".add-ploy");
@@ -13,10 +17,17 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         const addPloy = {name, dueAt, schemeId: schemeId, completed: false};
         const postPloy = await Ploys.createPloy(addPloy);
+
+        const scheme = await newScheme.getScheme(schemeId);
         const schemeObj = await Ploys.getPloys(schemeId);
-        addPloyToContainer(postPloy.ploy);
-        createPloyDataDiv(postPloy.ploy);
+        //Ploy is incomplete by default, only update page if on incomplete tab
+        const activeTab = document.querySelector(".complete-tab.tab-active");
+        if(activeTab.innerHTML === "Incomplete"){
+            addPloyToContainer(postPloy.ploy);
+            createPloyDataDiv(postPloy.ploy, scheme.name);
+        }
         updatePloyCounter(schemeObj);
+
         inputForm.value = "";
     })
 
@@ -84,31 +95,13 @@ window.addEventListener("DOMContentLoaded", (e) => {
       //1. Fetch all queried ploys
       const input = document.querySelector("#search-bar");
       const string = input.value;
+      searchQuery = string;
 
       const ploysObj = await Ploys.searchPloys(string);
 
-      const activeTab = document.querySelector(".complete-tab.tab-active");
-      const completed = activeTab.innerHTML === "Completed";
+      console.log(ploysObj);
 
-      //2. Empty out ploy-container
-      const ployContainer = document.querySelector(".ploy-container");
-      ployContainer.innerHTML = "";
-      for (let i = 0; i < 10; i++) {
-        const emptyDiv = document.createElement("div");
-        emptyDiv.classList.add("ploy", "empty");
-        ployContainer.append(emptyDiv);
-      }
-
-      //2.5 Clear ploy data divs
-      const mainBody = document.querySelector(".ploy-data-container");
-      mainBody.innerHTML = "";
-      //2. Call addPloyToContainer() for every returned ploy
-      ploysObj.ploys.forEach((ploy) => {
-         {
-             addPloyToContainer(ploy);
-             createPloyDataDiv(ploy);
-        }
-      });
+      await displayPloys({scheme: null, ploys: ploysObj.ploys});
     });
     //Default display?
     // let schemesTest = await Ploys.getPloys(1);
@@ -180,25 +173,12 @@ window.addEventListener("DOMContentLoaded", (e) => {
         })
     }
 
-
-//Might need to modify for search
-    //Not sure how userId will be used yet
-
-    const displayPloys = (schemeObj) => {
+    //Scheme object should be an object containing {scheme, ploys} (result of calling Ploys.getPloys());
+    const displayPloys = async (schemeObj) => {
         //Steps
         //0. Check if on completed tab or not
         const activeTab = document.querySelector(".complete-tab.tab-active");
         const completed = (activeTab.innerHTML === "Completed");
-
-        //1. Send GET request using params to query ploys
-        // const schemeObj = await Ploys.getPloys(e);
-        //Placeholder, remove once scheme call is changed
-        // if(typeof schemeObj === "number"){
-        //     schemeObj = await Ploys.getPloys(schemeObj);
-        // }
-
-        //Note: quick hack, will probably want to change
-        schemeId = schemeObj.scheme.id;
 
         //2. Empty out ploy-container
         const ployContainer = document.querySelector(".ploy-container");
@@ -213,13 +193,31 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const mainBody = document.querySelector(".ploy-data-container");
         mainBody.innerHTML = "";
 
-        //3. Call addPloyToContainer() for every returned ploy + create hidden data divs
-        schemeObj.ploys.forEach((ploy) => {
-            if(ploy.completed === completed){
-                addPloyToContainer(ploy);
-                createPloyDataDiv(ploy);
-            }
-        });
+        //If called after selecting a scheme
+        if(schemeObj.scheme){
+            //Note: quick hack, will probably want to change
+            schemeId = schemeObj.scheme.id;
+
+            //3. Call addPloyToContainer() for every returned ploy + create hidden data divs
+            schemeObj.ploys.forEach((ploy) => {
+                if(ploy.completed === completed){
+                    addPloyToContainer(ploy);
+                    createPloyDataDiv(ploy, schemeObj.scheme.name);
+                }
+            });
+        } else{     //Called by search function
+            //3. Call addPloyToContainer() for every returned ploy
+            Promise.all(schemeObj.ploys.map(async (ploy) => {
+               {
+                //    if(ploy.completed === completed){
+                      addPloyToContainer(ploy);
+                      const scheme = await newScheme.getScheme(ploy.schemeId);
+                      createPloyDataDiv(ploy, scheme.scheme.name);
+                //    }
+              }
+            }));
+        }
+
     }
 
     // Helper function, returns all Ploys that have checked Checkboxes
@@ -253,7 +251,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
     }
 
     // Creates hidden ploy data divs that will display on right body
-    const createPloyDataDiv = (ploy) => {
+    const createPloyDataDiv = (ploy, schemeName) => {
         const mainBody = document.querySelector(".ploy-data-container");
         const dataDiv = document.createElement("div");
         dataDiv.classList.add("ploy-data", "hidden")
@@ -308,14 +306,28 @@ window.addEventListener("DOMContentLoaded", (e) => {
         schemeLabelSpan.innerHTML = "Scheme: ";
         schemeLabelSpan.classList.add("ploy-data__data-field__label");
         const schemeSpan = document.createElement("span");
-        schemeSpan.innerHTML = ploy.schemeId;     //Should figure out how to get Scheme name
+        schemeSpan.innerHTML = schemeName;     //Should figure out how to get Scheme name
         schemeSpan.classList.add("ploy-data__data-field__data");
         schemeDiv.append(schemeLabelSpan);
         schemeDiv.append(schemeSpan);
 
+        //Add complete div (if completed)
+        const completeDiv = document.createElement("div");
+        completeDiv.classList.add("ploy-data__data-field");
+        const completeSpan = document.createElement("span");
+        completeSpan.classList.add("ploy-data__data-field__label");
+        if(ploy.completed) {
+            completeSpan.innerHTML = "Completed"
+        }
+        else{
+            completeSpan.innerHTML = "Incomplete"
+        }
+        completeDiv.append(completeSpan);
+
         dataDiv.append(nameForm);
         dataDiv.append(dueDiv);
         dataDiv.append(schemeDiv);
+        dataDiv.append(completeDiv);
     }
 
 export {
