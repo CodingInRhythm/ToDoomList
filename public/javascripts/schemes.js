@@ -1,6 +1,7 @@
 import { displayPloys } from './app-ploys.js'
 import Ploys from "./ploys.js";
-import {updateSummary} from "./updateSummary.js"
+import { updateSummary } from "./updateSummary.js"
+
 class Scheme {
     constructor() {
 
@@ -12,7 +13,7 @@ class Scheme {
     }
 
 
-    getSchemes = async () =>  {
+    getSchemes = async () => {
         // fetches all schemes and make javascript object from response
         const schemes = await fetch('app/schemes')
         return await schemes.json();
@@ -33,9 +34,9 @@ class Scheme {
             let newSpan = document.createElement('span')
             let button = document.createElement('button')
 
-            button.addEventListener('click', this.displayDropdown) 
+            button.addEventListener('click', this.displayDropdown.bind(this))
             newDiv.addEventListener('click', displayPloys)
-            
+
             newDiv.classList.add('scheme-entry')
             newSpan.innerText = scheme.name
             newDiv.appendChild(newSpan)
@@ -54,28 +55,52 @@ class Scheme {
 
     displayDropdown(e) {
 
-        
+
         let optionsDiv = document.createElement('div');
         let removeDiv = document.createElement('div');
         let renameDiv = document.createElement('div');
-        
+
+
+
         let spanRemove = document.createElement('span');
         let spanRename = document.createElement('span');
 
-        spanRemove.innerText = 'Remove Text'
-        spanRename.innerText = 'Rename Text'
+        spanRemove.innerText = 'Remove Scheme'
+        spanRename.innerText = 'Rename Scheme'
 
-        console.log(spanRename)
         console.log(spanRemove)
-        
+        console.log(spanRename)
+
+        spanRemove.addEventListener('click', this.showRemoveModal)
+        spanRename.addEventListener('click', this.showRenameModal)
+
         removeDiv.appendChild(spanRemove);
         renameDiv.appendChild(spanRename);
-        
+
         optionsDiv.appendChild(removeDiv);
         optionsDiv.appendChild(renameDiv);
-        
+
+        // console.log(e.target.parentNode)
         e.target.parentNode.appendChild(optionsDiv);
 
+    }
+
+    showRemoveModal = async (e) => {
+        e.stopPropagation()
+
+        console.log(e.target.parentNode.parentNode.parentNode, 'und')
+
+        await fetch(`app/schemes/${e.target.parentNode.parentNode.parentNode.id}`, {
+            method: "DELETE"
+        })
+
+        this.displaySchemes()
+
+    }
+
+    showRenameModal = (e) => {
+        e.stopPropagation()
+        console.log(e, 'rename');
     }
 
     clearSchemesUI = () => {
