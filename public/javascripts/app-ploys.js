@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             await Ploys.deletePloy(ploy.id);
         }));
         //3. Redisplay ploy table
-        const schemeObj = await Ploys.getPloys(e);
+        const schemeObj = await Ploys.getPloys(schemeId);
         await displayPloys(schemeObj);
     })
 
@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             await Ploys.updatePloy(ploy.id, ployObj);
         }));
         //3. Redisplay ploy table
-        const schemeObj = await Ploys.getPloys(e);
+        const schemeObj = await Ploys.getPloys(schemeId);
         await displayPloys(schemeObj);
     })
 
@@ -67,7 +67,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             }
 
             //Check if tab was changed for optimization?
-            const schemeObj = await Ploys.getPloys(e);
+            const schemeObj = await Ploys.getPloys(schemeId);
             await displayPloys(schemeObj);
         })
     })
@@ -106,6 +106,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         }
       });
     });
+    //Default display?
     // let schemesTest = await Ploys.getPloys(1);
     // displayPloys(schemesTest);
 })
@@ -188,9 +189,9 @@ window.addEventListener("DOMContentLoaded", (e) => {
         //1. Send GET request using params to query ploys
         // const schemeObj = await Ploys.getPloys(e);
         //Placeholder, remove once scheme call is changed
-        if(typeof schemeObj === "number"){
-            schemeObj = await Ploys.getPloys(schemeObj);
-        }
+        // if(typeof schemeObj === "number"){
+        //     schemeObj = await Ploys.getPloys(schemeObj);
+        // }
 
 
         //Note: quick hack, will probably want to change
@@ -274,7 +275,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             const ployObj = {name: newName, schemeId: schemeId}
             await Ploys.updatePloy(ploy.id, ployObj);
 
-            const schemeObj = await Ploys.getPloys(e);
+            const schemeObj = await Ploys.getPloys(schemeId);
             await displayPloys(schemeObj);
         })
         nameForm.append(nameInput);
