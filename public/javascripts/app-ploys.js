@@ -201,11 +201,11 @@ window.addEventListener("DOMContentLoaded", (e) => {
             //3. Call addPloyToContainer() for every returned ploy
             Promise.all(schemeObj.ploys.map(async (ploy) => {
                {
-                   if(ploy.completed === completed){
+                //    if(ploy.completed === completed){
                       addPloyToContainer(ploy);
                       const scheme = await newScheme.getScheme(ploy.schemeId);
                       createPloyDataDiv(ploy, scheme.scheme.name);
-                   }
+                //    }
               }
             }));
         }
@@ -303,9 +303,23 @@ window.addEventListener("DOMContentLoaded", (e) => {
         schemeDiv.append(schemeLabelSpan);
         schemeDiv.append(schemeSpan);
 
+        //Add complete div (if completed)
+        const completeDiv = document.createElement("div");
+        completeDiv.classList.add("ploy-data__data-field");
+        const completeSpan = document.createElement("span");
+        completeSpan.classList.add("ploy-data__data-field__label");
+        if(ploy.completed) {
+            completeSpan.innerHTML = "Completed"
+        }
+        else{
+            completeSpan.innerHTML = "Incomplete"
+        }
+        completeDiv.append(completeSpan);
+
         dataDiv.append(nameForm);
         dataDiv.append(dueDiv);
         dataDiv.append(schemeDiv);
+        dataDiv.append(completeDiv);
     }
 
 export {
