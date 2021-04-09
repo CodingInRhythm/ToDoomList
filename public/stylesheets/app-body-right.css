@@ -1,3 +1,7 @@
+.hidden{
+    display: none;
+}
+
 .task-summary{
     padding-left: 30px;
     padding-top: 50px;
@@ -43,4 +47,48 @@
 
 #overdue{
     color: #d74a00;
+}
+
+.ploy-data{
+    height: 100%;
+    width: 45%;
+    position: absolute;
+    right: 0px;
+    /* z-index: 1; */
+    background-color: white;
+    padding-left: 15px;
+    padding-top: 40px;
+}
+
+.ploy-data__name-form{
+    display: flex;
+    width: 95%;
+    height: 30px;
+}
+
+.ploy-data__name-form > input{
+    border: 1px grey solid;
+    border-radius: 5px;
+    width: 90%;
+}
+
+.ploy-data__name-form > input:focus {
+    outline: none !important;
+    border: 1px solid rgba(102, 175, 233, 0.6);
+    box-shadow: 0px 0px 4px rgba(102, 175, 233, 0.6);
+}
+
+.ploy-data__data-field{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.ploy-data__data-field__label{
+    font-size: 12px;
+    color:rgba(0, 0, 0, 0.6);
+    font-weight: 600;
+}
+
+.ploy-data__data-field__data{
+    font-size: 12px;
 }

@@ -3,6 +3,15 @@ mixin summaryBox (number, summaryId)
         .scheme-summary-number(id=summaryId)= number
         .scheme-summary-text= summaryId
 
+//Divs displaying data for ploys, for reference
+mixin ployDataDiv (ploy_name, due_at)
+    .ploy-data
+        form.ploy-data__name-form
+            input(type="text" value=ploy_name)
+            button(type="submit") Rename
+        .ploy-data__data-field
+            span.ploy-data__data-field__label Due:
+            span.ploy-data__data-field__data= due_at
 .task-summary
     h3.list-name Put List Name Here
     .scheme-summary
