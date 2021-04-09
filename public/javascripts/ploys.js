@@ -24,6 +24,16 @@ class Ploys{
         return postPloy;
     }
 
+    static updatePloy = async (ployId, ployObj) => {
+        return await fetch(`/app/ploys/${ployId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(ployObj)
+        })
+    }
+
     static searchPloys = async (searchString) => {
         const ploys = await fetch(`/app/search/${searchString}`);
         const ploysObj = await ploys.json();

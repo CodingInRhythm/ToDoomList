@@ -42,13 +42,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const markComplete =markCompleteButton.innerHTML === "Completed"
         await Promise.all(selected.map(async (ploy) => {
             const ployObj = {name: ploy.name, schemeId: schemeId, completed: markComplete}
-            await fetch(`/app/ploys/${ploy.id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(ployObj)
-            })
+            await Ploys.updatePloy(ploy.id, ployObj);
         }));
         //3. Redisplay ploy table
         await displayPloys(schemeId);
@@ -270,13 +264,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             let newName = nameInput.value;
             //Still works even without passing in completed?
             const ployObj = {name: newName, schemeId: schemeId}
-            await fetch(`/app/ploys/${ploy.id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(ployObj)
-            })
+            await Ploys.updatePloy(ploy.id, ployObj);
             await displayPloys(schemeId);
         })
         nameForm.append(nameInput);
