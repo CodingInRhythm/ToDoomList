@@ -4,7 +4,30 @@ import { updateSummaryName, updatePloyCounter } from "./updateSummary.js"
 
 class Scheme {
     constructor() {
+        this.dropDownArrow()
+    }
 
+    dropDownArrow() {
+        let dropDownButton = document.querySelector('#schemes-arrow')
+        let arrowEle = document.querySelector('#schemes-arrow-i')
+        console.log(arrowEle)
+        arrowEle.classList.add('rotate-arrow')
+
+        dropDownButton.addEventListener('click', this.toggleSchemes) 
+    }
+
+    toggleSchemes() {
+        let arrowEle = document.querySelector('#schemes-arrow-i')
+        let schemeList = document.querySelector('.schemes-list')
+        if (schemeList.classList.contains('hidden')) {
+            arrowEle.classList.remove('rotate-arrow')
+            schemeList.classList.remove('hidden')
+        } else {
+            arrowEle.classList.add('rotate-arrow')
+            schemeList.classList.add('hidden')
+        }
+        console.log(arrowEle)
+        // schemes = document.getElementsByClassName('.scheme')
     }
 
     getScheme = async (id) => {
@@ -26,6 +49,7 @@ class Scheme {
 
         // gets HTML div to add schemes to.
         const schemeDropdown = document.querySelector('.schemes-list')
+        schemeDropdown.classList.add('hidden')
 
         // iterates over each scheme making a div element attached to page
         schemesObj.schemes.forEach(scheme => {

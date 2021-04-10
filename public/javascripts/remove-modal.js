@@ -8,12 +8,9 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     const exitModalButton = document.getElementById("exit-remove-modal")
 
     addListButton.addEventListener("click", async (e) => {
-        // const listField = document.getElementById("remove-modal-form")
+
         const btnRename = document.querySelector(".remove-list");
-        // console.log(btnRename.id, `AHHHHHHHHHHHHHHHHHHHHHHHH`);
-        // console.log(listField)
-        // const name = listField.value
-        // console.log(name)
+
         await fetch(`app/schemes/${e.target.id}`, {
             method: "DELETE"
         })

@@ -34,8 +34,12 @@
    padding-right: 10px;
 }
  
-.left-container-ploys > a > i,
+/* .left-container-ploys > a > i,
 .left-container-schemes > a > i {
+   transform: rotate(0deg);
+} */
+
+.rotate-arrow {
    transform: rotate(270deg);
 }
  
