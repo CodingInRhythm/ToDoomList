@@ -1,10 +1,12 @@
 //- block navbar
 .navbar
-    form(class='search' action='/app/search' method='get')
-        input(type="text" name="search" id="search-bar")
-        button(type="submit") 
-            i(class="fa fa-search") 
-    span Welcome #{user.firstName}!
-    form(action="/users/logout", method="post") 
-        button(type='submit') LogOUTTTTTT!!!!!
+    .left-nav
+        form(class='search' action='/app/search' method='get')
+            button(type="submit" id="search-btn") 
+                i(class="fa fa-search") 
+            input(type="text" name="search" id="search-bar")
+    .right-nav
+        span Welcome #{user.firstName}!
+        form(action="/users/logout", method="post") 
+            button(type='submit') Log Out
     
