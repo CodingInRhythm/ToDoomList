@@ -140,7 +140,11 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         const ployDueDate = document.createElement("span");
         ployDueDate.classList.add("ploy__due-date");
-        ployDueDate.innerHTML = ploy.dueAt;
+          if (ploy.dueAt) {
+              const formattedDate = formatDate(ploy.dueAt);
+          }
+          else { const formattedDate = ""}
+        ployDueDate.innerHTML = formattedDate;
         newPloyDiv.append(ployDueDate);
 
         //If click anywhere in div, will check/uncheck checkbox, display info on right
