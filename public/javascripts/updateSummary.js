@@ -23,8 +23,6 @@ const updatePloyCounter = (schemeObj) => {
             });
     }
     else{
-        console.log("made it??!?!?!")
-        console.log(numPloysCounter)
         numCompletedPloysContainer.innerHTML = numCompletedPloysCounter
         numPloysContainer.innerHTML = numPloysCounter
     }

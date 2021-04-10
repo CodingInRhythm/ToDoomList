@@ -296,7 +296,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const dueAtSpan = document.createElement("span");
         dueAtSpan.classList.add("ploy-data__data-field__data");
         if(ploy.dueAt){
-            dueAtSpan.innerHTML = ploy.dueAt;
+            dueAtSpan.innerHTML = formatDate(ploy.dueAt);
         } else {
             dueAtSpan.innerHTML = "Never";
         }
