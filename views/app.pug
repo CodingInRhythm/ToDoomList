@@ -14,6 +14,8 @@ append head
 
   script(src="/javascripts/rename-modal.js" type="module")
 
+  script(src="/javascripts/remove-modal.js" type="module")
+
 
 
 block content
@@ -35,6 +37,13 @@ block content
           div#modal-button-container
             button(type='submit' class="rename-list") Rename
             button(type='submit' id="exit-rename-modal") Cancel
+  div.remove-scheme-modal#remove-scheme-modal
+    .modal-content
+      p Remove the Scheme
+      p Are you sure?:
+        div#modal-button-container
+          button(type='submit' class="remove-list") Revome
+          button(type='submit' id="exit-remove-modal") Cancel
   div.main-container
 
     include app-navbar.pug

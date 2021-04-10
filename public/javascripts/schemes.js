@@ -80,13 +80,14 @@ class Scheme {
 
         spanRename.setAttribute('class', 'rename-btn');
 
-        const modal = document.getElementById("rename-scheme-modal");
+
         const mainContainer = document.querySelector(".main-container");
 
         spanRemove.innerText = 'Remove Scheme'
         spanRename.innerText = 'Rename Scheme'
 
         spanRename.addEventListener("click", async (e) => {
+            const modal = document.getElementById("rename-scheme-modal");
             // e.stopImmediatePropagation();
             const btnRename = document.querySelector(".rename-list");
             btnRename.setAttribute('id', `${e.target.id}`)
@@ -96,7 +97,16 @@ class Scheme {
             mainContainer.style.filter = 'blur(2px)'
         })
 
-        spanRemove.addEventListener('click', this.showRemoveModal)
+        spanRemove.addEventListener('click', async (e) => {
+            const modal = document.getElementById("remove-scheme-modal");
+            // e.stopImmediatePropagation();
+            const btnRename = document.querySelector(".remove-list");
+            btnRename.setAttribute('id', `${e.target.id}`)
+            // console.log(e.target.parentNode.parentNode.parentNode.id);
+            //? Sets modal to be visible, trying to blur out everything else BUT modal
+            modal.style.display = 'flex'
+            mainContainer.style.filter = 'blur(2px)'
+        })
         // spanRename.addEventListener('click', this.showRenameModal)
 
 
