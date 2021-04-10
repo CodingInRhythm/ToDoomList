@@ -1,17 +1,23 @@
-//- mixin schemeEntry(name, ployNum)
-//-     .scheme-entry
-//-         span= name
-//-         .ploy-numbers= ployNum
 .body
-    .sidebar-left
-        a.logo(href="/app")
-        .ploy-menu All Ploys
-            .ploy-dropdown
-                .div PLOY 1
-                .div PLOY 2
-        .scheme-menu
-            .scheme-dropdown Schemes
-            button.add-scheme-button +
-    .tasks-main
-        include app-body-left.pug
-        include app-body-right.pug
+   .sidebar-left
+       img(src="../img/evil-cow-image.png", alt="", id="cow-img")
+       .ploys-box
+           .left-container-ploys
+               a(href='#')
+                   i.fa.fa-sort-down
+               span All Ploys
+           .right-container-ploys
+               a(href='#')
+                   i.fa.fa-plus-square
+       .schemes-box
+           .left-container-schemes
+               a(href='#')
+                   i.fa.fa-sort-down
+               span All Schemes
+           .right-container-schemes.add-scheme-button
+               a(href='#')
+                   i.fa.fa-plus-square
+       .schemes-list
+   .tasks-main
+       include app-body-left.pug
+       include app-body-right.pug
