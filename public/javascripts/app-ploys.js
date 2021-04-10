@@ -1,6 +1,7 @@
 import Ploys from "./ploys.js";
 import newScheme from "./schemes.js";
 import { updateSummaryName, updatePloyCounter } from "./updateSummary.js";
+import { formatDate } from "./date-format.js"
 
 
 //Track what scheme we're on
@@ -140,10 +141,10 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         const ployDueDate = document.createElement("span");
         ployDueDate.classList.add("ploy__due-date");
+        let formattedDate = ""
           if (ploy.dueAt) {
-              const formattedDate = formatDate(ploy.dueAt);
+              formattedDate = formatDate(ploy.dueAt);
           }
-          else { const formattedDate = ""}
         ployDueDate.innerHTML = formattedDate;
         newPloyDiv.append(ployDueDate);
 
