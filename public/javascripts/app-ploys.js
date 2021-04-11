@@ -3,6 +3,8 @@ import Ploys from "./ploys.js";
 import newScheme from "./schemes.js";
 import { updateSummaryName, updatePloyCounter } from "./updateSummary.js";
 import { formatDate } from "./date-format.js"
+import { dateConverter, dateStringFormatter, setDate} from './date-functions.js'
+
 
 
 // let lastQuery = new PloyQuery();
@@ -185,6 +187,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
     const displayPloys = async (schemeObj) => {
         //Steps
         //0. Check if on completed tab or not
+        console.log("I'm being called")
         const activeTab = document.querySelector(".complete-tab.tab-active");
         const completed = (activeTab.innerHTML === "Completed");
 
@@ -222,6 +225,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
               }
             }));
         }
+       let dueDates = document.getElementsByClassName("due-at");
+       console.log(dueDates);
 
     }
 
@@ -253,6 +258,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         else{
             ployDataDiv.classList.add("hidden");
         }
+         
     }
 
     // Creates hidden ploy data divs that will display on right body
@@ -293,16 +299,110 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const dueLabelSpan = document.createElement("span");
         dueLabelSpan.classList.add("ploy-data__data-field__label");
         dueLabelSpan.innerHTML = "Due: ";
-        const dueAtSpan = document.createElement("span");
-        dueAtSpan.classList.add("ploy-data__data-field__data");
-        if(ploy.dueAt){
-            dueAtSpan.innerHTML = formatDate(ploy.dueAt);
-        } else {
-            dueAtSpan.innerHTML = "Never";
-        }
+        // const dueAtSpan = document.createElement("span");
+        // dueAtSpan.classList.add("ploy-data__data-field__data");
+        // if(ploy.dueAt){
+        //     dueAtSpan.innerHTML = formatDate(ploy.dueAt);
+        // } else {
+        //     dueAtSpan.innerHTML = "Never";
+        // }
+
+        const dueAtForm = document.createElement("form")
+        const dueAtDropdown = document.createElement("select")
+        dueAtDropdown.addEventListener("change", async (e) => {
+          console.log(e.target.value);
+          await Ploys.updatePloy(ploy.id, { dueAt: e.target.value });
+        });
+        dueAtForm.append(dueAtDropdown);
 
         dueDiv.append(dueLabelSpan);
-        dueDiv.append(dueAtSpan);
+        dueDiv.append(dueAtForm);//need to display inline-block
+
+        const today = new Date() //should be called today
+        const todaysDateIndex = today.getDay()
+        
+
+
+        for (let i = 0; i < 5; i++) {
+            if (i === 0) {
+                console.log(i)
+                //clearing out the div
+                // while (dueAtDropdown.firstChild) {
+                //     dueAtDropdown.removeChild(dueAtDropdown.firstChild)
+                // }
+                //todo: set first option to be 'Never' or current dueAt:
+                const currentDueAt = document.createElement("option")
+                if (ploy.dueAt) {
+                    currentDueAt.innerHTML = formatDate(ploy.dueAt)
+                }
+                else {
+                    currentDueAt.innerHTML = 'Never'
+                }
+                dueAtDropdown.append(currentDueAt)
+                //setting second option to be 'today'
+                const todayEl = document.createElement("option")
+                todayEl.setAttribute("id", `dueat-${i}`);
+                todayEl.setAttribute("name", "dueAt")
+                todayEl.setAttribute("value", dateStringFormatter(today))
+                todayEl.setAttribute("class", "due-at")
+                todayEl.innerHTML = 'Today'
+                
+                dueAtDropdown.append(todayEl)
+            }
+            else if (i === 1) {
+                console.log(i)
+                const tomorrowEl = document.createElement("option")
+                const date = setDate(today, i)
+                tomorrowEl.setAttribute("id", `dueat-${i}`)
+                tomorrowEl.setAttribute("name", "dueAt")
+                tomorrowEl.setAttribute("value", dateStringFormatter(date));
+                tomorrowEl.setAttribute("class", "due-at");
+                tomorrowEl.innerHTML = 'Tomorrow'
+                dueAtDropdown.append(tomorrowEl);
+            }
+            else { 
+                console.log(i)
+                let dayEl = document.createElement("option")
+                const date = setDate(today, i);
+                dayEl.setAttribute("id", `dueat-${i}`);
+                dayEl.setAttribute("name", "dueAt")
+                dayEl.setAttribute(
+                    "value",
+                    dateStringFormatter(date)
+                );
+                dayEl.setAttribute("class", "due-at");
+                
+                dayEl.innerHTML = dateConverter(todaysDateIndex + i) //dateConverter function will take num and convert it to string date.  
+                dueAtDropdown.append(dayEl);
+            }
+        }
+            let dueDates = document.getElementsByClassName("due-at")
+            console.log(dueDates)
+
+
+
+
+            // dueDates.addEventListener("click", (e) => {
+            //     //i'll grab the clicked day which needs to give me a date formatted s
+            //     //so I can  post it to db and then update both the ploy container AND the modal/pop-up
+            //     console.log('here?')
+            //     let clickedDay = e.target.value
+            //     console.log(clickedDay)
+                
+            // })
+        
+
+            // const ployObj = {name: ploy.name, schemeId: schemeId, completed: markComplete}
+            // await Ploys.updatePloy(ploy.id, ployObj);
+        
+        
+
+     
+    
+
+
+
+        // dueDiv.append(dueAtSpan);
 
         //Add scheme div
         const schemeDiv = document.createElement("div");
