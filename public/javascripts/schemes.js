@@ -73,7 +73,6 @@ class Scheme {
 
             newDiv.addEventListener('click', async () => {
                 const schemeObj = await queryTracker.makeNewQuery("schemeId", scheme.id);
-                // const schemeObj = await Ploys.getPloys(scheme.id)
                 await displayPloys(schemeObj)
                 updateSummaryName(schemeObj)
                 updatePloyCounter(schemeObj)

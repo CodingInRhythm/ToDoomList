@@ -63,7 +63,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
         //2. Send PUT request to change completed flag
         const markComplete =markCompleteButton.innerHTML === "Completed"
         await Promise.all(selected.map(async (ploy) => {
-            console.log(ploy.name);
             const ployObj = {completed: markComplete}
             await Ploys.updatePloy(ploy.id, ployObj);
         }));
