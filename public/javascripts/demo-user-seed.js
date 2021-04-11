@@ -57,5 +57,5 @@ import newScheme from "./schemes.js";
             }
 
         }
-        await newScheme.displaySchemes();
+        // await newScheme.displaySchemes();
 })()
