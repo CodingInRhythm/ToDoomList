@@ -14,7 +14,7 @@ div.main-container {
     position: relative;
 }
 
-div.top-container {    
+div.top-container {
     /* width: 40em; */
     margin-top: 10px;
     display: flex;
@@ -310,7 +310,7 @@ div.r-bubble-text-3 {
     width: 50px;
 
     top: 11.5%;
-    left: 66%;    
+    left: 66%;
     position: absolute;
 }
 
