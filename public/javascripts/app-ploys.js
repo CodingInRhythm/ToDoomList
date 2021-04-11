@@ -1,4 +1,4 @@
-import PloyQuery from "./ploy-query.js";
+import queryTracker from "./ploy-query.js";
 import Ploys from "./ploys.js";
 import newScheme from "./schemes.js";
 import { updateSummaryName, updatePloyCounter } from "./updateSummary.js";
@@ -7,7 +7,7 @@ import { formatDate } from "./date-format.js"
 
 //Track what scheme we're on
 let schemeId = 1;
-let lastQuery = new PloyQuery();
+// let lastQuery = new PloyQuery();
 window.addEventListener("DOMContentLoaded", (e) => {
     //Logic for Adding Ploys from Form
     const addPloyForm = document.querySelector(".add-ploy");
@@ -21,7 +21,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const postPloy = await Ploys.createPloy(addPloy);
 
         const scheme = await newScheme.getScheme(schemeId);
-        const schemeObj = await lastQuery.makeNewQuery("schemeId", schemeId)
+        const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId)
         //Ploy is incomplete by default, only update page if on incomplete tab
         const activeTab = document.querySelector(".complete-tab.tab-active");
         if(activeTab.innerHTML === "Incomplete"){
@@ -44,7 +44,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             await Ploys.deletePloy(ploy.id);
         }));
         //3. Redisplay ploy table
-        const schemeObj = await lastQuery.makeNewQuery("schemeId", schemeId);
+        const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId);
         await displayPloys(schemeObj);
         await updatePloyCounter(schemeObj);
     })
@@ -62,7 +62,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             await Ploys.updatePloy(ploy.id, ployObj);
         }));
         //3. Redisplay ploy table
-        const schemeObj = await lastQuery.makeNewQuery("schemeId", schemeId)
+        const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId)
         await displayPloys(schemeObj);
         await updatePloyCounter(schemeObj);
     })
@@ -84,7 +84,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             }
 
             //Check if tab was changed for optimization?
-            const schemeObj = await lastQuery.makeNewQuery("schemeId", schemeId)
+            const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId)
             await displayPloys(schemeObj);
         })
     })
@@ -98,7 +98,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
       const input = document.querySelector("#search-bar");
       const string = input.value;
 
-      const ploysObj = await lastQuery.makeNewQuery("search", string);
+      const ploysObj = await queryTracker.makeNewQuery("search", string);
 
       await displayPloys({scheme: null, ploys: ploysObj.ploys});
     });
@@ -279,8 +279,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
             const ployObj = {name: newName, schemeId: schemeId}
             await Ploys.updatePloy(ploy.id, ployObj);
 
-            const schemeObj = await lastQuery.makeNewQuery("schemeId", schemeId);
-            // const schemeObj = await lastQuery.callLastQuery();
+            const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId);
+            // const schemeObj = await queryTracker.callLastQuery();
             // console.log(schemeObj);
             await displayPloys(schemeObj);
         })

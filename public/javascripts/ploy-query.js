@@ -31,4 +31,6 @@ class PloyQuery{
     }
 }
 
-export default PloyQuery;
+let queryTracker = new PloyQuery();
+
+export default queryTracker;
