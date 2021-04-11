@@ -7,10 +7,12 @@ const { csrfProtection, asyncHandler } = require('../utils/utils');
 
 
 
-const db = require('../db/models')
+
+const db = require('../db/models');
+const { Sequelize } = require('../db/models');
+const Op = Sequelize.Op
 
 const { Villain } = db;
-
 
 const userValidators = [
   check('firstName')
@@ -123,9 +125,10 @@ router.get("/sign-up", csrfProtection, asyncHandler(async (req, res) => {
   res.render('sign-up', {pageTitle: "Sign Up", user, csrfToken: req.csrfToken()});
 }))
 
+
 router.post("/sign-up", csrfProtection, userValidators, asyncHandler(async (req, res) => {
   const { title, firstName, lastName, userName, email, password, confirmPassword } = req.body;
-
+  
   const user = Villain.build({
     title,
     firstName,
@@ -133,9 +136,9 @@ router.post("/sign-up", csrfProtection, userValidators, asyncHandler(async (req,
     userName,
     email
   });
-
+  
   const validatorErrors = validationResult(req);
-
+  
   if(validatorErrors.isEmpty()){
     const hashedPassword = await bcrypt.hash(password, 10);
     user.hashedPassword = hashedPassword;
@@ -144,6 +147,7 @@ router.post("/sign-up", csrfProtection, userValidators, asyncHandler(async (req,
     res.redirect("/app");
   } else {
     const errors = validatorErrors.array().map((error) => error.msg)
+    console.log(errors)
     res.render('sign-up', {
       pageTitle: "Sign Up",
       user,
@@ -151,8 +155,26 @@ router.post("/sign-up", csrfProtection, userValidators, asyncHandler(async (req,
       csrfToken: req.csrfToken()
     })
   }
-
+  
 }))
 
-// router.get('')
+
+
+// deleteDemoUsers = async () => {
+//   // console.log(Op)
+//   demoUsersArr = await Villain.findAll({
+//     where: {
+//       email: {
+//         [Op.substring]: 'demo'
+//       }
+//     }
+//   })
+  
+//   demoUsersArr.forEach(async user => {
+//     await user.destroy();
+//   }) 
+// }
+
+// setInterval(deleteDemoUsers, 1000 * 60)
+
 module.exports = router;
