@@ -3,6 +3,7 @@ extends layout.pug
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/app.css")
+  link(rel="stylesheet" href="/stylesheets/welcome.css")
   link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
   //- add page specific js
 
@@ -15,5 +16,73 @@ append head
 
 
 block content
+  .get-started
     form(action="/app/", method="get") 
         button(type="submit") Get Started
+    span.title Created By These Software Engineers:
+  .background-left
+    .nate-profile.profile-container
+      img(src="../img/welcome-nathan.jpeg", alt="")
+      .text-box
+        .name
+          p Nathaniel Cooke
+          p
+            a(href="https://github.com/nathanieldcooke")
+              i.fab.fa-github
+          p
+            a(href="https://github.com/nathanieldcooke")
+              i.fab.fa-linkedin
+        .bio
+          span My Journey
+          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, ex? Commodi at, sunt minus similique ullam dolore! Minima quae veritatis eum saepe ipsum consequatur sunt! Nesciunt cumque tenetur quam quaerat.
+  .background-right  
+    .chris-profile.profile-container
+      img(src="../img/welcome-chris.png", alt="")
+      .text-box
+        .name
+          p Chris Cozma
+          p
+            a(href="https://github.com/Christian-Cozma")
+              i.fab.fa-github.chris-i
+          p
+            a(href="/app/welcome")
+              i.fab.fa-linkedin.chris-i
+          p
+            a(href="/app/welcome")
+              i.fab.fa-twitter.chris-i
+        .bio
+          span My Journey
+          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi veritatis perspiciatis sequi! Nemo repellat ut possimus quaerat doloribus dicta animi consequatur ducimus, quia eos est. Provident illo qui ad iure.
+  .background-left
+    .brian-profile.profile-container
+      img(src="../img/welcome-brian.png", alt="")
+      .text-box
+        .name
+          p Brian Xue
+          p
+            a(href="https://github.com/bxue2")
+              i.fab.fa-github
+          p
+            a(href="https://www.linkedin.com/in/brian-xue/")
+              i.fab.fa-linkedin
+        .bio
+          span My Journey
+          p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam optio, iusto tempore at, doloribus reiciendis amet sunt rem voluptatibus cupiditate magnam nemo dolorem ducimus laborum commodi iure sapiente nostrum quis!
+  .background-right  
+    .alex-profile.profile-container
+      img(src="../img/welcome-alex.png", alt="")
+      .text-box
+        .name
+          p Alex Clough
+          p
+            a(href="https://github.com/CodingInRhythm")
+              i.fab.fa-github.alex-i
+          p
+            a(href="/app/welcome")
+              i.fab.fa-linkedin.alex-i
+          p
+            a(href="/app/welcome")
+              i.fab.fa-twitter.alex-i
+        .bio
+          span My Journey
+          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ipsam fugiat odit. Est odio incidunt numquam maiores, nam ipsam illum debitis voluptatum asperiores veniam ut consequuntur dolor distinctio laborum iure.
