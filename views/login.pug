@@ -5,6 +5,12 @@ mixin field(label, fieldType, fieldName, fieldValue, require)
         input.villain__input-field(type=fieldType name=fieldName value=fieldValue required=require placeholder=label)
 
 block right
+    h1= pageTitle
+    div.errors
+        if errors
+            ul
+            each error in errors
+                    li= error
     div.login-btn
                 h2.login-h2 New to the site?
                 a.villain__button-link(href="/users/sign-up") Sign Up For Free
@@ -17,7 +23,7 @@ block right
             button(type="submit" id="sign-up__btn") Login
             div.divider OR
         div.demo-user-btn
-            form.demovillain__signup-form(action="/users/sign-up" method="post")
+            form.demovillain__signup-form(action="/users/demo-sign-up" method="post")
                 input(type="hidden" name="_csrf" value=csrfToken)
                 input(type="hidden" name="firstName" value="Thanos")
                 input(type="hidden" class="userName" name="userName" value="")

@@ -36,3 +36,14 @@ html, body{
     border: 1px solid rgba(102, 175, 233, 0.6);
     box-shadow: 0px 0px 4px rgba(102, 175, 233, 0.6);
 }
+
+.errors {
+    position: absolute;
+    padding-top: 10px;
+    display: block;
+    /* height: 200em;
+    width: 200em; */
+    width: 8em;
+    color: red;
+    font-size: 4em;
+}

@@ -111,8 +111,9 @@ router.post("/login", csrfProtection, loginValidators, asyncHandler(async (req, 
   } else {
     errors = validatorErrors.array().map((error) => error.msg);
   }
+  console.log(errors)
   res.render('login', {
-    pageTitle: "", //? Brian needs to explain this.
+    pageTitle: "Login", //? Brian needs to explain this.
     userName,
     errors,
     csrfToken: req.csrfToken()
