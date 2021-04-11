@@ -310,8 +310,10 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const dueAtForm = document.createElement("form")
         const dueAtDropdown = document.createElement("select")
         dueAtDropdown.addEventListener("change", async (e) => {
-          console.log(e.target.value);
+         
           await Ploys.updatePloy(ploy.id, { dueAt: e.target.value });
+          const schemeObj = await queryTracker.callLastQuery();
+          await displayPloys(schemeObj);
         });
         dueAtForm.append(dueAtDropdown);
 
