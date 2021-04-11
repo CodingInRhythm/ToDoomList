@@ -22,6 +22,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         const scheme = await newScheme.getScheme(schemeId);
         const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId)
+        // const schemeObj = await queryTracker.callLastQuery();
         //Ploy is incomplete by default, only update page if on incomplete tab
         const activeTab = document.querySelector(".complete-tab.tab-active");
         if(activeTab.innerHTML === "Incomplete"){
@@ -44,7 +45,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
             await Ploys.deletePloy(ploy.id);
         }));
         //3. Redisplay ploy table
-        const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId);
+        // const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId);
+        const schemeObj = await queryTracker.callLastQuery();
         await displayPloys(schemeObj);
         await updatePloyCounter(schemeObj);
     })
@@ -62,7 +64,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
             await Ploys.updatePloy(ploy.id, ployObj);
         }));
         //3. Redisplay ploy table
-        const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId)
+        // const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId)
+        const schemeObj = await queryTracker.callLastQuery();
         await displayPloys(schemeObj);
         await updatePloyCounter(schemeObj);
     })
@@ -84,7 +87,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
             }
 
             //Check if tab was changed for optimization?
-            const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId)
+            // const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId)
+            const schemeObj = await queryTracker.callLastQuery();
             await displayPloys(schemeObj);
         })
     })
@@ -212,11 +216,11 @@ window.addEventListener("DOMContentLoaded", (e) => {
             //3. Call addPloyToContainer() for every returned ploy
             Promise.all(schemeObj.ploys.map(async (ploy) => {
                {
-                //    if(ploy.completed === completed){
+                   if(ploy.completed === completed){
                       addPloyToContainer(ploy);
                       const scheme = await newScheme.getScheme(ploy.schemeId);
                       createPloyDataDiv(ploy, scheme.scheme.name);
-                //    }
+                   }
               }
             }));
         }
@@ -279,8 +283,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
             const ployObj = {name: newName, schemeId: schemeId}
             await Ploys.updatePloy(ploy.id, ployObj);
 
-            const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId);
-            // const schemeObj = await queryTracker.callLastQuery();
+            // const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId);
+            const schemeObj = await queryTracker.callLastQuery();
             // console.log(schemeObj);
             await displayPloys(schemeObj);
         })

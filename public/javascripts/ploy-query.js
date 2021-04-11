@@ -6,7 +6,7 @@ class PloyQuery{
         let queryData = null;
     };
 
-    //queryType should be either "schemeId", "all", "search"
+    //queryType should be either "schemeId", "all" (if we want to implement?), "search"
     //queryData will be id, null, search string respectively
     async makeNewQuery(type, data){
         this.queryType = type;
@@ -22,7 +22,7 @@ class PloyQuery{
     }
 
     getLastQuery(){
-        return {queryType, queryData};
+        return {queryType: this.queryType, queryData: this.queryData};
     }
 
     async callLastQuery(){
