@@ -23,6 +23,7 @@ h3 {
 
 .lists {
     display: flex;
+    width: 20%;
     margin: 10px 15px;
     flex-direction: column;
     text-decoration: none;
@@ -45,14 +46,15 @@ h3 {
     padding-right: 25px;
 }
 .lists a {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     margin: 0.5rem;
     width: 50%;
     /* padding-right: 5rem; */
     padding-left: 1rem;
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     border-radius: 5px;
+    line-height: 150%;
 }
 
 .lis {
