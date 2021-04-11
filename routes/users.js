@@ -144,7 +144,7 @@ router.post("/sign-up", csrfProtection, userValidators, asyncHandler(async (req,
     user.hashedPassword = hashedPassword;
     await user.save();
     loginUser(req, res, user);
-    res.redirect("/app");
+    res.redirect("/app/welcome");
   } else {
     const errors = validatorErrors.array().map((error) => error.msg)
     console.log(errors)

@@ -12,8 +12,16 @@ const { requireAuth } = require("../auth/auth.js")
 
 router.get("/", requireAuth, asyncHandler ( async (req, res, next) => {
   const { userId } = req.session.auth
+  console.log(userId, "IS LOGGED IN")
   const user = await db.Villain.findByPk( userId )
   res.render("app", { user });
+}));
+
+router.get("/welcome", requireAuth, asyncHandler(async (req, res, next) => {
+  const { userId } = req.session.auth
+  // console.log(userId, "IS LOGGED IN")
+  const user = await db.Villain.findByPk(userId)
+  res.render("welcome", { user });
 }));
 
 router.get("/schemes", async(req, res) => {

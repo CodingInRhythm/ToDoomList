@@ -38,7 +38,7 @@ class Scheme {
 
     getSchemes = async () => {
         // fetches all schemes and make javascript object from response
-        const schemes = await fetch('app/schemes')
+        const schemes = await fetch('/app/schemes')
         return await schemes.json();
     }
 

@@ -1,4 +1,4 @@
-import newScheme from "./schemes.js";
+// import newScheme from "./schemes.js";
 
 (async () => {
     let demoBtn = document.querySelector('.demo-btn')
