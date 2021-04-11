@@ -1,6 +1,7 @@
 import { displayPloys } from './app-ploys.js'
 import Ploys from "./ploys.js";
 import { updateSummaryName, updatePloyCounter } from "./updateSummary.js"
+import queryTracker from "./ploy-query.js";
 
 class Scheme {
     constructor() {
@@ -13,7 +14,7 @@ class Scheme {
         console.log(arrowEle)
         arrowEle.classList.add('rotate-arrow')
 
-        dropDownButton.addEventListener('click', this.toggleSchemes) 
+        dropDownButton.addEventListener('click', this.toggleSchemes)
     }
 
     toggleSchemes() {
@@ -71,7 +72,7 @@ class Scheme {
             newDiv.setAttribute('id', `${scheme.id}`)
 
             newDiv.addEventListener('click', async () => {
-                const schemeObj = await Ploys.getPloys(scheme.id)
+                const schemeObj = await queryTracker.makeNewQuery("schemeId", scheme.id);
                 await displayPloys(schemeObj)
                 updateSummaryName(schemeObj)
                 updatePloyCounter(schemeObj)
