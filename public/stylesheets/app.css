@@ -15,23 +15,67 @@
 
 .navbar {
     background-color: #0060bf;
-    height: 8%;
+    /* height: 8%; */
+    padding: 5px;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
 
+.left-nav {
+    padding-left: 10em;
+    align-self: center;
+    border-radius: 10px;
+}
+
+.right-nav {
+    padding-right: 10em;
+    display: flex;
+    align-self: center;
+}
+
+.right-nav > span {
+    padding-right: 5em;
+    color: white;
+    align-self: center;
+    font-size: 1.5em;
+}
+
+.right-nav button {
+    color: white;
+    background-color: rgb(127, 157, 255);
+    border-radius: 5px;
+    border-style: none;
+    /* padding: 5px 10px; */
+    height: 2em;
+    width: 6em;
+}
+
+#search-btn {
+    background-color: rgb(127, 157, 255);
+    color: white;
+    border-style: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .search {
     display: flex;
     box-sizing: border-box;
-    width: 40px;
     margin-left: 10%;
     margin-top: .5%;
-
+    border-radius: 5px;
 
 }
 
 #search-bar {
-    background-color: rgb(127, 157, 255)
+    background-color: rgb(127, 157, 255);
+    border-style: none;
+    width: 20em;
+    height: 2em;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    /* border-radius: 5px; */
 }
 
 #search-bar:hover {

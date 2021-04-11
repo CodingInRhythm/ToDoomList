@@ -2,6 +2,7 @@ import PloyQuery from "./ploy-query.js";
 import Ploys from "./ploys.js";
 import newScheme from "./schemes.js";
 import { updateSummaryName, updatePloyCounter } from "./updateSummary.js";
+import { formatDate } from "./date-format.js"
 
 
 //Track what scheme we're on
@@ -138,7 +139,11 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         const ployDueDate = document.createElement("span");
         ployDueDate.classList.add("ploy__due-date");
-        ployDueDate.innerHTML = ploy.dueAt;
+        let formattedDate = ""
+          if (ploy.dueAt) {
+              formattedDate = formatDate(ploy.dueAt);
+          }
+        ployDueDate.innerHTML = formattedDate;
         newPloyDiv.append(ployDueDate);
 
         //If click anywhere in div, will check/uncheck checkbox, display info on right
@@ -291,7 +296,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const dueAtSpan = document.createElement("span");
         dueAtSpan.classList.add("ploy-data__data-field__data");
         if(ploy.dueAt){
-            dueAtSpan.innerHTML = ploy.dueAt;
+            dueAtSpan.innerHTML = formatDate(ploy.dueAt);
         } else {
             dueAtSpan.innerHTML = "Never";
         }
