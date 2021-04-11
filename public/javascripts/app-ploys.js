@@ -5,8 +5,6 @@ import { updateSummaryName, updatePloyCounter } from "./updateSummary.js";
 import { formatDate } from "./date-format.js"
 
 
-//Track what scheme we're on
-let schemeId = 1;
 // let lastQuery = new PloyQuery();
 window.addEventListener("DOMContentLoaded", (e) => {
     //Logic for Adding Ploys from Form
@@ -17,12 +15,18 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const name = inputForm.value;
         const dueAt = null;
 
+        let lastQuery = queryTracker.getLastQuery();
+        let schemeId = 1;
+        if(lastQuery.queryType === "schemeId"){
+            schemeId = lastQuery.queryData;
+        }
+
         const addPloy = {name, dueAt, schemeId: schemeId, completed: false};
         const postPloy = await Ploys.createPloy(addPloy);
 
         const scheme = await newScheme.getScheme(schemeId);
-        const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId)
-        // const schemeObj = await queryTracker.callLastQuery();
+        // const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId)
+        const schemeObj = await queryTracker.callLastQuery();
         //Ploy is incomplete by default, only update page if on incomplete tab
         const activeTab = document.querySelector(".complete-tab.tab-active");
         if(activeTab.innerHTML === "Incomplete"){
@@ -45,7 +49,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
             await Ploys.deletePloy(ploy.id);
         }));
         //3. Redisplay ploy table
-        // const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId);
         const schemeObj = await queryTracker.callLastQuery();
         await displayPloys(schemeObj);
         await updatePloyCounter(schemeObj);
@@ -60,11 +63,11 @@ window.addEventListener("DOMContentLoaded", (e) => {
         //2. Send PUT request to change completed flag
         const markComplete =markCompleteButton.innerHTML === "Completed"
         await Promise.all(selected.map(async (ploy) => {
-            const ployObj = {name: ploy.name, schemeId: schemeId, completed: markComplete}
+            console.log(ploy.name);
+            const ployObj = {completed: markComplete}
             await Ploys.updatePloy(ploy.id, ployObj);
         }));
         //3. Redisplay ploy table
-        // const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId)
         const schemeObj = await queryTracker.callLastQuery();
         await displayPloys(schemeObj);
         await updatePloyCounter(schemeObj);
@@ -87,7 +90,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
             }
 
             //Check if tab was changed for optimization?
-            // const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId)
             const schemeObj = await queryTracker.callLastQuery();
             await displayPloys(schemeObj);
         })
@@ -202,9 +204,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         //If called after selecting a scheme/scheme object exists
         if(schemeObj.scheme){
-            //Note: quick hack, will probably want to change
-            schemeId = schemeObj.scheme.id;
-
             //3. Call addPloyToContainer() for every returned ploy + create hidden data divs
             schemeObj.ploys.forEach((ploy) => {
                 if(ploy.completed === completed){
@@ -280,12 +279,10 @@ window.addEventListener("DOMContentLoaded", (e) => {
             ev.preventDefault();
             let newName = nameInput.value;
             //Still works even without passing in completed?
-            const ployObj = {name: newName, schemeId: schemeId}
+            const ployObj = {name: newName}
             await Ploys.updatePloy(ploy.id, ployObj);
 
-            // const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId);
             const schemeObj = await queryTracker.callLastQuery();
-            // console.log(schemeObj);
             await displayPloys(schemeObj);
         })
         nameForm.append(nameInput);
