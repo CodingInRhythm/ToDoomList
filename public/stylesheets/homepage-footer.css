@@ -55,7 +55,12 @@ h3 {
     border-radius: 5px;
 }
 
-.lists a:hover {
+.lis {
+    width: 100%;
+    height: auto;
+}
+
+.lis:hover {
     color: #333;
     background-color: #e6e6e6;
     border-color: #adadad;
