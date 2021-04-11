@@ -1,0 +1,19 @@
+extends layout.pug
+
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/app.css")
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+  //- add page specific js
+
+  script(src='/javascripts/demo-user-seed.js' type="module")
+
+  //- script(src='/javascripts/schemes.js' type="module")
+
+
+
+
+
+block content
+    form(action="/app/", method="get") 
+        button(type="submit") Get Started
