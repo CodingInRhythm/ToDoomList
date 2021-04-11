@@ -15,7 +15,7 @@ h3 {
     display: flex;
     justify-content: space-evenly;
     align-content: center;
-    width: 60%;
+    width: 80%;
     height: 10rem;
     /* flex-wrap: wrap; */
     margin: 15px auto;
@@ -38,23 +38,37 @@ h3 {
     justify-content: center;
     width: auto;
     font-weight: 700;
-    font-size: 1.45rem;
+    font-size: 1.75rem;
     vertical-align: top;
     /* line-height: 1rem; */
+    margin-bottom: 15px;
+}
+.dotted {
+    border-bottom: 7px dotted rgba(0, 0, 0, 0.125);
+    margin-bottom: 20px;
 }
 .lists ul li {
     padding-right: 25px;
+    margin-bottom: 15px !important;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
 }
 .lists a {
-    font-size: 1.5rem;
-    margin: 0.5rem;
-    width: 50%;
-    /* padding-right: 5rem; */
-    padding-left: 1rem;
+    font-size: 1.75rem;
+    /* margin: 0.5rem; */
+    /* width: 200%; */
+    padding-right: 55%;
+    padding-left: 7rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+
     border-radius: 5px;
-    line-height: 150%;
+    line-height: 120%;
+    /* position: relative;
+    left: 50px; */
 }
 
 .lis {
@@ -71,7 +85,7 @@ h3 {
 }
 
 ul li {
-    font-size: 1.50rem;
+    font-size: 1.75rem;
 }
 
 .footer-bottom {
