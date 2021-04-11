@@ -94,7 +94,8 @@ router.get("/ploys/:ployid", async (req, res) => {
 //works
 //Not sure how dueAt is going to be updated
 router.put("/ploys/:ployid", async (req, res) => {
-  let {name, schemeId, completed, dueAt} = req.body
+  console.log(req.body)
+  const {name, schemeId, completed, dueAt} = req.body
   const id = parseInt(req.params.ployid, 10)
   const ploy = await db.Ploy.findByPk(id)
   await ploy.update({

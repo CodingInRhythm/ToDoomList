@@ -5,6 +5,7 @@ import { formatDate } from "./date-format.js"
 import { dateConverter, dateStringFormatter, setDate} from './date-functions.js'
 
 
+
 //Track what scheme we're on
 let schemeId = 1;
 let searchQuery = "";
@@ -183,6 +184,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
     const displayPloys = async (schemeObj) => {
         //Steps
         //0. Check if on completed tab or not
+        console.log("I'm being called")
         const activeTab = document.querySelector(".complete-tab.tab-active");
         const completed = (activeTab.innerHTML === "Completed");
 
@@ -223,6 +225,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
               }
             }));
         }
+       let dueDates = document.getElementsByClassName("due-at");
+       console.log(dueDates);
 
     }
 
@@ -254,6 +258,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         else{
             ployDataDiv.classList.add("hidden");
         }
+         
     }
 
     // Creates hidden ploy data divs that will display on right body
@@ -304,6 +309,10 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         const dueAtForm = document.createElement("form")
         const dueAtDropdown = document.createElement("select")
+        dueAtDropdown.addEventListener("change", async (e) => {
+          console.log(e.target.value);
+          await Ploys.updatePloy(ploy.id, { dueAt: e.target.value });
+        });
         dueAtForm.append(dueAtDropdown);
 
         dueDiv.append(dueLabelSpan);
@@ -314,7 +323,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         
 
 
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < 5; i++) {
             if (i === 0) {
                 console.log(i)
                 //clearing out the div
@@ -337,6 +346,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
                 todayEl.setAttribute("value", dateStringFormatter(today))
                 todayEl.setAttribute("class", "due-at")
                 todayEl.innerHTML = 'Today'
+                
                 dueAtDropdown.append(todayEl)
             }
             else if (i === 1) {
@@ -368,6 +378,10 @@ window.addEventListener("DOMContentLoaded", (e) => {
         }
             let dueDates = document.getElementsByClassName("due-at")
             console.log(dueDates)
+
+
+
+
             // dueDates.addEventListener("click", (e) => {
             //     //i'll grab the clicked day which needs to give me a date formatted s
             //     //so I can  post it to db and then update both the ploy container AND the modal/pop-up
