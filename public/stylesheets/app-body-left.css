@@ -96,8 +96,11 @@
 .ploy {
     border-bottom: 1px dotted grey;
     height: 25px;
-    display: flex;
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: 20px 30px auto auto;
     align-items: center;
+    overflow: auto;
 }
 
 .ploy:hover {
