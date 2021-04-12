@@ -5,7 +5,7 @@
 
 Landing page GIF:
 
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Alt Text](https://media.giphy.com/media/X1qxc3e1hjOvyOpsyM/giphy.gif)
 
 App page view: 
 
