@@ -17,6 +17,7 @@
 ### Features ###
 
 * Sign-up and login with credentials
+* Dynamic scrolling animation on splash page
 * Main app page is a single-page application
 * Easy to use interface
 * Logged in user can create and save lists
