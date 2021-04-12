@@ -19,14 +19,14 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         let lastQuery = queryTracker.getLastQuery();
 
-        if(lastQuery.queryType === "search"){
+        if(lastQuery.queryType !== "schemeId"){
             alert("Must be in a scheme to add a ploy.")
         }
         else{
-            let schemeId = 1;
-            if(lastQuery.queryType === "schemeId"){
+            // let schemeId = 1;
+            // if(lastQuery.queryType === "schemeId"){
                 schemeId = lastQuery.queryData;
-            }
+            // }
 
             const addPloy = {name, dueAt, schemeId: schemeId, completed: false};
             const postPloy = await Ploys.createPloy(addPloy);
