@@ -9,6 +9,8 @@ append head
 
   script(src='/javascripts/demo-user-seed.js' type="module")
 
+  script(src='/javascripts/welcome-chev-animation.js' type="module")
+
   //- script(src='/javascripts/schemes.js' type="module")
 
 
@@ -17,8 +19,15 @@ append head
 
 block content
   .get-started
-    form(action="/app/", method="get") 
-        button(type="submit") Get Started
+    .btn-container
+      i.fas.fa-chevron-right.one-l
+      i.fas.fa-chevron-right.two-l
+      i.fas.fa-chevron-right.three-l
+      form(action="/app/", method="get")
+          button(type="submit") Get Started
+      i.fas.fa-chevron-left.three-r
+      i.fas.fa-chevron-left.two-r
+      i.fas.fa-chevron-left.one-r
     span.title Created By These Software Engineers:
   .background-left
     .nate-profile.profile-container
@@ -35,7 +44,7 @@ block content
         .bio
           span My Journey
           p Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, ex? Commodi at, sunt minus similique ullam dolore! Minima quae veritatis eum saepe ipsum consequatur sunt! Nesciunt cumque tenetur quam quaerat.
-  .background-right  
+  .background-right
     .chris-profile.profile-container
       img(src="../img/welcome-chris.png", alt="")
       .text-box
@@ -68,7 +77,7 @@ block content
         .bio
           span My Journey
           p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam optio, iusto tempore at, doloribus reiciendis amet sunt rem voluptatibus cupiditate magnam nemo dolorem ducimus laborum commodi iure sapiente nostrum quis!
-  .background-right  
+  .background-right
     .alex-profile.profile-container
       img(src="../img/welcome-alex.png", alt="")
       .text-box
