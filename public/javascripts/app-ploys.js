@@ -2,8 +2,7 @@ import queryTracker from "./ploy-query.js";
 import Ploys from "./ploys.js";
 import newScheme from "./schemes.js";
 import { updateSummaryName, updatePloyCounter } from "./updateSummary.js";
-import { formatDate } from "./date-format.js"
-import { dateConverter, dateStringFormatter, setDate} from './date-functions.js'
+import { dateConverter, dateStringFormatter, setDate, formatDate} from './date-functions.js'
 
 
 
