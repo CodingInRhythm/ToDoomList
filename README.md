@@ -5,11 +5,12 @@
 #### Link: [ToDoomList](http://aa-todoomlist.herokuapp.com/)
 #### Documentation: [Github Wiki](https://github.com/CodingInRhythm/ToDoomList/wiki)
 
-Landing page GIF:
+
+*Landing page GIF:*
 
 ![Alt Text](https://media.giphy.com/media/X1qxc3e1hjOvyOpsyM/giphy.gif)
 
-App page view: 
+*App page view:*
 
 ![Alt Text](https://media.giphy.com/media/Iv0i7t4Xig1Et0DUtc/giphy.gif)
 
@@ -24,7 +25,6 @@ App page view:
 * Logged in user can keep track of tasks in a list with dynamic summary on right-hand side of main page
 * Logged in user can edit and delete their lists and tasks
 
-### Todos ###
 
 ### Technical Details ###
 * One challenge we faced was handling how the display of ploys(tasks) would refresh after making an action (ex. deleting, renaming a ploy). The ploys being displayed can either be the result of querying by the Scheme Id or by Search, and in order to refresh the display, we needed a way to track what the last query that was called so we can re-call it. To facilitate that, we added a PloyQuery class that acted as a middleman between a function querying for ploys to display and the actual DB query call. This class would be able to keep a history of what query was last called and replaying it when a refresh is needed.
@@ -59,7 +59,11 @@ App page view:
     }
   }
 ```
+### Todos ###
 
+* Add Calendar to allow for more customizeable due dates
+* Improve styling of main app page
+* Implement a 'select all' checkbox in app page for ploys to facilitate bulk delete and update. 
 ### Contributors ###
 
 * [Alex Clough](https://github.com/CodingInRhythm)
