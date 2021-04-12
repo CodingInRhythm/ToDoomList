@@ -9,7 +9,7 @@ Landing page GIF:
 
 App page view: 
 
-[insert screen grab here]
+![Alt Text](https://media.giphy.com/media/Iv0i7t4Xig1Et0DUtc/giphy.gif)
 
 ### Features ###
 
