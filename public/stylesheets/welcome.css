@@ -25,14 +25,19 @@ font-family: 'Sue Ellen Francisco', cursive;
 }
 
 button {
-    font-size: 1em;
+    font-size: 1.25em;
     height: 9em;
     width: 9em;
     border-radius: 100%;
     align-self: center;
     font-weight: bold;
+    color:  rgb(0, 16, 163);
     background-color: rgba(255,255,255,.2);
-    border: white solid 2px;
+    border: white solid 1.5px;
+}
+
+button:hover {
+    color: white;
 }
 
 form {
@@ -40,17 +45,18 @@ form {
     align-self: center;
     justify-content: center;
     align-content: center;
-    height: 9em;
-    width: 9em;
+    /* height: 9em; */
+    /* width: 9em; */
     border-radius: 100%;
-    border: white solid 2px;
+    border: white solid 1.5px;
     margin-top: 1em;
     margin-right: 1em;
     margin-left: 1em;
 }
 
 form:hover {
-    background-color: rgba(255,255,255,.5);
+    color: white;
+    background-color:  rgb(15, 171, 233);
     border-radius: 100%;
 }
 
