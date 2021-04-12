@@ -5,11 +5,11 @@
 #### Link: [ToDoomList](http://aa-todoomlist.herokuapp.com/)
 #### Documentation: [Github Wiki](https://github.com/CodingInRhythm/ToDoomList/wiki)
 
-Landing page GIF:
+**Landing page GIF:**
 
 ![Alt Text](https://media.giphy.com/media/X1qxc3e1hjOvyOpsyM/giphy.gif)
 
-App page view: 
+**App page view:** 
 
 ![Alt Text](https://media.giphy.com/media/Iv0i7t4Xig1Et0DUtc/giphy.gif)
 
