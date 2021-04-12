@@ -82,8 +82,8 @@
  z-index: 1;
 }
  
-div.hidden {
-   display: hidden;
+.hidden {
+   display: none;
 }
  
 .scheme-action-buttons {
