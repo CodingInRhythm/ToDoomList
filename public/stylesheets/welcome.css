@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400&family=MuseoModerno:wght@200&family=Roboto:wght@300&family=Sue+Ellen+Francisco&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
+/*! Font Families:
+font-family: 'Inria Sans', sans-serif;
+font-family: 'MuseoModerno', cursive;
+font-family: 'Roboto', sans-serif;
+font-family: 'Sue Ellen Francisco', cursive;
+*/
+
 .get-started {
     background-color: skyblue;
     /* height: 10em; */
@@ -5,6 +14,8 @@
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    font-family: 'Sue Ellen Francisco', cursive;
+    font-size: 30px;
 }
 
 .btn-container {
@@ -80,19 +91,21 @@ body {
 
 .background-right {
     background-color: rgb(15, 171, 233);
+    font-family: 'Inria Sans', sans-serif;
 }
 
 .background-left {
     background-color: skyblue;
+    font-family: 'Inria Sans', sans-serif
 }
 
 .name > p {
-    font-size: 2em;
+    font-size: 2.75em;
 }
 
 .name {
     display: flex;
-    align-content: center;
+    align-items: center;
 }
 
 .btn-container i {
@@ -118,15 +131,22 @@ body {
     color: black;
 }
 
-.chris-i, .alex-i {
+i.chris-i, i.alex-i  {
     color: rgb(15, 171, 233);
 }
 
 
 .bio > span {
-    font-size: 1.25em;
-    font-weight: bold;
+    font-size: 1.75em;
+    font-weight: 900;
     color: rgb(89, 89, 89);
+}
+
+.bio p {
+    font-size: 1.25em;
+    font-weight: 500;
+    /* font-family: 'Inria Sans', sans-serif; */
+    font-family: 'Merriweather', serif;
 }
 
 span.title {
