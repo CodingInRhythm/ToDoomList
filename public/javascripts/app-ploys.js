@@ -18,26 +18,33 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const dueAt = null;
 
         let lastQuery = queryTracker.getLastQuery();
-        let schemeId = 1;
-        if(lastQuery.queryType === "schemeId"){
-            schemeId = lastQuery.queryData;
+
+        if(lastQuery.queryType === "search"){
+            alert("Must be in a scheme to add a ploy.")
         }
+        else{
+            let schemeId = 1;
+            if(lastQuery.queryType === "schemeId"){
+                schemeId = lastQuery.queryData;
+            }
 
-        const addPloy = {name, dueAt, schemeId: schemeId, completed: false};
-        const postPloy = await Ploys.createPloy(addPloy);
+            const addPloy = {name, dueAt, schemeId: schemeId, completed: false};
+            const postPloy = await Ploys.createPloy(addPloy);
 
-        const scheme = await newScheme.getScheme(schemeId);
-        // const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId)
-        const schemeObj = await queryTracker.callLastQuery();
-        //Ploy is incomplete by default, only update page if on incomplete tab
-        const activeTab = document.querySelector(".complete-tab.tab-active");
-        if(activeTab.innerHTML === "Incomplete"){
-            addPloyToContainer(postPloy.ploy);
-            createPloyDataDiv(postPloy.ploy, scheme.name);
+            const scheme = await newScheme.getScheme(schemeId);
+            // const schemeObj = await queryTracker.makeNewQuery("schemeId", schemeId)
+            const schemeObj = await queryTracker.callLastQuery();
+            //Ploy is incomplete by default, only update page if on incomplete tab
+            const activeTab = document.querySelector(".complete-tab.tab-active");
+            if(activeTab.innerHTML === "Incomplete"){
+                addPloyToContainer(postPloy.ploy);
+                createPloyDataDiv(postPloy.ploy, scheme.name);
+            }
+            updatePloyCounter(schemeObj);
+
         }
-        updatePloyCounter(schemeObj);
-
         inputForm.value = "";
+
     })
 
     //Event Listener for Deleting Ploys
@@ -258,7 +265,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         else{
             ployDataDiv.classList.add("hidden");
         }
-         
+
     }
 
     // Creates hidden ploy data divs that will display on right body
@@ -310,7 +317,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         const dueAtForm = document.createElement("form")
         const dueAtDropdown = document.createElement("select")
         dueAtDropdown.addEventListener("change", async (e) => {
-         
+
           await Ploys.updatePloy(ploy.id, { dueAt: e.target.value });
           const schemeObj = await queryTracker.callLastQuery();
           await displayPloys(schemeObj);
@@ -322,7 +329,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         const today = new Date() //should be called today
         const todaysDateIndex = today.getDay()
-        
+
 
 
         for (let i = 0; i < 5; i++) {
@@ -348,7 +355,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
                 todayEl.setAttribute("value", dateStringFormatter(today))
                 todayEl.setAttribute("class", "due-at")
                 todayEl.innerHTML = 'Today'
-                
+
                 dueAtDropdown.append(todayEl)
             }
             else if (i === 1) {
@@ -362,7 +369,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
                 tomorrowEl.innerHTML = 'Tomorrow'
                 dueAtDropdown.append(tomorrowEl);
             }
-            else { 
+            else {
                 console.log(i)
                 let dayEl = document.createElement("option")
                 const date = setDate(today, i);
@@ -373,8 +380,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
                     dateStringFormatter(date)
                 );
                 dayEl.setAttribute("class", "due-at");
-                
-                dayEl.innerHTML = dateConverter(todaysDateIndex + i) //dateConverter function will take num and convert it to string date.  
+
+                dayEl.innerHTML = dateConverter(todaysDateIndex + i) //dateConverter function will take num and convert it to string date.
                 dueAtDropdown.append(dayEl);
             }
         }
@@ -390,17 +397,17 @@ window.addEventListener("DOMContentLoaded", (e) => {
             //     console.log('here?')
             //     let clickedDay = e.target.value
             //     console.log(clickedDay)
-                
+
             // })
-        
+
 
             // const ployObj = {name: ploy.name, schemeId: schemeId, completed: markComplete}
             // await Ploys.updatePloy(ploy.id, ployObj);
-        
-        
 
-     
-    
+
+
+
+
 
 
 
