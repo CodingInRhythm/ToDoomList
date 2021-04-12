@@ -34,6 +34,7 @@ button {
     color:  rgb(0, 16, 163);
     background-color: rgba(255,255,255,.2);
     border: white solid 1.5px;
+    outline: none;
 }
 
 button:hover {
