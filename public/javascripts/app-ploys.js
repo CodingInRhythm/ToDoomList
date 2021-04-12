@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             alert("Must be in a scheme to add a ploy.")
         }
         else{
-            // let schemeId = 1;
+            let schemeId = 1;
             // if(lastQuery.queryType === "schemeId"){
                 schemeId = lastQuery.queryData;
             // }
