@@ -194,7 +194,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
     const displayPloys = async (schemeObj) => {
         //Steps
         //0. Check if on completed tab or not
-        console.log("I'm being called")
+      
         const activeTab = document.querySelector(".complete-tab.tab-active");
         const completed = (activeTab.innerHTML === "Completed");
 
@@ -232,8 +232,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
               }
             }));
         }
-       let dueDates = document.getElementsByClassName("due-at");
-       console.log(dueDates);
+       
+    
 
     }
 
@@ -334,7 +334,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         for (let i = 0; i < 5; i++) {
             if (i === 0) {
-                console.log(i)
+                
                 //clearing out the div
                 // while (dueAtDropdown.firstChild) {
                 //     dueAtDropdown.removeChild(dueAtDropdown.firstChild)
@@ -359,7 +359,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
                 dueAtDropdown.append(todayEl)
             }
             else if (i === 1) {
-                console.log(i)
+                
                 const tomorrowEl = document.createElement("option")
                 const date = setDate(today, i)
                 tomorrowEl.setAttribute("id", `dueat-${i}`)
@@ -370,7 +370,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
                 dueAtDropdown.append(tomorrowEl);
             }
             else {
-                console.log(i)
+              
                 let dayEl = document.createElement("option")
                 const date = setDate(today, i);
                 dayEl.setAttribute("id", `dueat-${i}`);
@@ -386,32 +386,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             }
         }
             let dueDates = document.getElementsByClassName("due-at")
-            console.log(dueDates)
-
-
-
-
-            // dueDates.addEventListener("click", (e) => {
-            //     //i'll grab the clicked day which needs to give me a date formatted s
-            //     //so I can  post it to db and then update both the ploy container AND the modal/pop-up
-            //     console.log('here?')
-            //     let clickedDay = e.target.value
-            //     console.log(clickedDay)
-
-            // })
-
-
-            // const ployObj = {name: ploy.name, schemeId: schemeId, completed: markComplete}
-            // await Ploys.updatePloy(ploy.id, ployObj);
-
-
-
-
-
-
-
-
-        // dueDiv.append(dueAtSpan);
+          
 
         //Add scheme div
         const schemeDiv = document.createElement("div");

@@ -7,7 +7,7 @@ const updateSummaryName = (schemeObj) => {
 }
 
 const updatePloyCounter = (schemeObj) => {
-    console.log(schemeObj)
+  
     let numCompletedPloysCounter = 0
     let numPloysCounter = 0
     let numCompletedPloysContainer = document.getElementById("completed");

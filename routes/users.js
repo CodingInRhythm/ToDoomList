@@ -91,7 +91,7 @@ const loginValidators = [
 
 router.post("/login", csrfProtection, loginValidators, asyncHandler(async (req, res) => {
   const { userName, password } = req.body;
-  console.log('Heloooooo')
+ 
 
   let errors = [];
   const validatorErrors = validationResult(req);
@@ -111,7 +111,7 @@ router.post("/login", csrfProtection, loginValidators, asyncHandler(async (req, 
   } else {
     errors = validatorErrors.array().map((error) => error.msg);
   }
-  console.log(errors)
+
   res.render('login', {
     pageTitle: "Login", //? Brian needs to explain this.
     userName,
@@ -148,7 +148,7 @@ router.post("/sign-up", csrfProtection, userValidators, asyncHandler(async (req,
     res.redirect("/app/welcome");
   } else {
     const errors = validatorErrors.array().map((error) => error.msg)
-    console.log(errors)
+   
     res.render('sign-up', {
       pageTitle: "Sign Up",
       user,

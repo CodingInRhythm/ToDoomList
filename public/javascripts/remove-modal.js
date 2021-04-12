@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
     })
     exitModalButton.addEventListener("click", (e) => {
-        console.log("exitModal")
+      
         modal.style.display = 'none'
         mainContainer.style.filter = "none";
     })

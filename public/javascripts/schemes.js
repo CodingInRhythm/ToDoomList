@@ -11,7 +11,7 @@ class Scheme {
     dropDownArrow() {
         let dropDownButton = document.querySelector('#schemes-arrow')
         let arrowEle = document.querySelector('#schemes-arrow-i')
-        console.log(arrowEle)
+       
         arrowEle.classList.add('rotate-arrow')
 
         dropDownButton.addEventListener('click', this.toggleSchemes)
@@ -27,7 +27,7 @@ class Scheme {
             arrowEle.classList.add('rotate-arrow')
             schemeList.classList.add('hidden')
         }
-        console.log(arrowEle)
+      
         // schemes = document.getElementsByClassName('.scheme')
     }
 
@@ -159,7 +159,7 @@ class Scheme {
     showRemoveModal = async (e) => {
         e.stopPropagation()
 
-        console.log(e.target)
+   
         // console.log(e.target.parentNode.parentNode.parentNode, 'und')
 
         await fetch(`app/schemes/${e.target.id}`, {

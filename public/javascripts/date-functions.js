@@ -39,7 +39,7 @@ const dateStringFormatter = (unformattedDate) => {
   }
 }
 
-console.log(dateConverter(10))
+
 export {
     dateConverter,
     dateStringFormatter,

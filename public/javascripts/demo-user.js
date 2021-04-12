@@ -31,8 +31,7 @@ export default class DemoUser {
         document.querySelector('.userName').value = this.userName;
         document.querySelector('.email').value = this.email;
 
-        console.log(document.querySelector('.userName'))
-        console.log(document.querySelector('.email'))
+       
 
     }
 

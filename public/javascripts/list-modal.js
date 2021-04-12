@@ -16,9 +16,9 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     addListButton.addEventListener("click", async (e) => {
         e.preventDefault()
         const listField = document.getElementById("modal-form")
-        console.log(listField)
+       
         const name = listField.value
-        console.log(name)
+      
         const postedScheme = await fetch('/app/schemes', {
             method: 'POST',
             headers: {
@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
         })
         exitModalButton.addEventListener("click", (e) => {
-            console.log("exitModal")
+          
             modal.style.display = 'none'
             mainContainer.style.filter = "none";
         })

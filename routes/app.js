@@ -12,7 +12,7 @@ const { requireAuth } = require("../auth/auth.js")
 
 router.get("/", requireAuth, asyncHandler ( async (req, res, next) => {
   const { userId } = req.session.auth
-  console.log(userId, "IS LOGGED IN")
+
   const user = await db.Villain.findByPk( userId )
   res.render("app", { user });
 }));
@@ -102,7 +102,7 @@ router.get("/ploys/:ployid", async (req, res) => {
 
 //Not sure how dueAt is going to be updated
 router.put("/ploys/:ployid", async (req, res) => {
-  console.log(req.body)
+ 
   const {name, schemeId, completed, dueAt} = req.body
   const id = parseInt(req.params.ployid, 10)
   const ploy = await db.Ploy.findByPk(id)
