@@ -64,7 +64,7 @@
     position: absolute;
     left: 0px;
     transition-property: left;
-    transition-duration: 0.5s;
+    transition-duration: 0.25s;
 }
 
 .ploy-data.hidden {
