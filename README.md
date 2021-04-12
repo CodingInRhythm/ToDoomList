@@ -13,7 +13,7 @@ App page view:
 
 ### Features ###
 
-* Signup/Log-in with email
+* Sign-up and login with credentials
 * Main app page is a single-page application
 * Easy to use interface
 * Logged in user can create and save lists
@@ -21,6 +21,8 @@ App page view:
 * Logged in user can search for all their tasks
 * Logged in user can keep track of tasks in a list with dynamic summary on right-hand side of main page
 * Logged in user can edit and delete their lists and tasks
+
+### Todos ###
 
 ### Contributors ###
 
