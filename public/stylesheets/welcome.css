@@ -7,6 +7,12 @@
     align-content: center;
 }
 
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 button {
     font-size: 1em;
     height: 9em;
@@ -28,11 +34,13 @@ form {
     border-radius: 100%;
     border: white solid 2px;
     margin-top: 1em;
+    margin-right: 1em;
+    margin-left: 1em;
 }
 
 form:hover {
     background-color: rgba(255,255,255,.5);
-
+    border-radius: 100%;
 }
 
 
@@ -87,7 +95,13 @@ body {
     align-content: center;
 }
 
-i {
+.btn-container i {
+    font-size: 3em;
+    color: rgba(255, 255, 255, 0);
+}
+
+.background-left i,
+.background-right i {
     font-size: 2em;
     align-self: center;
     margin-left: 1em;
@@ -98,14 +112,16 @@ i {
     border: white solid 1px;
 }
 
+.background-left i:hover,
+.background-right i:hover {
+    background-color: rgba(255,255,255,.5);
+    color: black;
+}
+
 .chris-i, .alex-i {
     color: rgb(15, 171, 233);
 }
 
-i:hover {
-    background-color: rgba(255,255,255,.5);
-    color: black;
-}
 
 .bio > span {
     font-size: 1.25em;
