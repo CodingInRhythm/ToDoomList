@@ -22,13 +22,13 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
         })
              newScheme.displaySchemes()
-             modal.style.display = "none";
              mainContainer.style.filter = "none";
+             modal.style.display = "none";
 
         })
         exitModalButton.addEventListener("click", (e) => {
-          
-            modal.style.display = 'none'
+            e.preventDefault();
             mainContainer.style.filter = "none";
+            modal.style.display = 'none'
         })
     })

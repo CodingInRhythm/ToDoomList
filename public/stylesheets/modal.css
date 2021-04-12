@@ -13,7 +13,7 @@
   background-color: white;
   border: 1px grey solid;
   border-radius: 4px;
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
   /* Black w/ opacity */
 }
 

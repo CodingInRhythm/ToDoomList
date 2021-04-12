@@ -8,20 +8,20 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     const exitModalButton = document.getElementById("exit-remove-modal")
 
     addListButton.addEventListener("click", async (e) => {
-
+        
         const btnRename = document.querySelector(".remove-list");
 
-        await fetch(`app/schemes/${e.target.id}`, {
+        await fetch(`/app/schemes/${e.target.id}`, {
             method: "DELETE"
         })
         newScheme.displaySchemes()
-        modal.style.display = "none";
         mainContainer.style.filter = "none";
+        modal.style.display = "none";
 
     })
     exitModalButton.addEventListener("click", (e) => {
-      
-        modal.style.display = 'none'
+        e.preventDefault();
         mainContainer.style.filter = "none";
+        modal.style.display = 'none'
     })
 })

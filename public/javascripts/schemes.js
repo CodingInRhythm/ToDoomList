@@ -162,7 +162,7 @@ class Scheme {
    
         // console.log(e.target.parentNode.parentNode.parentNode, 'und')
 
-        await fetch(`app/schemes/${e.target.id}`, {
+        await fetch(`/app/schemes/${e.target.id}`, {
             method: "DELETE"
         })
 
