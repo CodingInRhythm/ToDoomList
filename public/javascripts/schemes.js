@@ -32,7 +32,7 @@ class Scheme {
     }
 
     getScheme = async (id) => {
-        const scheme = await fetch(`app/schemes/${id}`);
+        const scheme = await fetch(`/app/schemes/${id}`);
         return await scheme.json()
     }
 
