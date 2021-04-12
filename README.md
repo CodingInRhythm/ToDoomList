@@ -27,7 +27,7 @@ App page view:
 ### Todos ###
 
 ### Technical Details ###
-One challenge we faced was handling how the display of ploys(tasks) would refresh after making an action (ex. deleting, renaming a ploy). The ploys being displayed can either be the result of querying by the Scheme Id or by Search, and in order to refresh the display, we needed a way to track what the last query that was called so we can re-call it. To facilitate that, we added a PloyQuery class that acted as a middleman between a function querying for ploys to display and the actual DB query call. This class would be able to keep a history of what query was last called and replaying it when a refresh is needed.
+* One challenge we faced was handling how the display of ploys(tasks) would refresh after making an action (ex. deleting, renaming a ploy). The ploys being displayed can either be the result of querying by the Scheme Id or by Search, and in order to refresh the display, we needed a way to track what the last query that was called so we can re-call it. To facilitate that, we added a PloyQuery class that acted as a middleman between a function querying for ploys to display and the actual DB query call. This class would be able to keep a history of what query was last called and replaying it when a refresh is needed.
 
 ```
   class PloyQuery{
@@ -44,9 +44,7 @@ One challenge we faced was handling how the display of ploys(tasks) would refres
             return await Ploys.getPloys(data);
         } else if(type === "search"){
             return await Ploys.searchPloys(data);
-        } else if(type === "all"){
-
-        }
+        } 
     }
 
     //Returns data from last call of makeNewQuery();
