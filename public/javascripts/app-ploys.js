@@ -333,12 +333,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         for (let i = 0; i < 5; i++) {
             if (i === 0) {
-                
-                //clearing out the div
-                // while (dueAtDropdown.firstChild) {
-                //     dueAtDropdown.removeChild(dueAtDropdown.firstChild)
-                // }
-                //todo: set first option to be 'Never' or current dueAt:
+            
                 const currentDueAt = document.createElement("option")
                 if (ploy.dueAt) {
                     currentDueAt.innerHTML = formatDate(ploy.dueAt)
