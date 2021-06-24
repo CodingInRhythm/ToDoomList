@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400&family=MuseoModerno:wght@200&family=Roboto:wght@300&family=Sue+Ellen+Francisco&display=swap');
+
+/*! Font Families:
+font-family: 'Inria Sans', sans-serif;
+font-family: 'MuseoModerno', cursive;
+font-family: 'Roboto', sans-serif;
+font-family: 'Sue Ellen Francisco', cursive;
+*/
+
+
+/* First take the footer container*/
+.app-footer-container {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: whitesmoke;
+    position: relative;
+    /* top: 25rem; */
+    height: 100%;
+    /* overflow: hidden; */
+}
+
+.app-footer-container h3 {
+    margin: 0.4rem;
+    font-size: 5px;
+}
+
+.app-footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    /* flex-wrap: wrap; */
+    margin: 15px auto;
+    background-color: whitesmoke;
+}
+
+.app-lists {
+    display: flex;
+    /* justify-content: center; */
+    align-content: center;
+    width: 12.9%;
+    margin: 10px 15px;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.app-lists ul {
+    list-style-type: none;
+}
+
+.app-lists h3 {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    font-weight: 700;
+    font-size: 1rem;
+    vertical-align: top;
+    /* line-height: 1rem; */
+    margin-bottom: 15px;
+}
+.app-dotted {
+    border-bottom: 7px dotted rgba(0, 0, 0, 0.125);
+    margin-bottom: 20px;
+}
+.app-lists ul li {
+    padding-right: 25px;
+    margin-bottom: 15px !important;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+.app-lists a {
+    font-size: 1rem;
+    /* margin: 0.5rem; */
+    /* width: 200%; */
+    padding-right: 55%;
+    padding-left: 2.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    border-radius: 5px;
+    line-height: 120%;
+    /* position: relative;
+    left: 50px; */
+}
+
+.app-lis {
+    width: 100%;
+    height: auto;
+}
+
+.app-lis:hover {
+    border-radius: 10px;
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    /* background-color: black; */
+}
+
+.app-footer-container ul li {
+    font-size: 1.75rem;
+}
+
+.app-footer-bottom {
+    display: flex;
+    justify-content: space-evenly;
+    justify-items: center;
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: auto;
+    height: auto;
+    /* overflow-y: auto; */
+    /* margin: 50px 0; */
+    position: relative;
+    /* top: 5rem; */
+}
+
+.app-footer-bottom ul {
+    list-style-type: none;
+    /* margin: 15px; */
+}
+
+.app-footer-bottom a {
+    font-size: 16px;
+    margin: 0 15px;
+}
+
+.tdl-legal li {
+    display: inline-block;
+}
