@@ -9,29 +9,32 @@ font-family: 'Sue Ellen Francisco', cursive;
 
 
 /* First take the footer container*/
-.footer-container {
+.app-footer-container {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: whitesmoke;
     position: relative;
     /* top: 25rem; */
-    height: 350px;
+    height: 100%;
+    /* overflow: hidden; */
 }
 
-h3 {
+.app-footer-container h3 {
     margin: 0.4rem;
+    font-size: 5px;
 }
 
-.footer {
+.app-footer {
     display: flex;
     justify-content: space-evenly;
     align-content: center;
     width: 100%;
-    height: 10rem;
+    height: 100%;
     /* flex-wrap: wrap; */
     margin: 15px auto;
+    background-color: whitesmoke;
 }
 
-.lists {
+.app-lists {
     display: flex;
     /* justify-content: center; */
     align-content: center;
@@ -41,25 +44,25 @@ h3 {
     text-decoration: none;
 }
 
-.lists ul {
+.app-lists ul {
     list-style-type: none;
 }
 
-.lists h3 {
+.app-lists h3 {
     display: flex;
     justify-content: center;
     width: auto;
     font-weight: 700;
-    font-size: 1.75rem;
+    font-size: 1rem;
     vertical-align: top;
     /* line-height: 1rem; */
     margin-bottom: 15px;
 }
-.dotted {
+.app-dotted {
     border-bottom: 7px dotted rgba(0, 0, 0, 0.125);
     margin-bottom: 20px;
 }
-.lists ul li {
+.app-lists ul li {
     padding-right: 25px;
     margin-bottom: 15px !important;
     width: 100%;
@@ -68,8 +71,8 @@ h3 {
     display: flex;
     justify-content: flex-start;
 }
-.lists a {
-    font-size: 1.75rem;
+.app-lists a {
+    font-size: 1rem;
     /* margin: 0.5rem; */
     /* width: 200%; */
     padding-right: 55%;
@@ -83,12 +86,12 @@ h3 {
     left: 50px; */
 }
 
-.lis {
+.app-lis {
     width: 100%;
     height: auto;
 }
 
-.lis:hover {
+.app-lis:hover {
     border-radius: 10px;
     color: #333;
     background-color: #e6e6e6;
@@ -97,11 +100,11 @@ h3 {
     /* background-color: black; */
 }
 
-ul li {
+.app-footer-container ul li {
     font-size: 1.75rem;
 }
 
-.footer-bottom {
+.app-footer-bottom {
     display: flex;
     justify-content: space-evenly;
     justify-items: center;
@@ -111,18 +114,18 @@ ul li {
     width: auto;
     height: auto;
     /* overflow-y: auto; */
-    margin: 50px 0;
+    /* margin: 50px 0; */
     position: relative;
-    top: 5rem;
+    /* top: 5rem; */
 }
 
-.footer-bottom ul {
+.app-footer-bottom ul {
     list-style-type: none;
     /* margin: 15px; */
 }
 
-.footer-bottom a {
-    font-size: 1.5rem;
+.app-footer-bottom a {
+    font-size: 16px;
     margin: 0 15px;
 }
 
