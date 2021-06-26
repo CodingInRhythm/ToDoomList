@@ -58,13 +58,26 @@ a {
     text-decoration: none;
 }
 
-header a {
+header a, header div.demo-user-btn {
     border: rgba(255, 255, 255, 1) solid 1.5px;
     padding: .5em 1.75em;
     border-radius: 5px;
     /* font-size: 1rem; */
 }
 
+/* header div.demo-user-btn {
+} */
+
+header div.demo-user-btn button {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: white;
+    font-size: 1.05em;
+    text-align: center;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
 
 .main-nav-box {
 
@@ -75,7 +88,7 @@ header a {
 
 }
 
-header a:hover {
+header a:hover{
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.1);
 }
