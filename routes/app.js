@@ -102,7 +102,7 @@ router.get("/ploys/:ployid", async (req, res) => {
 
 //Not sure how dueAt is going to be updated
 router.put("/ploys/:ployid", async (req, res) => {
- 
+
   const {name, schemeId, completed, dueAt} = req.body
   const id = parseInt(req.params.ployid, 10)
   const ploy = await db.Ploy.findByPk(id)
@@ -129,7 +129,7 @@ router.get("/search/:string", async (req, res) => {
   const ploys = await db.Ploy.findAll({
     where: {
       name: {
-      [Op.substring]: string,
+      [Op.iLike]: `%${string}%`,
       }
     },
   });
