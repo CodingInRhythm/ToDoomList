@@ -193,7 +193,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
     const displayPloys = async (schemeObj) => {
         //Steps
         //0. Check if on completed tab or not
-      
+
         const activeTab = document.querySelector(".complete-tab.tab-active");
         const completed = (activeTab.innerHTML === "Completed");
 
@@ -231,8 +231,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
               }
             }));
         }
-       
-    
+
+
 
     }
 
@@ -333,7 +333,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         for (let i = 0; i < 5; i++) {
             if (i === 0) {
-            
+
                 const currentDueAt = document.createElement("option")
                 if (ploy.dueAt) {
                     currentDueAt.innerHTML = formatDate(ploy.dueAt)
@@ -353,7 +353,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
                 dueAtDropdown.append(todayEl)
             }
             else if (i === 1) {
-                
+
                 const tomorrowEl = document.createElement("option")
                 const date = setDate(today, i)
                 tomorrowEl.setAttribute("id", `dueat-${i}`)
@@ -364,7 +364,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
                 dueAtDropdown.append(tomorrowEl);
             }
             else {
-              
+
                 let dayEl = document.createElement("option")
                 const date = setDate(today, i);
                 dayEl.setAttribute("id", `dueat-${i}`);
@@ -380,7 +380,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             }
         }
             let dueDates = document.getElementsByClassName("due-at")
-          
+
 
         //Add scheme div
         const schemeDiv = document.createElement("div");
