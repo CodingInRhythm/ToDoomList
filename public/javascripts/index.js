@@ -1,7 +1,7 @@
-// import Scroll from "./scroll.js"
+import Scroll from "./scroll.js"
 
-// window.addEventListener("load", (event)=>{
+window.addEventListener("load", (event)=>{
 
-//     new Scroll().play();
+    new Scroll().play();
 
-// })
+})

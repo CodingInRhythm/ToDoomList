@@ -13,3 +13,8 @@ div.un-scrolled {
     overflow: hidden;
     margin-bottom: -12px;
 }
+
+@media screen and (max-width: 1500px) {
+    div.un-scrolled {height: 80vh}
+    div.footer-container {height: 20vh}
+}
