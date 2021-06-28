@@ -62,14 +62,16 @@
     padding-left: 15px;
     padding-top: 40px;
     position: absolute;
-    left: 0px;
-    transition-property: left;
-    transition-duration: 0.25s;
+    left: 0%;
+    transition: left 0.25s ease-in;
+    /* transition-property: left;
+    transition-duration: 0.25s; */
 }
 
 .ploy-data.hidden {
     left: 100%;
-    display: hidden;
+    display: unset;
+    /* display: hidden; */
 }
 
 
