@@ -37,6 +37,7 @@ class Ploys{
     static searchPloys = async (searchString) => {
         const ploys = await fetch(`/app/search/${searchString}`);
         const ploysObj = await ploys.json();
+        console.log(ploysObj)
         return ploysObj;
     }
 

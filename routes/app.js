@@ -124,13 +124,24 @@ router.delete("/ploys/:ployid", async (req, res) => {
 })
 
 router.get("/search/:string", async (req, res) => {
+  //Only return ploys belonging to current user
+  const { userId } = req.session.auth
   //destructure regEx to search for task
   const string = req.params.string //not called this
   const ploys = await db.Ploy.findAll({
+    include: [
+      {
+        model: db.Scheme,
+        attributes: ['villainId'],
+        where:{
+          villainId: userId
+        }
+      }
+    ],
     where: {
       name: {
-      [Op.iLike]: `%${string}%`,
-      }
+        [Op.iLike]: `%${string}%`,
+      },
     },
   });
   res.json({ ploys });
