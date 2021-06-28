@@ -137,7 +137,7 @@ div.frame-2 {
     width: 50em;
     height: 50em;
     animation: .5s linear;
-    left: 200%;
+    /* left: 200%; */
     top: 100%;
 }
 
@@ -438,3 +438,10 @@ div.r-bubble-text-4 {
     width: 50px;
     background-color: red;
 } */
+
+@media screen and (max-width: 1500px) {
+    div.left-bubble-2 {left: 0%}
+    div.l-bubble-text{left:20px}
+    #black-cow-left{left:0px}
+    div.right-bubble-2 {}
+}
