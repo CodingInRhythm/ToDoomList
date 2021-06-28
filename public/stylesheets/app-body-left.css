@@ -24,6 +24,7 @@
     font-size: 12px;
     padding: 5px 10px;
     color: #3e8bd8;
+    cursor: pointer;
 }
 
 .complete-tab.tab-active {
@@ -47,6 +48,7 @@
     margin-right: 10px;
     font-size: 10px;
     color: rgba(0,0,0,0.7);
+    cursor: pointer;
 }
 
 .action-menu-button:hover {
@@ -85,6 +87,7 @@
     background-color: #2e8ceb;
     padding: 10px 15px;
     margin: 10px 5px;
+    cursor: pointer;
 }
 
 /* List of Ploys */
@@ -95,7 +98,7 @@
 
 .ploy {
     border-bottom: 1px dotted grey;
-    height: 25px;
+    height: 30px;
     /* display: flex; */
     display: grid;
     grid-template-columns: 20px 30px auto auto;
