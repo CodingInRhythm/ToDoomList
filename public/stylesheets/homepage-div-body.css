@@ -440,10 +440,12 @@ div.r-bubble-text-4 {
 } */
 
 @media screen and (max-width: 1110px) {
-    div.frame-1 {top: 150%}
-    div.frame-2 {top: 150%}
-    div.frame-3 {top: 175%}
-    div.frame-4 {top: 150%}
+    /* div.frame-1 {
+        left: -7.5%; 
+        top: 30%}
+    div.frame-2 {top: 50%}
+    div.frame-3 {top: 50%}
+    div.frame-4 {top: 50%} */
     div.dots div {display: none}
     div.left-bubble-1 {display: none}
     div.right-bubble-1 {display: none}
@@ -460,5 +462,18 @@ div.r-bubble-text-4 {
     #person-img-3 {top:15%}
     div.r-bubble-text-3{top: 6%; left: 66%; font-size:20px; display: none}
     div.right-bubble-3{top: 6%; left:57%; display: none}
-    div.main-container{}
+    div.top-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    p.mission-statement {
+        width: 60%;
+        text-align: center;
+    }
+    div.frame-1 img, div.frame-2 img, div.frame-3 img, div.frame-4 img {
+        display: none;
+    }
+
 }

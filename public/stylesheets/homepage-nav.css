@@ -151,13 +151,28 @@ span {
          position: sticky;
         }
         .links {
-            display: flex; 
+            display: flex;
             flex-direction: column;
-            gap: 30px}
+            justify-content: center;
+            align-items: flex-start;
+            gap: 50px;
+            width: 100%;
+        }
+
+        ul.links li:first-child {
+            margin-top: 50px;
+        }
+
         #mid-page-sign-up{display: none;}
         header {
             border: none;
             position: relative;
+        }
+        header a {
+            font-size: 1.25rem;
+        }
+        header div.demo-user-btn button {
+            font-size: 1.40rem;
         }
      /* .main-container div {margin: 0px 100px;} */
  }

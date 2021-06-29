@@ -153,7 +153,6 @@ ul li {
     box-sizing: border-box;
     font-size: 16px;
     /* margin: 0.5rem; */
-    width: 200%;
     /* padding-right: 2.5rem; */
     /* padding-left: 2.5rem; */
     /* padding-top: 2.5rem; */
@@ -164,4 +163,9 @@ ul li {
     border-radius: 5px;
     line-height: 120%;
     }
+    .lists {
+        width: 50%;
+        align-items: center;
+    }
+
 }
