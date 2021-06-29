@@ -200,7 +200,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         //2. Empty out ploy-container
         const ployContainer = document.querySelector(".ploy-container");
         ployContainer.innerHTML = "";
-        for(let i = 0; i < 10; i++){
+        for(let i = 0; i < 25; i++){
             const emptyDiv = document.createElement("div");
             emptyDiv.classList.add("ploy", "empty");
             ployContainer.append(emptyDiv);
