@@ -21,9 +21,10 @@
 }
 
 .complete-tab {
-    font-size: 12px;
+    font-size: 1rem;
     padding: 5px 10px;
     color: #3e8bd8;
+    cursor: pointer;
 }
 
 .complete-tab.tab-active {
@@ -45,8 +46,9 @@
     border-radius: 3px;
     padding: 5px 10px;
     margin-right: 10px;
-    font-size: 10px;
+    font-size: 1rem;
     color: rgba(0,0,0,0.7);
+    cursor: pointer;
 }
 
 .action-menu-button:hover {
@@ -85,6 +87,8 @@
     background-color: #2e8ceb;
     padding: 10px 15px;
     margin: 10px 5px;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
 /* List of Ploys */
@@ -95,7 +99,7 @@
 
 .ploy {
     border-bottom: 1px dotted grey;
-    height: 25px;
+    height: 30px;
     /* display: flex; */
     display: grid;
     grid-template-columns: 20px 30px auto auto;
@@ -120,12 +124,12 @@
 }
 
 .ploy__ploy-desc{
-    font-size: 13px;
+    font-size: 1rem;
     font-weight: 600;
 }
 
 .ploy__due-date {
-    font-size: 13px;
+    font-size: 1rem;
     margin-left: auto;
     padding: 0px 30px;
 }
