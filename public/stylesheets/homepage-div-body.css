@@ -440,10 +440,10 @@ div.r-bubble-text-4 {
 } */
 
 @media screen and (max-width: 1500px) {
-    div.frame-1 {top: 200%}
-    div.frame-2 {top: 200%}
-    div.frame-3 {top: 200%}
-    div.frame-4 {top: 200%}
+    div.frame-1 {top: 150%}
+    div.frame-2 {top: 150%}
+    div.frame-3 {top: 175%}
+    div.frame-4 {top: 150%}
     div.left-bubble-2 {left: -5%; }
     div.l-bubble-text { left: 0 }
     #black-cow-left {left:-4%}
@@ -451,6 +451,7 @@ div.r-bubble-text-4 {
     div.l-bubble-text-3 {left: 5%; top: 5%; font-size: 20px;}
     #jesse-left {left: -4%; top: 6%;}
     #james-right{left: 58%; top: 7%;}
+    #person-img-3 {top:15%}
     div.r-bubble-text-3{top: 6%; left: 66%; font-size:20px;}
     div.right-bubble-3{top: 6%; left:57%;}
     div.main-container{}

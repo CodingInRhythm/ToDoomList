@@ -15,6 +15,12 @@ div.un-scrolled {
 }
 
 @media screen and (max-width: 1500px) {
-    div.un-scrolled {height: 80vh}
-    div.footer-container {height: 20vh}
+    body {
+        display:flex;
+        flex-direction: column;
+        height: 100vh;
+        overflow: auto;
+    }
+    div.un-scrolled {flex-grow: 3; }
+    div.footer-container {}
 }
