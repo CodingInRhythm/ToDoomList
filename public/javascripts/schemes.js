@@ -12,7 +12,7 @@ class Scheme {
         let dropDownButton = document.querySelector('#schemes-arrow')
         let arrowEle = document.querySelector('#schemes-arrow-i')
        
-        arrowEle.classList.add('rotate-arrow')
+        // arrowEle.classList.add('rotate-arrow')
 
         dropDownButton.addEventListener('click', this.toggleSchemes)
     }
@@ -50,7 +50,14 @@ class Scheme {
 
         // gets HTML div to add schemes to.
         const schemeDropdown = document.querySelector('.schemes-list')
-        schemeDropdown.classList.add('hidden')
+        // schemeDropdown.classList.add('hidden')
+
+
+        const schemeObj = await queryTracker.makeNewQuery("schemeId", schemesObj.schemes[0].id);
+        await displayPloys(schemeObj)
+        updateSummaryName(schemeObj)
+        updatePloyCounter(schemeObj)
+
 
         // iterates over each scheme making a div element attached to page
         schemesObj.schemes.forEach(scheme => {
@@ -70,6 +77,8 @@ class Scheme {
             newDiv.appendChild(button)
             this.makedropdDown(button, newDiv, scheme.id)
             newDiv.setAttribute('id', `${scheme.id}`)
+
+            // console.log(newDiv)
 
             newDiv.addEventListener('click', async () => {
                 const schemeObj = await queryTracker.makeNewQuery("schemeId", scheme.id);
@@ -187,4 +196,5 @@ class Scheme {
 
 let newScheme = new Scheme();
 newScheme.displaySchemes();
+
 export default newScheme
