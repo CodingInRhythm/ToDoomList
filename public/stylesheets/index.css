@@ -18,8 +18,8 @@ div.un-scrolled {
     body {
         display:flex;
         flex-direction: column;
-        height: 100vh;
-        overflow: auto;
+        width: 100%;
+        overflow: auto; 
     }
     div.un-scrolled {flex-grow: 3; }
 }

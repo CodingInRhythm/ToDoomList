@@ -129,3 +129,39 @@ ul li {
 .tdl-legal li {
     display: inline-block;
 }
+
+@media screen and (max-width: 800px) {
+    .footer-container {
+        position: static
+    }
+    .footer {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+    }
+    div.dotted {
+        display: none;
+    }
+    div.lis {
+        list-style: none;
+    }
+    .lists ul li {
+        border: none;
+    }
+   .lists a {
+    box-sizing: border-box;
+    font-size: 16px;
+    /* margin: 0.5rem; */
+    width: 200%;
+    /* padding-right: 2.5rem; */
+    /* padding-left: 2.5rem; */
+    /* padding-top: 2.5rem; */
+    /* padding-bottom: 2.5rem; */
+    /* margin: 10px 10px; */
+    padding: 10px 5px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    line-height: 120%;
+    }
+}

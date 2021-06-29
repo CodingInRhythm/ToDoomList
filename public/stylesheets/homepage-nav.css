@@ -145,7 +145,19 @@ span {
  */
 
  @media screen and (max-width: 1110px) {
-     .main-nav-box {width: 100%; flex-direction: column}
-        .links {display: flex; flex-direction: column;}
+     .main-nav-box {
+         width: 100%; 
+         flex-direction: column; 
+         position: sticky;
+        }
+        .links {
+            display: flex; 
+            flex-direction: column;
+            gap: 30px}
+        #mid-page-sign-up{display: none;}
+        header {
+            border: none;
+            position: relative;
+        }
      /* .main-container div {margin: 0px 100px;} */
  }
