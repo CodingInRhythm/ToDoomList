@@ -439,20 +439,26 @@ div.r-bubble-text-4 {
     background-color: red;
 } */
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1110px) {
     div.frame-1 {top: 150%}
     div.frame-2 {top: 150%}
     div.frame-3 {top: 175%}
     div.frame-4 {top: 150%}
-    div.left-bubble-2 {left: -5%; }
-    div.l-bubble-text { left: 0 }
-    #black-cow-left {left:-4%}
-    div.left-bubble-3 {left: -5%; top: 5%}
-    div.l-bubble-text-3 {left: 5%; top: 5%; font-size: 20px;}
-    #jesse-left {left: -4%; top: 6%;}
-    #james-right{left: 58%; top: 7%;}
+    div.dots div {display: none}
+    div.left-bubble-1 {display: none}
+    div.right-bubble-1 {display: none}
+    div.right-bubble-2 {display: none}
+    div.left-bubble-2 {left: -5%; display: none}
+    div.r-bubble-text {display: none}
+    div.l-bubble-text { left: 0; display: none }
+    #black-cow-left {left:-4%; display: none}
+    #black-cow-right {display: none}
+    div.left-bubble-3 {left: -5%; top: 5%; display: none}
+    div.l-bubble-text-3 {left: 5%; top: 5%; font-size: 20px; display: none}
+    #jesse-left {left: -4%; top: 6%; display: none}
+    #james-right{left: 58%; top: 7%; display: none}
     #person-img-3 {top:15%}
-    div.r-bubble-text-3{top: 6%; left: 66%; font-size:20px;}
-    div.right-bubble-3{top: 6%; left:57%;}
+    div.r-bubble-text-3{top: 6%; left: 66%; font-size:20px; display: none}
+    div.right-bubble-3{top: 6%; left:57%; display: none}
     div.main-container{}
 }

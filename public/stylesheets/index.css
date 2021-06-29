@@ -14,7 +14,7 @@ div.un-scrolled {
     margin-bottom: -12px;
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 700px) {
     body {
         display:flex;
         flex-direction: column;
@@ -22,5 +22,4 @@ div.un-scrolled {
         overflow: auto;
     }
     div.un-scrolled {flex-grow: 3; }
-    div.footer-container {}
 }

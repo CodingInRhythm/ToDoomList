@@ -84,7 +84,7 @@ header div.demo-user-btn button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 60%;
+    width: 80%;
 
 }
 
@@ -144,7 +144,8 @@ span {
 }
  */
 
- @media screen and (max-width: 1500px) {
-     .main-nav-box {width: 100%}
+ @media screen and (max-width: 1110px) {
+     .main-nav-box {width: 100%; flex-direction: column}
+        .links {display: flex; flex-direction: column;}
      /* .main-container div {margin: 0px 100px;} */
  }
