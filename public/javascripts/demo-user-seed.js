@@ -4,7 +4,7 @@
     let demoBtn = document.querySelector('.demo-btn')
     
     // demoBtn.addEventListener('click', async () => {
- 
+        console.log('beginning')
         let arrOfData = []
         let res = null;
         let resObj = null;
@@ -51,7 +51,7 @@
                 })
 
             }
-
         }
+        console.log('end')
         // await newScheme.displaySchemes();
 })()
