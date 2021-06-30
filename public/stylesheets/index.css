@@ -23,7 +23,3 @@ div.un-scrolled {
     }
     div.un-scrolled {flex-grow: 3; }
 }
-
-button, a{
-    cursor: pointer;
-}
