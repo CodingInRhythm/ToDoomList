@@ -21,6 +21,13 @@ h3 {
     margin: 0.4rem;
 }
 
+.name-link:hover {
+    /* opacity: 0.65; */
+    color: rgba(171, 105, 184, 0.89);
+    transition: ease-in-out 400ms;
+
+}
+
 .footer {
     display: flex;
     justify-content: space-evenly;
