@@ -69,7 +69,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         let selected = getSelectedPloys();
 
         //2. Send PUT request to change completed flag
-        const markComplete =markCompleteButton.innerHTML === "Completed"
+        const markComplete =markCompleteButton.innerHTML === "Mark as Complete"
         await Promise.all(selected.map(async (ploy) => {
             const ployObj = {completed: markComplete}
             await Ploys.updatePloy(ploy.id, ployObj);
@@ -91,9 +91,9 @@ window.addEventListener("DOMContentLoaded", (e) => {
             const switchToCompleted = tab.innerHTML==="Completed";
             // Switch action menu button for Completing/Uncompleting tasks
             if(switchToCompleted){
-                markCompleteButton.innerHTML = "Uncompleted";
+                markCompleteButton.innerHTML = "Mark as Incomplete";
             } else{
-                markCompleteButton.innerHTML = "Completed";
+                markCompleteButton.innerHTML = "Mark as Complete";
             }
 
             //Check if tab was changed for optimization?
