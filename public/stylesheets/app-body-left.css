@@ -57,7 +57,7 @@
 } */
 
 .delete_ploy {
-    background-color: #f06679;
+    background-color: #f77284;
 }
 
 .delete_ploy:hover{
@@ -65,10 +65,11 @@
 }
 
 .mark_complete {
-    background-color: #7DCE82;
+    background-color: #94e699;
 }
 
 .mark_complete:hover {
+    border-color: none;
     background-color: #ace7b0;
 }
 
