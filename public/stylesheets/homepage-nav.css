@@ -79,6 +79,11 @@ header div.demo-user-btn button {
     align-items: center; */
 }
 
+header div.demo-user-btn:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 .main-nav-box {
 
     display: flex;
@@ -101,7 +106,7 @@ span {
 /* .main-nav-box {
 
     display: flex;
- 
+
     align-items: center;
 
 }
@@ -146,8 +151,8 @@ span {
 
  @media screen and (max-width: 1110px) {
      .main-nav-box {
-         width: 100%; 
-         flex-direction: column; 
+         width: 100%;
+         flex-direction: column;
          position: sticky;
         }
         .links {
