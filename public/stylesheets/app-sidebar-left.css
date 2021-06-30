@@ -17,6 +17,12 @@
 .schemes-box {
    display: flex;
    justify-content: space-between;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+.schemes-box span{
+   font-weight: 600;
 }
 
 .right-container-ploys,
@@ -52,6 +58,12 @@
    display: flex;
    justify-content: space-between;
    cursor: pointer;
+   padding-top: 5px;
+   padding-bottom: 5px;
+}
+
+.scheme-entry:hover{
+   background-color: rgba(0,0,0,0.1);
 }
 
 .scheme-entry > span {
