@@ -19,7 +19,11 @@ div.un-scrolled {
         display:flex;
         flex-direction: column;
         width: 100%;
-        overflow: auto; 
+        overflow: auto;
     }
     div.un-scrolled {flex-grow: 3; }
+}
+
+button, a{
+    cursor: pointer;
 }
