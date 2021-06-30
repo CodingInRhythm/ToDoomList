@@ -132,3 +132,7 @@ font-family: 'Sue Ellen Francisco', cursive;
 .tdl-legal li {
     display: inline-block;
 }
+
+/* @media screen and (max-width: 800px) {
+    .foot
+} */

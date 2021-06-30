@@ -107,3 +107,12 @@
 .ploy-data__data-field__data{
     font-size: 12px;
 }
+
+@media screen and (max-width: 1000px) {
+    .task-summary, .ploy-data-container {
+        display: none;
+    }
+    .main-container {
+        width: 100%;
+    }
+}

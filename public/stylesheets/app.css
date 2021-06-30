@@ -103,3 +103,9 @@
     display: flex;
     margin-right: 5px;
 }
+
+@media screen and (max-width: 1000px) {
+    .tasks-main {
+        width: 70%
+    }
+}

@@ -94,3 +94,9 @@
 .scheme-action-buttons:hover {
    background-color: cornflowerblue;
 }
+
+@media screen and (max-width:1000px) {
+   .sidebar-left {
+      width: 30%;
+   }
+}
