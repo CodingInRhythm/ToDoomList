@@ -63,10 +63,19 @@ class Scheme {
         schemesObj.schemes.forEach(scheme => {
             let newDiv = document.createElement('div')
             let newSpan = document.createElement('span')
-            let button = document.createElement('a')
-            button.href = '#'
-            button.innerHTML = `<i id="${scheme.id}" class="fa fa-caret-square-down"></i>`
+            // let button = document.createElement('a')
 
+            let editButton = document.createElement("a");
+            let deleteButton = document.createElement("a");
+            
+            // button.href = '#'
+
+            editButton.href = '#'
+            deleteButton.href = '#'
+
+            // button.innerHTML = `<i id="${scheme.id}" class="fa fa-caret-square-down"></i>`
+            editButton.innerHTML = `<i id="edit-${scheme.id}" class="fas fa-pen-square"></i>`;
+            deleteButton.innerHTML = `<i id="delete-${scheme.id}" class="fas fa-trash"></i>`;
             // button.addEventListener('click', this.displayDropdown.bind(this))
             // newDiv.addEventListener('click', displayPloys)
 
@@ -74,8 +83,9 @@ class Scheme {
             newSpan.innerText = scheme.name
             newSpan.classList.add('cut-text')
             newDiv.appendChild(newSpan)
-            newDiv.appendChild(button)
-            this.makedropdDown(button, newDiv, scheme.id)
+            newDiv.appendChild(editButton)
+            newDiv.appendChild(deleteButton)
+            // this.makedropdDown(editButton, deleteButton, newDiv, scheme.id)
             newDiv.setAttribute('id', `${scheme.id}`)
 
             // console.log(newDiv)
@@ -88,6 +98,36 @@ class Scheme {
             })
 
             schemeDropdown.appendChild(newDiv)
+            
+            //Moving dropdown event listeners inside here
+
+            const mainContainer = document.querySelector(".main-container");
+
+             editButton.addEventListener("click", async (e) => {
+                let schemeId = e.target.id.split("-")[1];
+                const modal = document.getElementById("rename-scheme-modal");
+               // e.stopImmediatePropagation();
+                const btnRename = document.querySelector(".rename-list");
+                btnRename.setAttribute("id", schemeId);
+               // console.log(e.target.parentNode.parentNode.parentNode.id);
+               //? Sets modal to be visible, trying to blur out everything else BUT modal
+                modal.style.display = "flex";
+                mainContainer.style.filter = "blur(2px)";
+             });
+
+            deleteButton.addEventListener("click", async (e) => {
+                
+                let schemeId = e.target.id.split("-")[1]
+                
+                const modal = document.getElementById("remove-scheme-modal");
+                // e.stopImmediatePropagation();
+                const btnRename = document.querySelector(".remove-list");
+                btnRename.setAttribute("id", schemeId);
+                // console.log(e.target.parentNode.parentNode.parentNode.id);
+                //? Sets modal to be visible, trying to blur out everything else BUT modal
+                modal.style.display = "flex";
+                mainContainer.style.filter = "blur(2px)";
+            });
         })
     }
 
@@ -115,32 +155,32 @@ class Scheme {
         spanRename.setAttribute('class', 'rename-btn');
 
 
-        const mainContainer = document.querySelector(".main-container");
+        // const mainContainer = document.querySelector(".main-container");
 
         spanRemove.innerText = 'Remove Scheme'
         spanRename.innerText = 'Rename Scheme'
 
-        spanRename.addEventListener("click", async (e) => {
-            const modal = document.getElementById("rename-scheme-modal");
-            // e.stopImmediatePropagation();
-            const btnRename = document.querySelector(".rename-list");
-            btnRename.setAttribute('id', `${e.target.id}`)
-            // console.log(e.target.parentNode.parentNode.parentNode.id);
-            //? Sets modal to be visible, trying to blur out everything else BUT modal
-            modal.style.display = 'flex'
-            mainContainer.style.filter = 'blur(2px)'
-        })
+        // spanRename.addEventListener("click", async (e) => {
+        //     const modal = document.getElementById("rename-scheme-modal");
+        //     // e.stopImmediatePropagation();
+        //     const btnRename = document.querySelector(".rename-list");
+        //     btnRename.setAttribute('id', `${e.target.id}`)
+        //     // console.log(e.target.parentNode.parentNode.parentNode.id);
+        //     //? Sets modal to be visible, trying to blur out everything else BUT modal
+        //     modal.style.display = 'flex'
+        //     mainContainer.style.filter = 'blur(2px)'
+        // })
 
-        spanRemove.addEventListener('click', async (e) => {
-            const modal = document.getElementById("remove-scheme-modal");
-            // e.stopImmediatePropagation();
-            const btnRename = document.querySelector(".remove-list");
-            btnRename.setAttribute('id', `${e.target.id}`)
-            // console.log(e.target.parentNode.parentNode.parentNode.id);
-            //? Sets modal to be visible, trying to blur out everything else BUT modal
-            modal.style.display = 'flex'
-            mainContainer.style.filter = 'blur(2px)'
-        })
+        // spanRemove.addEventListener('click', async (e) => {
+        //     const modal = document.getElementById("remove-scheme-modal");
+        //     // e.stopImmediatePropagation();
+        //     const btnRename = document.querySelector(".remove-list");
+        //     btnRename.setAttribute('id', `${e.target.id}`)
+        //     // console.log(e.target.parentNode.parentNode.parentNode.id);
+        //     //? Sets modal to be visible, trying to blur out everything else BUT modal
+        //     modal.style.display = 'flex'
+        //     mainContainer.style.filter = 'blur(2px)'
+        // })
         // spanRename.addEventListener('click', this.showRenameModal)
 
 
@@ -168,7 +208,7 @@ class Scheme {
     showRemoveModal = async (e) => {
         e.stopPropagation()
 
-   
+        console.log(e.target.id)
         // console.log(e.target.parentNode.parentNode.parentNode, 'und')
 
         await fetch(`/app/schemes/${e.target.id}`, {
