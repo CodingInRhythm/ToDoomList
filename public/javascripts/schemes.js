@@ -52,7 +52,7 @@ class Scheme {
         const schemeDropdown = document.querySelector('.schemes-list')
         // schemeDropdown.classList.add('hidden')
 
-
+        
         const schemeObj = await queryTracker.makeNewQuery("schemeId", schemesObj.schemes[0].id);
         await displayPloys(schemeObj)
         updateSummaryName(schemeObj)
