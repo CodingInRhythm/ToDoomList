@@ -42,7 +42,7 @@
 }
 
 .action-menu-button {
-    border: 1px rgb(199, 199, 199) solid;
+    /* border: 1px rgb(199, 199, 199) solid; */
     border-radius: 3px;
     padding: 5px 10px;
     margin-right: 10px;
@@ -51,9 +51,25 @@
     cursor: pointer;
 }
 
-.action-menu-button:hover {
+/* .action-menu-button:hover {
     border: 1px solid rgba(102, 175, 233, 0.6);
     box-shadow: 0px 0px 4px rgba(102, 175, 233, 0.6);
+} */
+
+.delete_ploy {
+    background-color: #f06679;
+}
+
+.delete_ploy:hover{
+    background-color: #f78896;
+}
+
+.mark_complete {
+    background-color: #7DCE82;
+}
+
+.mark_complete:hover {
+    background-color: #ace7b0;
 }
 
  /* Add Ploy Form */
