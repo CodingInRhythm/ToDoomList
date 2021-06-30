@@ -107,7 +107,11 @@
     overflow: auto;
 }
 
-.ploy:hover {
+.ploy:not(.empty){
+    cursor: pointer;
+}
+
+.ploy:hover:not(.empty) {
     background-color: #faf5cb;
 }
 
