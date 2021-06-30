@@ -17,7 +17,7 @@ const villains = [
 
 const schemes = [
     //Thanos
-    { name: "Conquer The Univers", villainId: 1 }, // 1
+    { name: "Conquer The Universe", villainId: 1 }, // 1
     { name: "Make Amends With My Daughters", villainId: 1 }, // 2
     { name: "Find My Son", villainId: 1 }, // 3
     { name: "Seduce the God of Death", villainId: 1 }, // 4
@@ -62,7 +62,7 @@ const ploys = [
     { name: "Invade Asgard", dueAt: '2022-01-01', schemeId: 3, },
     { name: "Make amends with Thor", dueAt: '2022-01-01', schemeId: 3, },
     { name: "Ask Thor to ask the bridge guard for help", dueAt: '2022-01-01', schemeId: 3, },
-    { name: "The bridge gaurd will see my son, and tell me where he is", dueAt: '2022-01-01', schemeId: 3, },
+    { name: "The bridge guard will see my son, and tell me where he is", dueAt: '2022-01-01', schemeId: 3, },
     { name: "The children of Thanos will hunt him down", dueAt: '2022-01-01', schemeId: 3, },
     { name: "My children will bring him to me", dueAt: '2022-01-01', schemeId: 3, },
     { name: "I will take him to Maury, and wait for the results to come in", dueAt: '2022-01-01', schemeId: 3, },
@@ -81,7 +81,7 @@ const ploys = [
     { name: "Build the Giant Faucet", dueAt: '2022-01-01', schemeId: 5, },
     { name: "Put the Giant Faucet in front of my building", dueAt: '2022-01-01', schemeId: 5, },
     { name: "Calibrate the Giant Faucet to leak", dueAt: '2022-01-01', schemeId: 5, },
-    { name: "Enjoy watching people trying to loiter infront of my building get soaked", dueAt: '2022-01-01', schemeId: 5, },
+    { name: "Enjoy watching people trying to loiter in front of my building get soaked", dueAt: '2022-01-01', schemeId: 5, },
 
     // Dr D: The ozone-destroy-inator # 6
     { name: "Draw plans to build a Giant Hair Spray Can", dueAt: '2022-01-01', schemeId: 6, },
