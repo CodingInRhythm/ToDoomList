@@ -133,6 +133,10 @@ font-family: 'Sue Ellen Francisco', cursive;
     display: inline-block;
 }
 
+.portfolio-link {
+    text-decoration: none;
+}
+
 /* @media screen and (max-width: 800px) {
     .foot
 } */
