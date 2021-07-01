@@ -1,7 +1,7 @@
 // import newScheme from "./schemes.js";
 
 (async () => {
-    let demoBtn = document.getElementById('demo-btn')
+    let demoBtnForm = document.getElementById('demo-btn-form')
     let loader = document.querySelector('.loader')
 
     //TODO: Create loading icon
