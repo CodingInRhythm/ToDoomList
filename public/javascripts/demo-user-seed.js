@@ -3,7 +3,7 @@
 (async () => {
     let demoBtnForm = document.getElementById('demo-btn-form')
     let loader = document.querySelector('.loader')
-
+       console.log("here");
     //TODO: Create loading icon
 
 
@@ -60,8 +60,8 @@
 
             }
         }
-
-        demoBtn.classList.remove("hidden")
+        console.log('here')
+        demoBtnForm.classList.remove("hidden")
         loader.classList.add("hidden")
 
 })()
