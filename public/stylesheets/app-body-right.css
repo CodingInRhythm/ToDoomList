@@ -46,7 +46,7 @@
 }
 
 .ploy-data-container {
-    /* height: 100%; */
+    height: 85vh;
     width: 44%;
     position: absolute;
     right: 0px;

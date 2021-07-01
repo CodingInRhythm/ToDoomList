@@ -108,11 +108,13 @@ body {
 
 .name > p {
     font-size: 2.75em;
+    font-family: 'Merriweather', serif;
 }
 
 .name {
     display: flex;
     align-items: center;
+    font-family: 'Merriweather', serif;
 }
 
 .btn-container i {
@@ -147,6 +149,7 @@ i.chris-i, i.alex-i  {
     font-size: 1.75em;
     font-weight: 900;
     color: rgb(89, 89, 89);
+    font-family: 'Merriweather', serif;
 }
 
 .bio p {
