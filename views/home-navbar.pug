@@ -8,12 +8,11 @@ header
         li: a(href='/users/login' class="navbar-links" id="nv-bar-login") Log in
         li: a(href='/users/sign-up' id='sign-up' class="navbar-links") Sign up for fre<span>Evil</span>
         //- li: a(href='/users/sign-up' id='sign-up' class="navbar-links") Demo    
-        li: div.demo-user-btn
-            form.demovillain__signup-form(action="/users/sign-up" method="post")
-                input(type="hidden" name="_csrf" value=csrfToken)
-                input(type="hidden" name="firstName" value="Thanos")
-                input(type="hidden" class="userName" name="userName" value="")
-                input(type="hidden" class="email" name="email" value="")
-                input(type="hidden" name="password" value="Evil00!")
-                input(type="hidden" name="confirmPassword" value="Evil00!")
-                button(type="submit" class="demo-btn" id="demo-user__btn--sign-up") Demo User
+        form.demovillain__signup-form(action="/users/sign-up" method="post")
+            input(type="hidden" name="_csrf" value=csrfToken)
+            input(type="hidden" name="firstName" value="Thanos")
+            input(type="hidden" class="userName" name="userName" value="")
+            input(type="hidden" class="email" name="email" value="")
+            input(type="hidden" name="password" value="Evil00!")
+            input(type="hidden" name="confirmPassword" value="Evil00!")
+            button(type="submit" class="demo-btn" id="demo-user__btn--sign-up") Demo User
