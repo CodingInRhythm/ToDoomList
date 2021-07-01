@@ -29,8 +29,11 @@
         // then do not run logic to generate/seed more.
         const schemes = await fetch('/app/schemes')
         let all_schemes = await schemes.json();
-        if (all_schemes.schemes.length) return 
-
+        if (all_schemes.schemes.length) {
+           demoBtnForm.classList.remove("hidden");
+           loader.classList.add("hidden");
+            return 
+        }
 
         for (let schemeAndPloy of arrOfData) {
             let name = schemeAndPloy.scheme.name
@@ -60,7 +63,6 @@
 
             }
         }
-        console.log('here')
         demoBtnForm.classList.remove("hidden")
         loader.classList.add("hidden")
 
