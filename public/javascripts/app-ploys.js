@@ -196,6 +196,19 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         const activeTab = document.querySelector(".complete-tab.tab-active");
         const completed = (activeTab.innerHTML === "Completed");
+        // let incompleteTab;
+        // document.querySelectorAll(".complete-tab").forEach((node) => {
+        //     console.log(node)
+        //     if (node.innerHTML === "Incomplete") {
+        //         incompleteTab = node
+        //     }
+        // })
+        
+        // if(completed) {
+        //     activeTab.classList.remove("tab-active");
+        //     incompleteTab.classList.add("tab-active");
+
+        // }
 
         //2. Empty out ploy-container
         const ployContainer = document.querySelector(".ploy-container");
