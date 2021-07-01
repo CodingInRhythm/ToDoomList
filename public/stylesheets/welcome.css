@@ -167,3 +167,21 @@ span.title {
     /* padding-bottom: 1em; */
     font-size: 1.25em;
 }
+
+.hidden {
+    display: none
+}
+
+.fa-spinner {
+background:#222;
+  color:#FFF;
+  font-size:30px;
+    
+    
+}
+/* .fa-3x {
+    background-color: red;
+} */
+/* .fa-pulse {
+    background-color: black;
+} */

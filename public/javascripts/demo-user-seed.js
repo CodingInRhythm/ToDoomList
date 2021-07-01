@@ -1,8 +1,12 @@
 // import newScheme from "./schemes.js";
 
 (async () => {
-    let demoBtn = document.querySelector('.demo-btn')
-    
+    let demoBtn = document.getElementById('demo-btn')
+    let spinner = document.querySelector('.fa-spinner')
+
+    //TODO: Create loading icon
+
+
     // demoBtn.addEventListener('click', async () => {
         let arrOfData = []
         let res = null;
@@ -56,5 +60,8 @@
 
             }
         }
-        // await newScheme.displaySchemes();
+
+        demoBtn.classList.remove("hidden")
+        spinner.classList.add("hidden")
+
 })()
