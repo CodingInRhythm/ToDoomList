@@ -112,6 +112,7 @@ class Scheme {
                 activeTab.classList.remove("tab-active");
                 incompleteTab.classList.add("tab-active");
                 }
+                console.log(schemeObj)
 
                 //Display ploys
                 await displayPloys(schemeObj)
