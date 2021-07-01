@@ -14,6 +14,7 @@ const updatePloyCounter = (schemeObj) => {
     let numPloysContainer = document.getElementById("tasks")
     if (schemeObj.ploys.length) {
         schemeObj.ploys.forEach((ploy) => {
+            numCompletedPloysContainer.innerHTML = numCompletedPloysCounter
             if (ploy.completed) {
             numCompletedPloysCounter++
             numCompletedPloysContainer.innerHTML = numCompletedPloysCounter 
@@ -21,8 +22,7 @@ const updatePloyCounter = (schemeObj) => {
             numPloysCounter++
             numPloysContainer.innerHTML = numPloysCounter
             });
-    }
-    else{
+    } else {
         numCompletedPloysContainer.innerHTML = numCompletedPloysCounter
         numPloysContainer.innerHTML = numPloysCounter
     }
