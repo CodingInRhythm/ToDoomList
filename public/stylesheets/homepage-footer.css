@@ -15,6 +15,7 @@ font-family: 'Sue Ellen Francisco', cursive;
     position: relative;
     /* top: 25rem; */
     height: 350px;
+    width: 100vw;
 }
 
 h3 {
@@ -80,7 +81,7 @@ h3 {
     /* margin: 0.5rem; */
     /* width: 200%; */
     padding-right: 55%;
-    padding-left: 2.5rem;
+    padding-left: 0px;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 
@@ -175,4 +176,8 @@ ul li {
         align-items: center;
     }
 
+}
+
+.lis a {
+    padding-left: 4.0rem;
 }
