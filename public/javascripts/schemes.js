@@ -111,6 +111,12 @@ class Scheme {
                     incompleteTab.classList.add("tab-active");
                 }
 
+                //Change markComplete/markInComplete button innerHTML to always be markComplete
+
+                const markCompleteButton = document.querySelector(".mark_complete");
+                markCompleteButton.innerHTML = "Mark as Complete";
+            
+
                 //Display ploys
                 await displayPloys(schemeObj)
                 updateSummaryName(schemeObj)
