@@ -83,6 +83,7 @@ body {
     border-top-right-radius: 15em;
     border-bottom-right-radius: 15em;
     background-color: skyblue;
+    align-items: center;
 }
 
 .nate-profile, .brian-profile {
