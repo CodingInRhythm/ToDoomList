@@ -21,7 +21,11 @@ router.get("/welcome", requireAuth, asyncHandler(async (req, res, next) => {
   const { userId } = req.session.auth
   // console.log(userId, "IS LOGGED IN")
   const user = await db.Villain.findByPk(userId)
-  res.render("welcome", { user });
+
+  let isDemo = false;
+  if (user.firstName === 'Thanos' && user.email.includes('demo')) isDemo = true
+
+  res.render("welcome", { isDemo });
 }));
 
 router.get("/schemes", async(req, res) => {
