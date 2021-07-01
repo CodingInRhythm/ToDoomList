@@ -141,6 +141,7 @@ router.post("/sign-up", csrfProtection, userValidators, asyncHandler(async (req,
   const validatorErrors = validationResult(req);
   
   if(validatorErrors.isEmpty()){
+    console.log('#########made if block#########')
     const hashedPassword = await bcrypt.hash(password, 10);
     user.hashedPassword = hashedPassword;
     await user.save();
