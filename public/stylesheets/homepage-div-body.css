@@ -317,8 +317,8 @@ div.r-bubble-text-3 {
 #person-img-3 {
     position: absolute;
     height: 350px;
-    width: 250px;
-    left: 31%;
+    /* width: 250px; */
+    left: 36%;
     top: 15%;
 }
 
@@ -441,7 +441,7 @@ div.r-bubble-text-4 {
 
 @media screen and (max-width: 1110px) {
     /* div.frame-1 {
-        left: -7.5%; 
+        left: -7.5%;
         top: 30%}
     div.frame-2 {top: 50%}
     div.frame-3 {top: 50%}
