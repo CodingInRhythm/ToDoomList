@@ -4,7 +4,6 @@
     let demoBtn = document.querySelector('.demo-btn')
     
     // demoBtn.addEventListener('click', async () => {
-        console.log('beginning')
         let arrOfData = []
         let res = null;
         let resObj = null;
@@ -22,6 +21,11 @@
         arrOfData.push(resObj)
 
        
+        // fetch all schemes of user, if they have schemes 
+        // then do not run logic to generate/seed more.
+        const schemes = await fetch('/app/schemes')
+        let all_schemes = await schemes.json();
+        if (all_schemes.schemes.length) return 
 
 
         for (let schemeAndPloy of arrOfData) {
@@ -52,6 +56,5 @@
 
             }
         }
-        console.log('end')
         // await newScheme.displaySchemes();
 })()
