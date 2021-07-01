@@ -2,7 +2,7 @@
 
 (async () => {
     let demoBtn = document.getElementById('demo-btn')
-    let spinner = document.querySelector('.fa-spinner')
+    let loader = document.querySelector('.loader')
 
     //TODO: Create loading icon
 
@@ -62,6 +62,6 @@
         }
 
         demoBtn.classList.remove("hidden")
-        spinner.classList.add("hidden")
+        loader.classList.add("hidden")
 
 })()
