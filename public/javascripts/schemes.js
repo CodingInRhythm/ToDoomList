@@ -100,7 +100,6 @@ class Scheme {
                 
                 let incompleteTab;
                 document.querySelectorAll(".complete-tab").forEach((node) => {
-                console.log(node);
                 if (node.innerHTML === "Incomplete") {
                     incompleteTab = node;
                 }
