@@ -68,7 +68,7 @@ font-family: 'Sue Ellen Francisco', cursive;
 /*? Sign up form functionality*/
 
 .tdl-signup-form {
-    height: 750px;
+    /* height: 750px; */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
