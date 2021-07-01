@@ -5,7 +5,8 @@
     let loader = document.querySelector('.loader')
        console.log("here");
     //TODO: Create loading icon
-
+    demoBtnForm.classList.add("hidden");
+    loader.classList.remove("hidden");
 
     // demoBtn.addEventListener('click', async () => {
         let arrOfData = []
@@ -29,6 +30,7 @@
         // then do not run logic to generate/seed more.
         const schemes = await fetch('/app/schemes')
         let all_schemes = await schemes.json();
+        console.log(all_schemes)
         if (all_schemes.schemes.length) {
            demoBtnForm.classList.remove("hidden");
            loader.classList.add("hidden");
