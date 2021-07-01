@@ -406,8 +406,8 @@ div.r-bubble-text-4 {
 #person-img-4 {
     position: absolute;
     height: 350px;
-    width: 250px;
-    left: 31%;
+    /* width: 250px; */
+    left: 28%;
     top: 15%;
 }
 
