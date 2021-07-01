@@ -108,11 +108,9 @@ class Scheme {
 
                 //If we were previously on a 'completed tab' switch to incomplete when selecting new scheme
                 if (completed) {
-                console.log("made it!");
-                activeTab.classList.remove("tab-active");
-                incompleteTab.classList.add("tab-active");
+                    activeTab.classList.remove("tab-active");
+                    incompleteTab.classList.add("tab-active");
                 }
-                console.log(schemeObj)
 
                 //Display ploys
                 await displayPloys(schemeObj)
