@@ -92,6 +92,32 @@ class Scheme {
 
             newDiv.addEventListener('click', async () => {
                 const schemeObj = await queryTracker.makeNewQuery("schemeId", scheme.id);
+
+                //If selecting new scheme, switch to completed tab
+                const activeTab = document.querySelector(".complete-tab.tab-active");
+                const completed = activeTab.innerHTML === "Completed";
+
+                
+                let incompleteTab;
+                document.querySelectorAll(".complete-tab").forEach((node) => {
+                if (node.innerHTML === "Incomplete") {
+                    incompleteTab = node;
+                }
+                });
+
+                //If we were previously on a 'completed tab' switch to incomplete when selecting new scheme
+                if (completed) {
+                    activeTab.classList.remove("tab-active");
+                    incompleteTab.classList.add("tab-active");
+                }
+
+                //Change markComplete/markInComplete button innerHTML to always be markComplete
+
+                const markCompleteButton = document.querySelector(".mark_complete");
+                markCompleteButton.innerHTML = "Mark as Complete";
+            
+
+                //Display ploys
                 await displayPloys(schemeObj)
                 updateSummaryName(schemeObj)
                 updatePloyCounter(schemeObj)
