@@ -6,11 +6,11 @@ mixin field(label, fieldType, fieldName, fieldValue, require)
 
 block right
     h1= pageTitle
-    div.errors
-        if errors
-            ul
-            each error in errors
-                    li= error
+    //- div.errors
+    //-     if errors
+    //-         ul
+    //-         each error in errors
+    //-                 li= error
     div
         div.login-btn
             h2.signup-h2 Already a member?
@@ -21,20 +21,50 @@ block right
                 form.villain__signup-form(action="/users/sign-up" method="post")
                     input(type="hidden" name="_csrf" value=csrfToken)
                     +field("Title", "text", "title", user.title, false)
+                    if errsObj.firstNameE1
+                        p.error &#8226 Please provide a value for First Name
+                    if errsObj.firstNameE2
+                        p.error &#8226 First Name must not be more than 50 characters long
                     +field("First Name", "text", "firstName", user.firstName, true)
                     +field("Last Name", "text", "lastName", user.lastName, false)
+                    if errsObj.userNameE1
+                        p.error &#8226 Please provide a value for userName
+                    if errsObj.userNameE2
+                        p.error &#8226 userName must not be more than 50 characters long
+                    if errsObj.userNameE3
+                        p.error &#8226 The provided userName is already in use by another Villain
                     +field("Username", "text", "userName", user.userName, true)
+                    if errsObj.emailE1
+                        p.error &#8226 Please provide a value for Email Address
+                    if errsObj.emailE2
+                        p.error &#8226 Email Address must not be more than 255 characters long
+                    if errsObj.emailE3
+                        p.error &#8226 Email Address is not a valid email
+                    if errsObj.emailE4
+                        p.error &#8226 The provided Email Address is already in use by another Villain
                     +field("Email", "email", "email", user.email, true)
+                    if errsObj.passwordE1
+                        p.error &#8226 Please provide a value for Password
+                    if errsObj.passwordE2
+                        p.error &#8226 Password must not be more than 50 characters long
+                    if errsObj.passwordE3
+                        p.error &#8226 Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&\*")
                     +field("Password", "password", "password", user.password, true)
+                    if errsObj.passwordConE1
+                        p.error &#8226 Please provide a value for Confirm Password
+                    if errsObj.passwordConE2
+                        p.error &#8226 Confirm Password must not be more than 50 characters long
+                    if errsObj.passwordConE3
+                        p.error &#8226 Confirm Password does not match Password
                     +field("Confirm Password", "password", "confirmPassword", "", true)
                     button(type="submit" id="register-btn") Sign Up!
                     div.divider OR
-                    div.demo-user-btn
-                        form.demovillain__signup-form(action="/users/sign-up" method="post")
-                            input(type="hidden" name="_csrf" value=csrfToken)
-                            input(type="hidden" name="firstName" value="Thanos")
-                            input(type="hidden" class="userName" name="userName" value="")
-                            input(type="hidden" class="email" name="email" value="")
-                            input(type="hidden" name="password" value="Evil00!")
-                            input(type="hidden" name="confirmPassword" value="Evil00!")
-                            button(type="submit" class="demo-btn" id="demo-user__btn--sign-up") Demo User
+                div.demo-user-btn
+                    form.demovillain__signup-form(action="/users/sign-up" method="post")
+                        input(type="hidden" name="_csrf" value=csrfToken)
+                        input(type="hidden" name="firstName" value="Thanos")
+                        input(type="hidden" class="userName" name="userName" value="")
+                        input(type="hidden" class="email" name="email" value="")
+                        input(type="hidden" name="password" value="Evil00!")
+                        input(type="hidden" name="confirmPassword" value="Evil00!")
+                        button(type="submit" class="demo-btn" id="demo-user__btn--sign-up") Demo User
