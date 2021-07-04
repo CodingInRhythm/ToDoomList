@@ -11,6 +11,10 @@ html, body{
     /* overflow: scroll; */
 }
 
+/* .form-fields {
+    width: 50vw;
+} */
+
 .villain__button-link{
     box-sizing: border-box;
     color: rgba(0, 0, 0, 0.5);
@@ -24,6 +28,7 @@ html, body{
 .villain__login-form, .villain__signup-form{
     box-sizing: border-box;
     padding: 10px;
+    width: 50vw;
 }
 
 .villain__input-div{
