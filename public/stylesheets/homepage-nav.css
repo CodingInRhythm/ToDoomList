@@ -74,6 +74,10 @@ header form.demovillain__signup-form {
 /* header div.demo-user-btn {
 } */
 
+.demo-user-btn > .demovillain__signup-form {
+    width: 50vw;
+}
+
 header form.demovillain__signup-form button {
     background-color: rgba(0, 0, 0, 0);
     border: none;
