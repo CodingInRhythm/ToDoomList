@@ -80,11 +80,11 @@ h3 {
     font-size: 1.75rem;
     /* margin: 0.5rem; */
     /* width: 200%; */
-    padding-right: 55%;
-    padding-left: 0px;
+    /* padding-right: 55%;
+    padding-left: 0px*/
     padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-
+    padding-bottom: 1.0rem; 
+    text-align: center;
     border-radius: 5px;
     line-height: 120%;
     /* position: relative;
