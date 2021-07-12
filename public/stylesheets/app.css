@@ -3,10 +3,15 @@
 @import "app-sidebar-left.css";
 @import "modal.css";
 
+.super-main-container {
+    height: 100vh;
+    weight: 100vw;
+}
+
 .main-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 85vh;
     width: 100vw;
     background-color:#e3efff;
     /* background-color: #e4eff8; */
@@ -19,6 +24,7 @@
     padding: 5px;
     width: 100%;
     display: flex;
+    height: 5vh;
     justify-content: space-between;
 }
 
@@ -91,7 +97,7 @@
     height: 100%;
     width: 100%;
     display: flex;
-    margin-top: 5px;
+    /* margin-top: 5px; */
 }
 
 .tasks-main {
@@ -102,4 +108,10 @@
     border-top-right-radius: 7px;
     display: flex;
     margin-right: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+    .tasks-main {
+        width: 70%
+    }
 }

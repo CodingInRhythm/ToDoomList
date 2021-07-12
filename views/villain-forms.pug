@@ -2,6 +2,7 @@ extends layout.pug
 
 append head
     link(rel="stylesheet" href="/stylesheets/villain-forms.css")
+    link(rel="stylesheet" href="/stylesheets/index.css")
     script(src="/javascripts/demo-user.js" type="module")
 block content
     div.villain__blocks
@@ -19,6 +20,7 @@ block content
                         h2.para.
                             Join millions of fellow villains
                             getting more organized and productive!
-            article.villain__left-block-lower-half
+            //- article.villain__left-block-lower-half
         article.villain__right-block
             block right
+    include footer.pug     

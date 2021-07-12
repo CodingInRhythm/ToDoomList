@@ -10,7 +10,7 @@ font-family: 'Sue Ellen Francisco', cursive;
 
 .villain__left-block{
     width: 50%;
-    height: 100%;
+    /* height: 100%; */
     display:inline-block;
     background-color: rgb(0, 96, 191);
 }
@@ -34,7 +34,8 @@ article.villain__left-block-lower-half {
         display: flex;
         flex-direction: column;
         width: 90%;
-        height: 90%;
+        justify-content: space-evenly;
+        /* height: 90%; */
         padding-right: 15px;
         padding-left: 15px;
         margin-right: auto;
@@ -42,23 +43,25 @@ article.villain__left-block-lower-half {
 }
 
 .container-main #evilCow {
-    position: relative;
+    /* position: absolute; */
     left: 6.5rem;
-    margin: 4%;
-    width: 30%;
-    height: 25%;
+    margin: 2%;
+    width: 12em;
+    height: 8em;
 }
 
 .img-link {
-    width: 80%;
+    position: absolute;
+    top: 1em;
+    /* width: 80%; */
 }
 
 #evilCow {
-    height: 65% !important;
-    width: 38% !important;
+    /* height: 65% !important;
+    width: 38% !important; */
 }
 
-.container-main .evil-peeps {
+.container-main {
     height: 100%;
 }
 
@@ -67,11 +70,12 @@ article.villain__left-block-lower-half {
     justify-content: center;
     align-items: flex-end;
     overflow: hidden;
+    height: 20em;
 }
 
 .evil-peeps img {
-    height: 35%;
-    width: 20%;
+    height: 10em;
+    width: 10em;
     border-radius: 25px;
     padding: 0 15px;
     margin: 0 23px 5px 0;
@@ -85,7 +89,8 @@ article.villain__left-block-lower-half {
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
-    padding-left: 18%;
+    text-align: center;
+    /* padding-left: 18%; */
 }
 
 .evil-desc h2 {

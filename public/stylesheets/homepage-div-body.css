@@ -137,7 +137,7 @@ div.frame-2 {
     width: 50em;
     height: 50em;
     animation: .5s linear;
-    left: 200%;
+    left: 250%;
     top: 100%;
 }
 
@@ -244,7 +244,7 @@ div.frame-3 {
     width: 50em;
     height: 50em;
     animation: .5s linear;
-    left: 200%;
+    left: 250%;
     top: 100%;
 }
 
@@ -317,8 +317,8 @@ div.r-bubble-text-3 {
 #person-img-3 {
     position: absolute;
     height: 350px;
-    width: 250px;
-    left: 31%;
+    /* width: 250px; */
+    left: 36%;
     top: 15%;
 }
 
@@ -345,7 +345,7 @@ div.r-bubble-text-3 {
 }
 
 /* ####### */
-/* Frame 3 */
+/* Frame 4 */
 /* ####### */
 
 div.frame-4 {
@@ -356,7 +356,7 @@ div.frame-4 {
     width: 50em;
     height: 50em;
     animation: .5s linear;
-    left: 200%;
+    left: 250%;
     top: 100%;
 }
 
@@ -406,8 +406,8 @@ div.r-bubble-text-4 {
 #person-img-4 {
     position: absolute;
     height: 350px;
-    width: 250px;
-    left: 31%;
+    /* width: 250px; */
+    left: 28%;
     top: 15%;
 }
 
@@ -438,3 +438,42 @@ div.r-bubble-text-4 {
     width: 50px;
     background-color: red;
 } */
+
+@media screen and (max-width: 1110px) {
+    /* div.frame-1 {
+        left: -7.5%;
+        top: 30%}
+    div.frame-2 {top: 50%}
+    div.frame-3 {top: 50%}
+    div.frame-4 {top: 50%} */
+    div.dots div {display: none}
+    div.left-bubble-1 {display: none}
+    div.right-bubble-1 {display: none}
+    div.right-bubble-2 {display: none}
+    div.left-bubble-2 {left: -5%; display: none}
+    div.r-bubble-text {display: none}
+    div.l-bubble-text { left: 0; display: none }
+    #black-cow-left {left:-4%; display: none}
+    #black-cow-right {display: none}
+    div.left-bubble-3 {left: -5%; top: 5%; display: none}
+    div.l-bubble-text-3 {left: 5%; top: 5%; font-size: 20px; display: none}
+    #jesse-left {left: -4%; top: 6%; display: none}
+    #james-right{left: 58%; top: 7%; display: none}
+    #person-img-3 {top:15%}
+    div.r-bubble-text-3{top: 6%; left: 66%; font-size:20px; display: none}
+    div.right-bubble-3{top: 6%; left:57%; display: none}
+    div.top-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    p.mission-statement {
+        width: 60%;
+        text-align: center;
+    }
+    div.frame-1 img, div.frame-2 img, div.frame-3 img, div.frame-4 img {
+        display: none;
+    }
+
+}

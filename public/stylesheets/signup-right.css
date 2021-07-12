@@ -10,7 +10,7 @@ font-family: 'Sue Ellen Francisco', cursive;
 /*? I set the general style for the right side of the page*/
 
 .villain__right-block{
-    width: 50%;
+    width: 50vw;
     height: 100%;
     display:inline-block;
     box-sizing: border-box;
@@ -68,7 +68,8 @@ font-family: 'Sue Ellen Francisco', cursive;
 /*? Sign up form functionality*/
 
 .tdl-signup-form {
-    height: 750px;
+    /* height: 750px; */
+    width: 50vw;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -102,7 +103,7 @@ font-family: 'Sue Ellen Francisco', cursive;
     border: 1px solid #ccc;
     border-radius: 5px;
     color: rgba(0, 0, 0, 0.5);
-    width: 175%;
+    width: 80%;
     height: 2.55em;
     font-size: 23px;
     font-family: 'Roboto', sans-serif;
@@ -118,7 +119,7 @@ font-family: 'Sue Ellen Francisco', cursive;
     background-color: rgba(1, 90, 255, 0.705);
     border-radius: 5px;
     color: rgba(0, 0, 0, 0.5);
-    width: 175%;
+    width: 80%;
     height: 2.55em;
     font-size: 23px;
     font-family: 'Roboto', sans-serif;
@@ -135,7 +136,7 @@ font-family: 'Sue Ellen Francisco', cursive;
     margin-bottom: 18px;
     margin-top: 40px;
     text-align: center;
-    width: 200%;
+    width: 80%;
     position: relative;
     left: 20px;
 }
@@ -175,7 +176,7 @@ font-family: 'Sue Ellen Francisco', cursive;
     background-color: rgba(52, 238, 145, 0.863);
     border-radius: 5px;
     color: rgba(0, 0, 0, 0.5);
-    width: 164%;
+    width: 80%;
     height: 2.85em;
     font-size: 26px;
     font-family: 'Roboto', sans-serif;
@@ -190,7 +191,7 @@ font-family: 'Sue Ellen Francisco', cursive;
     background-color: rgba(52, 238, 145, 0.863);
     border-radius: 5px;
     color: rgba(0, 0, 0, 0.5);
-    width: 336%;
+    width: 80%;
     height: 2.85em;
     font-size: 26px;
     font-family: 'Roboto', sans-serif;
@@ -220,7 +221,7 @@ font-family: 'Sue Ellen Francisco', cursive;
     background-color: rgba(1, 90, 255, 0.705);
     border-radius: 5px;
     color: rgba(0, 0, 0, 0.5);
-    width: 175%;
+    width: 80%;
     height: 2.55em;
     font-size: 23px;
     font-family: 'Roboto', sans-serif;
@@ -231,4 +232,11 @@ font-family: 'Sue Ellen Francisco', cursive;
     cursor: pointer;
     background-color: rgba(54, 117, 235, 0.863);
     box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.error {
+    display: block;
+    color: red;
+    /* width: 20em; */
+    width: 50vw;
 }

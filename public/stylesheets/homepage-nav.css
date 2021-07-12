@@ -31,7 +31,7 @@ header {
     width: 210px;
 }
 
-.links li {
+.links li, .links form {
     display: inline-block;
     margin: 0 1.1em;
 }
@@ -65,17 +65,47 @@ header a {
     /* font-size: 1rem; */
 }
 
+header form.demovillain__signup-form {
+    border: rgba(255, 255, 255, 1) solid 1.5px;
+    
+    border-radius: 5px;
+}
+
+/* header div.demo-user-btn {
+} */
+
+.demo-user-btn > .demovillain__signup-form {
+    width: 50vw;
+}
+
+header form.demovillain__signup-form button {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: white;
+    font-size: 1.05em;
+    text-align: center;
+    padding: .5em 1.75em;
+    width: 100%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+header form.demovillain__signup-form:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.1);
+}
 
 .main-nav-box {
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 60%;
+    width: 80%;
 
 }
 
-header a:hover {
+header a:hover, header form:hover{
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -88,7 +118,7 @@ span {
 /* .main-nav-box {
 
     display: flex;
- 
+
     align-items: center;
 
 }
@@ -130,3 +160,36 @@ span {
     box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
 }
  */
+
+ @media screen and (max-width: 1110px) {
+     .main-nav-box {
+         width: 100%;
+         flex-direction: column;
+         position: sticky;
+        }
+        .links {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 50px;
+            width: 100%;
+        }
+
+        ul.links li:first-child {
+            margin-top: 50px;
+        }
+
+        #mid-page-sign-up{display: none;}
+        header {
+            border: none;
+            position: relative;
+        }
+        header a {
+            font-size: 1.25rem;
+        }
+        header div.demo-user-btn button {
+            font-size: 1.40rem;
+        }
+     /* .main-container div {margin: 0px 100px;} */
+ }

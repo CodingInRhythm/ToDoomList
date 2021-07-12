@@ -21,7 +21,11 @@ router.get("/welcome", requireAuth, asyncHandler(async (req, res, next) => {
   const { userId } = req.session.auth
   // console.log(userId, "IS LOGGED IN")
   const user = await db.Villain.findByPk(userId)
-  res.render("welcome", { user });
+
+  let isDemo = false;
+  if (user.firstName === 'Thanos' && user.email.includes('demo')) isDemo = true
+
+  res.render("welcome", { isDemo });
 }));
 
 router.get("/schemes", async(req, res) => {
@@ -102,7 +106,7 @@ router.get("/ploys/:ployid", async (req, res) => {
 
 //Not sure how dueAt is going to be updated
 router.put("/ploys/:ployid", async (req, res) => {
- 
+
   const {name, schemeId, completed, dueAt} = req.body
   const id = parseInt(req.params.ployid, 10)
   const ploy = await db.Ploy.findByPk(id)
@@ -124,13 +128,24 @@ router.delete("/ploys/:ployid", async (req, res) => {
 })
 
 router.get("/search/:string", async (req, res) => {
+  //Only return ploys belonging to current user
+  const { userId } = req.session.auth
   //destructure regEx to search for task
   const string = req.params.string //not called this
   const ploys = await db.Ploy.findAll({
+    include: [
+      {
+        model: db.Scheme,
+        attributes: ['villainId'],
+        where:{
+          villainId: userId
+        }
+      }
+    ],
     where: {
       name: {
-      [Op.substring]: string,
-      }
+        [Op.iLike]: `%${string}%`,
+      },
     },
   });
   res.json({ ploys });

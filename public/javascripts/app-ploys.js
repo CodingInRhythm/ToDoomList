@@ -69,7 +69,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         let selected = getSelectedPloys();
 
         //2. Send PUT request to change completed flag
-        const markComplete =markCompleteButton.innerHTML === "Completed"
+        const markComplete =markCompleteButton.innerHTML === "Mark as Complete"
         await Promise.all(selected.map(async (ploy) => {
             const ployObj = {completed: markComplete}
             await Ploys.updatePloy(ploy.id, ployObj);
@@ -91,9 +91,9 @@ window.addEventListener("DOMContentLoaded", (e) => {
             const switchToCompleted = tab.innerHTML==="Completed";
             // Switch action menu button for Completing/Uncompleting tasks
             if(switchToCompleted){
-                markCompleteButton.innerHTML = "Uncompleted";
+                markCompleteButton.innerHTML = "Mark as Incomplete";
             } else{
-                markCompleteButton.innerHTML = "Completed";
+                markCompleteButton.innerHTML = "Mark as Complete";
             }
 
             //Check if tab was changed for optimization?
@@ -193,14 +193,27 @@ window.addEventListener("DOMContentLoaded", (e) => {
     const displayPloys = async (schemeObj) => {
         //Steps
         //0. Check if on completed tab or not
-      
+
         const activeTab = document.querySelector(".complete-tab.tab-active");
         const completed = (activeTab.innerHTML === "Completed");
+        // let incompleteTab;
+        // document.querySelectorAll(".complete-tab").forEach((node) => {
+        //     console.log(node)
+        //     if (node.innerHTML === "Incomplete") {
+        //         incompleteTab = node
+        //     }
+        // })
+        
+        // if(completed) {
+        //     activeTab.classList.remove("tab-active");
+        //     incompleteTab.classList.add("tab-active");
+
+        // }
 
         //2. Empty out ploy-container
         const ployContainer = document.querySelector(".ploy-container");
         ployContainer.innerHTML = "";
-        for(let i = 0; i < 10; i++){
+        for(let i = 0; i < 25; i++){
             const emptyDiv = document.createElement("div");
             emptyDiv.classList.add("ploy", "empty");
             ployContainer.append(emptyDiv);
@@ -231,8 +244,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
               }
             }));
         }
-       
-    
+
+
 
     }
 
@@ -333,12 +346,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
         for (let i = 0; i < 5; i++) {
             if (i === 0) {
-                
-                //clearing out the div
-                // while (dueAtDropdown.firstChild) {
-                //     dueAtDropdown.removeChild(dueAtDropdown.firstChild)
-                // }
-                //todo: set first option to be 'Never' or current dueAt:
+
                 const currentDueAt = document.createElement("option")
                 if (ploy.dueAt) {
                     currentDueAt.innerHTML = formatDate(ploy.dueAt)
@@ -358,7 +366,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
                 dueAtDropdown.append(todayEl)
             }
             else if (i === 1) {
-                
+
                 const tomorrowEl = document.createElement("option")
                 const date = setDate(today, i)
                 tomorrowEl.setAttribute("id", `dueat-${i}`)
@@ -369,7 +377,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
                 dueAtDropdown.append(tomorrowEl);
             }
             else {
-              
+
                 let dayEl = document.createElement("option")
                 const date = setDate(today, i);
                 dayEl.setAttribute("id", `dueat-${i}`);
@@ -385,7 +393,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
             }
         }
             let dueDates = document.getElementsByClassName("due-at")
-          
+
 
         //Add scheme div
         const schemeDiv = document.createElement("div");

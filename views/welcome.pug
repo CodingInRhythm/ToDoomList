@@ -5,9 +5,11 @@ append head
   link(rel="stylesheet" href="/stylesheets/app.css")
   link(rel="stylesheet" href="/stylesheets/welcome.css")
   link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+  //- link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css")
   //- add page specific js
 
-  script(src='/javascripts/demo-user-seed.js' type="module")
+  if isDemo
+    script(src='/javascripts/demo-user-seed.js' type="module")
 
   script(src='/javascripts/welcome-chev-animation.js' type="module")
 
@@ -23,15 +25,16 @@ block content
       i.fas.fa-chevron-right.one-l
       i.fas.fa-chevron-right.two-l
       i.fas.fa-chevron-right.three-l
-      form(action="/app/", method="get")
-          button(type="submit") Get Started
+      div.loader.hidden
+      form(id="demo-btn-form" class="" action="/app/", method="get")
+          button( type="submit") Get Started
       i.fas.fa-chevron-left.three-r
       i.fas.fa-chevron-left.two-r
       i.fas.fa-chevron-left.one-r
     span.title Created By These Software Engineers:
   .background-left
     .nate-profile.profile-container
-      img(src="../img/welcome-nathan.jpeg", alt="")
+      img(src="../img/welcome-nathan.jpg", alt="")
       .text-box
         .name
           p Nathaniel Cooke
@@ -42,9 +45,12 @@ block content
           p
             a(href="https://www.linkedin.com/in/nathaniel-cooke-257a1363/" target="_blank" rel="noopener noreferrer")
               i.fab.fa-linkedin
+          p
+            a(href="https://nathanieldcooke.github.io/" target="_blank" rel="noopener noreferrer")
+              i.fas.fa-globe
         .bio
           span My Journey
-          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, ex? Commodi at, sunt minus similique ullam dolore! Minima quae veritatis eum saepe ipsum consequatur sunt! Nesciunt cumque tenetur quam quaerat.
+          p Based in Las Vegas, Nevada. I have strong full-stack web development experience. Having built few websites and games, I continue to grow as a developer everyday. While on this journey, I hope we can build some awesome applications together!
   .background-right
     .chris-profile.profile-container
       img(src="../img/welcome-chris.png", alt="")
@@ -62,7 +68,7 @@ block content
               i.fab.fa-twitter.chris-i
         .bio
           span My Journey
-          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi veritatis perspiciatis sequi! Nemo repellat ut possimus quaerat doloribus dicta animi consequatur ducimus, quia eos est. Provident illo qui ad iure.
+          p I’m a software engineer with my home-base in the Chicagoland area. In addition to my passion for language learning I have a vested interest in technology and web development. Presently, I am able to use JavaScript and Python professionally, and front-end libraries like React and Redux. I’m excited to continue challenging my creativity as I advance my skills.
   .background-left
     .brian-profile.profile-container
       img(src="../img/welcome-brian.png", alt="")
@@ -76,9 +82,12 @@ block content
             a(href="https://www.linkedin.com/in/brian-xue/" target="_blank" rel="noopener noreferrer"
 )
               i.fab.fa-linkedin
+          p
+            a(href="https://bxue2.github.io/" target="_blank" rel="noopener noreferrer")
+              i.fas.fa-globe
         .bio
           span My Journey
-          p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam optio, iusto tempore at, doloribus reiciendis amet sunt rem voluptatibus cupiditate magnam nemo dolorem ducimus laborum commodi iure sapiente nostrum quis!
+          p I’m a software engineer from the Bay Area with a Bachelor’s in Computer Science and 3 years of professional experience. I’ve recently been transitioning more towards full-stack web development, expanding on my previous skillset and looking to work on new and exciting projects.
   .background-right
     .alex-profile.profile-container
       img(src="../img/welcome-alex.png", alt="")
@@ -91,6 +100,9 @@ block content
           p
             a(href="https://www.linkedin.com/in/alex-clough-710546200/" target="_blank" rel="noopener noreferrer")
               i.fab.fa-linkedin.alex-i
+          p
+            a(href="https://codinginrhythm.github.io//" target="_blank" rel="noopener noreferrer")
+              i.fas.fa-globe.alex-i
         .bio
           span My Journey
-          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ipsam fugiat odit. Est odio incidunt numquam maiores, nam ipsam illum debitis voluptatum asperiores veniam ut consequuntur dolor distinctio laborum iure.
+          p I'm a software engineer from the New York City area with a past career as a jazz pianist. I find that the challenges and potential for creativity present in software engineering scratch the same itches that my life in music has and I'm excited to continually learn more and broaden my skillset and understanding.

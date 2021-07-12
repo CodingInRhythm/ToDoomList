@@ -13,3 +13,13 @@ div.un-scrolled {
     overflow: hidden;
     margin-bottom: -12px;
 }
+
+@media screen and (max-width: 700px) {
+    body {
+        display:flex;
+        flex-direction: column;
+        width: 100%;
+        overflow: auto;
+    }
+    div.un-scrolled {flex-grow: 3; }
+}

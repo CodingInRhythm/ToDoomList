@@ -3,9 +3,11 @@ extends layout.pug
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/app.css")
+
   link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+
   //- add page specific js
-  
+
   script(src='/javascripts/app-ploys.js' type="module")
 
   script(src='/javascripts/schemes.js' type="module")
@@ -21,7 +23,7 @@ append head
 block content
   div.add-scheme-modal#add-scheme-modal
     .modal-content
-      p Add a Scheme
+      p.add-scheme-p Add a Scheme
       p Please enter a new scheme name:
       form
           input(id="modal-form" name='modal-form' type='text' required)
@@ -42,9 +44,10 @@ block content
       p Remove the Scheme
       p Are you sure?:
         div#modal-button-container
-          button(type='submit' class="remove-list") Revome
+          button(type='submit' class="remove-list") Remove
           button(type='submit' id="exit-remove-modal") Cancel
-  div.main-container
-
+  div.super-main-container
     include app-navbar.pug
-    include app-body.pug
+    div.main-container
+      include app-body.pug
+    include app-footer.pug

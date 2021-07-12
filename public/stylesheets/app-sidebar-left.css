@@ -1,39 +1,45 @@
 .sidebar-left {
    /* background-color: #e4eff8c2; */
    height: 100%;
-   width: 12%;
+   width: 13%;
    display: flex;
    flex-direction: column;
 }
- 
+
 #cow-img {
    height: 5rem;
    width: 100%;
    padding: .5em;
 }
- 
- 
+
+
 .ploys-box,
 .schemes-box {
    display: flex;
    justify-content: space-between;
+   margin-top: 10px;
+   margin-bottom: 10px;
 }
- 
+
+.schemes-box span{
+   font-weight: 600;
+}
+
 .right-container-ploys,
 .right-container-schemes {
    padding-right: 20px;
 }
- 
+
 .left-container-ploys,
 .left-container-schemes {
    padding-left: 10px;
 }
- 
+
 .left-container-ploys > a,
 .left-container-schemes > a {
    padding-right: 10px;
 }
- 
+
 /* .left-container-ploys > a > i,
 .left-container-schemes > a > i {
    transform: rotate(0deg);
@@ -42,37 +48,44 @@
 .rotate-arrow {
    transform: rotate(270deg);
 }
- 
+
 .right-container-ploys > a > i,
 .right-container-schemes > a > i {
    color: rgb(92, 181, 4);
 }
- 
+
 .scheme-entry {
    display: flex;
    justify-content: space-between;
+   cursor: pointer;
+   padding-top: 5px;
+   padding-bottom: 5px;
 }
- 
+
+.scheme-entry:hover{
+   background-color: rgba(0,0,0,0.1);
+}
+
 .scheme-entry > span {
    padding-left: 20px;
 }
- 
+
 .scheme-entry > a {
    padding-right: 10px;
    display: none;
 }
- 
+
 .scheme-entry:hover > a {
    display: block;
 }
- 
+
 .cut-text {
  text-overflow: ellipsis;
  overflow: hidden;
  width: 160px;
  white-space: nowrap;
 }
- 
+
 .dropdown-content {
  position: absolute;
  background-color: #f9f9f9;
@@ -81,15 +94,21 @@
  /* padding: 12px 16px; */
  z-index: 1;
 }
- 
+
 .hidden {
    display: none;
 }
- 
+
 .scheme-action-buttons {
  padding: 12px 16px;
- 
+
 }
 .scheme-action-buttons:hover {
    background-color: cornflowerblue;
+}
+
+@media screen and (max-width:1000px) {
+   .sidebar-left {
+      width: 30%;
+   }
 }

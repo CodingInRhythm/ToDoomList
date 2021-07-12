@@ -2,11 +2,10 @@
 .navbar
     .left-nav
         form(class='search' action='/app/search' method='get')
-            button(type="submit" id="search-btn") 
-                i(class="fa fa-search") 
+            button(type="submit" id="search-btn")
+                i(class="fa fa-search")
             input(type="text" name="search" id="search-bar")
     .right-nav
         span Welcome #{user.firstName}!
-        form(action="/users/logout",class="logout", method="post") 
+        form(action="/users/logout",class="logout", method="post")
             button(type='submit' ) Log Out
-    

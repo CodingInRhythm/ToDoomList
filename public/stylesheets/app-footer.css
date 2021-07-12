@@ -9,37 +9,65 @@ font-family: 'Sue Ellen Francisco', cursive;
 
 
 /* First take the footer container*/
-.footer-container {
+.app-footer-container {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: whitesmoke;
     position: relative;
-    /* top: 25rem; */
-    height: 350px;
-    width: 100vw;
+    height: 10vh;
+    border-top: solid 3px rgba(0, 0, 0, 0.25);
 }
 
-h3 {
+.app-footer-container h3 {
     margin: 0.4rem;
+    font-size: 5px;
 }
 
-.name-link:hover {
-    /* opacity: 0.65; */
-    color: rgba(171, 105, 184, 0.89);
-    transition: ease-in-out 400ms;
-
-}
-
-.footer {
+.app-footer {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
     align-content: center;
     width: 100%;
-    height: 10rem;
-    /* flex-wrap: wrap; */
-    /* margin: 15px auto; */
+    height: 100%;
+    background-color: whitesmoke;
 }
 
-.lists {
+.footer-title {
+    text-align: center;
+}
+
+.dev-info {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.person {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.person h3,
+.person i {
+    font-size: 1.25rem;
+}
+
+.name-link:hover {
+    color: rgba(171, 105, 184, 0.89);
+    transition: ease-in-out 400ms;
+    cursor: pointer;
+}
+
+.person h3,
+.person a {
+    margin-right: 1rem;
+    text-decoration: none;
+}
+
+
+.app-lists {
     display: flex;
     /* justify-content: center; */
     align-content: center;
@@ -49,25 +77,25 @@ h3 {
     text-decoration: none;
 }
 
-.lists ul {
+.app-lists ul {
     list-style-type: none;
 }
 
-.lists h3 {
+.app-lists h3 {
     display: flex;
     justify-content: center;
     width: auto;
     font-weight: 700;
-    font-size: 1.75rem;
+    font-size: 1rem;
     vertical-align: top;
     /* line-height: 1rem; */
     margin-bottom: 15px;
 }
-.dotted {
+.app-dotted {
     border-bottom: 7px dotted rgba(0, 0, 0, 0.125);
     margin-bottom: 20px;
 }
-.lists ul li {
+.app-lists ul li {
     padding-right: 25px;
     margin-bottom: 15px !important;
     width: 100%;
@@ -76,27 +104,27 @@ h3 {
     display: flex;
     justify-content: flex-start;
 }
-.lists a {
-    font-size: 1.75rem;
+.app-lists a {
+    font-size: 1rem;
     /* margin: 0.5rem; */
     /* width: 200%; */
-    /* padding-right: 55%;
-    padding-left: 0px*/
+    padding-right: 55%;
+    padding-left: 0px;
     padding-top: 0.5rem;
-    padding-bottom: 1.0rem; 
-    text-align: center;
+    padding-bottom: 0.5rem;
+
     border-radius: 5px;
     line-height: 120%;
     /* position: relative;
     left: 50px; */
 }
 
-.lis {
+.app-lis {
     width: 100%;
     height: auto;
 }
 
-.lis:hover {
+.app-lis:hover {
     border-radius: 10px;
     color: #333;
     background-color: #e6e6e6;
@@ -105,11 +133,11 @@ h3 {
     /* background-color: black; */
 }
 
-ul li {
+.app-footer-container ul li {
     font-size: 1.75rem;
 }
 
-.footer-bottom {
+.app-footer-bottom {
     display: flex;
     justify-content: space-evenly;
     justify-items: center;
@@ -119,18 +147,18 @@ ul li {
     width: auto;
     height: auto;
     /* overflow-y: auto; */
-    margin: 50px 0;
+    /* margin: 50px 0; */
     position: relative;
-    top: 5rem;
+    /* top: 5rem; */
 }
 
-.footer-bottom ul {
+.app-footer-bottom ul {
     list-style-type: none;
     /* margin: 15px; */
 }
 
-.footer-bottom a {
-    font-size: 1.5rem;
+.app-footer-bottom a {
+    font-size: 16px;
     margin: 0 15px;
 }
 
@@ -138,46 +166,10 @@ ul li {
     display: inline-block;
 }
 
-@media screen and (max-width: 800px) {
-    .footer-container {
-        position: static
-    }
-    .footer {
-        display: flex;
-        flex-direction: column;
-        height: auto;
-        align-items: center;
-    }
-    div.dotted {
-        display: none;
-    }
-    div.lis {
-        list-style: none;
-    }
-    .lists ul li {
-        border: none;
-    }
-   .lists a {
-    box-sizing: border-box;
-    font-size: 16px;
-    /* margin: 0.5rem; */
-    /* padding-right: 2.5rem; */
-    /* padding-left: 2.5rem; */
-    /* padding-top: 2.5rem; */
-    /* padding-bottom: 2.5rem; */
-    /* margin: 10px 10px; */
-    padding: 10px 5px;
-    border: 1px solid grey;
-    border-radius: 5px;
-    line-height: 120%;
-    }
-    .lists {
-        width: 50%;
-        align-items: center;
-    }
-
+.portfolio-link {
+    text-decoration: none;
 }
 
-.lis a {
-    padding-left: 4.0rem;
-}
+/* @media screen and (max-width: 800px) {
+    .foot
+} */

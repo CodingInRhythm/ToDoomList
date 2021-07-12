@@ -1,18 +1,26 @@
 .add-scheme-modal, .rename-scheme-modal, .remove-scheme-modal{
   display: none; /* Hidden by default */
-  position: absolute; /* Stay in place */
+
+  /* position: absolute; Stay in place */
+  position: absolute;
+
   z-index: 1; /* Sit on top */
+  left: 50%;
   top: 50%;
-  left: 25%;
+  transform: translate(-50%, -50%); /* helps to center modal:  https://stackoverflow.com/questions/39627549/how-to-center-modal-to-the-center-of-screen/39636961*/
+  /* left: 50%; */
   justify-content: center;
   align-content: center;
+  justify-self: center;
+  align-items: center;
   box-sizing: border-box;
   width: 25%; /* Full width */
-  height: 35%; /* Full height */
+  /* height: 35%; Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: white;
   border: 1px grey solid;
   border-radius: 4px;
+  padding: 2em;
   /* backdrop-filter: blur(10px); */
   /* Black w/ opacity */
 }
@@ -21,6 +29,7 @@
   height: 35px;
   width: 350px;
   margin-bottom: 5px;
+  border: 1px solid black;
 }
 
 #add-list, .rename-list, .remove-list {
@@ -39,4 +48,8 @@
 #add-list, #exit-modal, .rename-list, .remove-list, #exit-rename-modal, #exit-remove-modal {
   height: 35px;
   width: 70px;
+}
+
+.add-scheme-p {
+  margin-top: 0;
 }

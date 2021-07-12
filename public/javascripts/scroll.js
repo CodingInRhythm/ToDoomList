@@ -45,6 +45,7 @@ export default class Scroll {
         while(this.playNext) {
             await this.timer(5000)// waits with new state for 5s, then start over agiain.
 
+               
             let currTransition = this.animationNames.shift()
             this.unScrolled.style.animationName = currTransition.animationName
             this.header.style.animationName = currTransition.animationName
