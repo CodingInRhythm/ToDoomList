@@ -1,6 +1,6 @@
 # ToDoomList
 
-#### ToDoomList is an application modeled on Remember The Milk that allows villains, supervillains and all other sorts of evil folk to create schemes(lists) and add ploys(tasks) to those lists.  It is written with a frontend using only vanilla Javascript and a backend using express.js. #### 
+#### To Doom List is an application modeled on **Remember The Milk** that allows villains, supervillains and all other sorts of evil folk to create schemes(lists) and add ploys(tasks) to those lists.  It is written with a frontend using only vanilla Javascript and a backend using Express.js. #### 
 
 #### Link: [ToDoomList](http://aa-todoomlist.herokuapp.com/)
 #### Documentation: [Github Wiki](https://github.com/CodingInRhythm/ToDoomList/wiki)
